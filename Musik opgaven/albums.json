@@ -1,6 +1,7 @@
 [
   {
     "id": 0,
+    "albumCover":"ZZTop's_Greatest_Hits.jpg",
     "albumName": "Greatest hits",
     "genre": "Classic Rock",
     "artistName": "ZZ-top",
@@ -119,6 +120,7 @@
 
   {
     "id": 1,
+    "albumCover":"Wild-Cherry.jpg",
     "albumName": "Wild Cherry",
     "genre": "Funk",
     "artistName": "Wild Cherry",
@@ -488,8 +490,9 @@
 
   {
     "id": 6,
+    "albumCover": "Roxette_Joyride.png",
     "albumName": "Joyride",
-    "genre":"Classic Rock",
+    "genre":"Pop Rock",
     "artistName": "Roxette",
     "artistWebsite": "http://www.roxette.se/",
     "productionYear": 1991,
@@ -588,6 +591,7 @@
 
   {
     "id": 7,
+    "albumCover": "Bon_jovi_slippery_when_wet.jpg",
     "albumName": "Slippery when wet",
     "genre":"Classic Rock",
     "artistName": "Bon Jovi",
@@ -676,6 +680,7 @@
 
   {
     "id": 8,
+    "albumCover": "ScorpionsCrazyWorld.jpg",
     "albumName": "Crazy world",
     "genre":"Classic Rock",
     "artistName": "Scorpions",

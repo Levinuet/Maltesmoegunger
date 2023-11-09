@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gruppeopgaven - Musik Tabel</title>
+    <link href="styles.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <h1> Musikarkiv - Gruppeopgaven </h1>
+    <p style="color: #fffa1e;"> Tres Cervezas y un Agua Mineral </p>
+    <table class="tableGone" id="albumTable">
+        <thead>
+            <tr>
+                <th>JSON Album ID</th>
+                <th>Albumcover</th>
+                <th>Album Navn</th>
+                <th>Kunstner Name</th>
+                <th>Album genre</th>
+                <th>Udgivelses År</th>
+                <th>Mængde af numre</th>
+                <th>Total løbetid</th>
+                <th>Tracklist</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <div class="dropdown">
+        <button onclick="dropDownMenu()" class="dropbtn">Filtrer</button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="#" onclick="filterByGenre('all')">Alle Genrer</a>
+            <a href="#" onclick="filterByGenre('Classic Rock')">Classic Rock</a>
+            <a href="#" onclick="filterByGenre('Alternative Rock')">Alternative Rock</a>
+            <a href="#" onclick="filterByGenre('Pop Rock')">Pop Rock</a>
+            <a href="#" onclick="filterByGenre('Funk')">Funk</a>
+            <a href="#" onclick="filterByGenre('Soundtrack')">Soundtrack</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            const tableBody = document.querySelector("#albumTable tbody");
+
+            const response = await fetch("albums.json");
+            const albums = await response.json();
+
+            albums.forEach(album => {
+                const albumRow = document.createElement("tr");
+
+                // JSON Album ID fra JSON
+                const idCell = document.createElement("td");
+                idCell.textContent = album.id;
+                albumRow.appendChild(idCell);
+
+                // Album Cover fra JSON
+                const imgCell = document.createElement("td");
+                const img = document.createElement("img");
+                img.src = album.albumCover;
+                img.alt = album.albumName;
+                img.width = 150;
+                img.height = 150;
+                imgCell.appendChild(img);
+                albumRow.appendChild(imgCell);
+
+                // Album Navn fra JSON
+                const nameCell = document.createElement("td");
+                nameCell.textContent = album.albumName;
+                albumRow.appendChild(nameCell);
+
+                // Artist Navn fra JSON
+                const artistCell = document.createElement("td");
+                artistCell.textContent = album.artistName;
+                albumRow.appendChild(artistCell);
+
+                // Genre fra JSON
+                const genreCell = document.createElement("td");
+                genreCell.textContent = album.genre;
+                albumRow.appendChild(genreCell);
+
+                // Udgivelses år fra JSON
+                const yearCell = document.createElement("td");
+                yearCell.textContent = album.productionYear;
+                albumRow.appendChild(yearCell);
+
+                // Talt Mængde af tracks fra JSON
+                const totalTracksCell = document.createElement("td");
+                totalTracksCell.textContent = album.trackList.length;
+                albumRow.appendChild(totalTracksCell);
+
+                // Total spille tid fra JSON
+                const totalTimeCell = document.createElement("td");
+                const totalRunTime = album.trackList.reduce((acc, track) => acc + track.trackTimeInSeconds, 0);
+                totalTimeCell.textContent = totalRunTime;
+                albumRow.appendChild(totalTimeCell);
+
+                // Tracklist Knap
+                const tracklistCell = document.createElement("td");
+                const btn = document.createElement("button");
+                btn.textContent = "Vis Tracklist";
+                btn.onclick = function() {
+                    const tracklistRow = this.closest('tr').nextElementSibling;
+                    if (tracklistRow.style.display === "table-row") {
+                        tracklistRow.style.display = "none";
+                        btn.textContent = "Vis Tracklist";
+                    } else {
+                        tracklistRow.style.display = "table-row";
+                        btn.textContent = "Gem Tracklist";
+                    }
+                };
+                tracklistCell.appendChild(btn);
+                albumRow.appendChild(tracklistCell);
+                tableBody.appendChild(albumRow);
+
+                //Nye række til Tracklisten
+                const tracklistRow = document.createElement("tr");
+                tracklistRow.style.display = "none";
+                const tracklistDivCell = document.createElement("td");
+                tracklistDivCell.colSpan = 9;
+                const tracklistDiv = document.createElement("div");
+                album.trackList.forEach(track => {
+                    const trackInfo = document.createElement("p");
+                    trackInfo.textContent = `${track.trackNumber}. ${track.trackTitle}`;
+                    tracklistDiv.appendChild(trackInfo);
+                });
+                tracklistDivCell.appendChild(tracklistDiv);
+                tracklistRow.appendChild(tracklistDivCell);
+                tableBody.appendChild(tracklistRow);
+            });
+        });
+
+        function dropDownMenu() {
+            let dropdownContent = document.getElementById("myDropdown");
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        }
+
+    function filterByGenre(genre) {
+    const albumRows = document.querySelectorAll("#albumTable tbody tr:nth-child(odd)");
+    albumRows.forEach(row => {
+        const genreColumn = row.querySelector("td:nth-child(5)");
+
+        if (genre === "all" || genreColumn.textContent === genre) {
+            row.style.display = "table-row";
+        } else {
+            row.style.display = "none";
+        }
+    });
+}
+</script>
+</body>
+</html>

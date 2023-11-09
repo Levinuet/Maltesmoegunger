@@ -32,150 +32,7 @@
         font-style: normal;
         src: url(Nuu-Bold.woff) format("woff")
     }
-
-    .navbar {
-        width: 85%;
-        height: auto;
-        padding: 35px 0;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .navbar ul li{
-        list-style: none;
-        display: inline-block;
-        margin: 0 20px;
-        position: relative;
-    }
     
-    .navbar ul li a{
-     text-decoration: none;
-     color: #6e6eff;
-     text-transform: uppercase;
-        
-    }
-
-    .navbar ul li::after{
-        content: '';
-        height: 3px;
-        width: 0;
-        background: var(--primary-blue);
-        position: absolute;
-        left: 0;
-        bottom: -10px;
-        transition: 0.5s;
-    }
-
-    .navbar ul li:hover::after{
-        width: 100%;
-    }
-    .picafmig {
-        background-image: url("Levi.jpg");
-        box-shadow: #453740;
-        background-position: right center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-color: var(--primary-gray);
-        background-size: 25%;
-        color: var(--primary-blue);
-    }
-
-    .a {
-        text-decoration: none;
-        color: #6e6eff;
-        text-transform: uppercase; 
-       }
-
-    .dropdown {
-        width: 200px;
-        font-weight: 500;
-    }
-
-    body {
-        padding: 0px;
-        margin: 0px;
-        background-color: var(--primary-gray);
-        color: var(--primary-blue);
-      }
-
-    h1 {
-        font-size: 3.55em;
-        line-height: 1;
-        font-weight: 500;
-        padding: 0px;
-        margin: 0px;
-        font-family: "Nuu";
-        font-style: normal;
-        src: url(Nuu-Medium.woff) format("woff")
-        
-    }
-
-    .bold {
-        font-weight: 800;
-    }
-
-    p {
-        font-weight: 400;
-        font-family: "Nuu";
-        font-style: normal;
-        src: url(Nuu-Regular.woff) format("woff")
-    }
-
-   ul {
-        font-family: "Nuu";
-        font-weight: 400;
-        font-style: normal;
-        src: url(Nuu-Regular.woff) format("woff")
-    }
-
-    li {
-        font-family: "Nuu";
-        font-weight: 400;
-        font-style: normal;
-        src: url(Nuu-Regular.woff) format("woff");
-    }
-
-    tr {
-        font-family: "Nuu";
-        font-weight: 400;
-        font-style: normal;
-        src: url(Nuu-Regular.woff) format("woff");
-    }
-
-    option {
-        font-family: "Nuu";
-        font-weight: 400;
-        font-style: normal;
-        src: url(Nuu-Regular.woff) format("woff");
-    }
-
-    select {
-        font-family: "Nuu";
-        font-weight: 400;
-        font-style: normal;
-        src: url(Nuu-Regular.woff) format("woff");
-        
-    }
-
-    th, td, tbody {
-        font-family: "Nuu";
-        font-weight: 400;
-        font-style: normal;
-        color: var(--primary-blue);
-        src: url(Nuu-Regular.woff) format("woff");
-        border: 1px solid white;
-        border-collapse: collapse;
-        border-radius: 10px;
-        padding-left: 15px;
-        padding-right: 15px
-    }
-
-    th:hover, td:hover {
-        background-color: var(--primary-green);
-        color: var(--primary-gray);
-        transition: 0.75s;
-    }
-
     .primblue {
         background-color: var(--primary-blue);
     }    
@@ -205,45 +62,100 @@
         background-image: linear-gradient(#453740, #fffb1e23);
     }
 
-    a {
-        color: #5bfe60;
+    body {
+        padding: 0px;
+        margin: 0px;
+        background-color: var(--primary-gray);
+        color: var(--primary-blue);
+      }
+
+    h1 {
+        font-size: 3.55em;
+        line-height: 1;
+        font-weight: 500;
+        padding: 0px;
+        margin: 0px;
+        font-family: "Nuu";
+        font-style: normal;
+        src: url(Nuu-Medium.woff) format("woff")
+        
     }
 
-    a:hover {
-        color:#fffa1e
-
+    .bold {
+        font-weight: 800;
     }
 
-    .tables {
+    p, ul, li, tr, option, select {
+        font-weight: 400;
+        font-family: "Nuu";
+        font-style: normal;
+        src: url(Nuu-Regular.woff) format("woff")
+    }
+
+    th, td, tbody {
         font-family: "Nuu";
         font-weight: 400;
         font-style: normal;
         color: var(--primary-blue);
         src: url(Nuu-Regular.woff) format("woff");
-        display: table;
-        width: 95%;
+        border: 1px solid white;
         border-collapse: collapse;
         border-radius: 10px;
-        padding: 100px;
-        vertical-align: middle;
-        text-align: center;
+        padding-left: 15px;
+        padding-right: 15px
     }
 
-    .cell:hover {
-        background-color: var(--primary-green);
-        color: var(--primary-gray);
-        transition: 0.75s;
-    }
+    .dropbtn {
+        background-color:#6e6eff00;
+        color: var(--primary-yellow);
+        padding: 10px 15px;
+        font-size: 23px;
+        font-weight: 400;
+        font-family: "Nuu";
+        font-style: normal;
+        src: url(Nuu-Regular.woff) format("woff");
+        border: 0px solid;
+        border-radius: 5%;
+        cursor: grab;
+        transition: ;
+       } 
 
-    .row {
-        display: table-row;
+       .dropbtn:hover , .dropbtn:focus {
+        background-color:#6e6eff00;
+        outline: 3px solid ;
+        transition: 1s;
+       }
 
-    }
-    .header {
-        display: table-header-group;
-        font-weight: bold;
-    }
-    .cell {
-        display: table-cell;
-        border: 1px solid white; 
-    }
+       .dropdown {
+        position: absolute;
+        top: 0;
+        right: 0;
+       }
+
+       .dropdown-content {
+        display: none;
+        position: relative;
+        background-color: var(--primary-gray);
+        min-width: 100px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+       }
+
+       .dropdown-content a {
+        color: var(--primary-blue);
+        font-family: "Nuu";
+        font-weight: 400;
+        font-style: normal;
+        src: url(Nuu-Regular.woff) format("woff");
+        padding: 12px 16px;        
+        text-decoration: none;
+        display: block;
+        }
+        
+        .dropdown a:hover {
+        background-color: #ddd;
+        }
+        
+        .show { 
+        display: block;
+        }
