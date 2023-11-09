@@ -1,0 +1,249 @@
+:root {
+    --primary-blue: #6e6eff;
+    --primary-green: #5bfe60;
+    --primary-yellow: #fffa1e;
+    --primary-gray: #453740;
+}
+
+    @font-face {
+        font-family: "Nuu";
+        font-weight: 400;
+        font-style: normal;
+        src: url(Nuu-Regular.woff) format("woff")
+    }
+    
+    @font-face {
+        font-family: "Nuu";
+        font-weight: 500;
+        font-style: normal;
+        src: url(Nuu-Medium.woff) format("woff")
+    }
+    
+    @font-face {
+        font-family: "Nuu";
+        font-weight: 800;
+        font-style: normal;
+        src: url(Nuu-ExtraBold.woff) format("woff")
+    }
+    
+    @font-face {
+        font-family: "Nuu";
+        font-weight: 600;
+        font-style: normal;
+        src: url(Nuu-Bold.woff) format("woff")
+    }
+
+    .navbar {
+        width: 85%;
+        height: auto;
+        padding: 35px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .navbar ul li{
+        list-style: none;
+        display: inline-block;
+        margin: 0 20px;
+        position: relative;
+    }
+    
+    .navbar ul li a{
+     text-decoration: none;
+     color: #6e6eff;
+     text-transform: uppercase;
+        
+    }
+
+    .navbar ul li::after{
+        content: '';
+        height: 3px;
+        width: 0;
+        background: var(--primary-blue);
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        transition: 0.5s;
+    }
+
+    .navbar ul li:hover::after{
+        width: 100%;
+    }
+    .picafmig {
+        background-image: url("Levi.jpg");
+        box-shadow: #453740;
+        background-position: right center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-color: var(--primary-gray);
+        background-size: 25%;
+        color: var(--primary-blue);
+    }
+
+    .a {
+        text-decoration: none;
+        color: #6e6eff;
+        text-transform: uppercase; 
+       }
+
+    .dropdown {
+        width: 200px;
+        font-weight: 500;
+    }
+
+    body {
+        padding: 0px;
+        margin: 0px;
+        background-color: var(--primary-gray);
+        color: var(--primary-blue);
+      }
+
+    h1 {
+        font-size: 3.55em;
+        line-height: 1;
+        font-weight: 500;
+        padding: 0px;
+        margin: 0px;
+        font-family: "Nuu";
+        font-style: normal;
+        src: url(Nuu-Medium.woff) format("woff")
+        
+    }
+
+    .bold {
+        font-weight: 800;
+    }
+
+    p {
+        font-weight: 400;
+        font-family: "Nuu";
+        font-style: normal;
+        src: url(Nuu-Regular.woff) format("woff")
+    }
+
+   ul {
+        font-family: "Nuu";
+        font-weight: 400;
+        font-style: normal;
+        src: url(Nuu-Regular.woff) format("woff")
+    }
+
+    li {
+        font-family: "Nuu";
+        font-weight: 400;
+        font-style: normal;
+        src: url(Nuu-Regular.woff) format("woff");
+    }
+
+    tr {
+        font-family: "Nuu";
+        font-weight: 400;
+        font-style: normal;
+        src: url(Nuu-Regular.woff) format("woff");
+    }
+
+    option {
+        font-family: "Nuu";
+        font-weight: 400;
+        font-style: normal;
+        src: url(Nuu-Regular.woff) format("woff");
+    }
+
+    select {
+        font-family: "Nuu";
+        font-weight: 400;
+        font-style: normal;
+        src: url(Nuu-Regular.woff) format("woff");
+        
+    }
+
+    th, td, tbody {
+        font-family: "Nuu";
+        font-weight: 400;
+        font-style: normal;
+        color: var(--primary-blue);
+        src: url(Nuu-Regular.woff) format("woff");
+        border: 1px solid white;
+        border-collapse: collapse;
+        border-radius: 10px;
+        padding-left: 15px;
+        padding-right: 15px
+    }
+
+    th:hover, td:hover {
+        background-color: var(--primary-green);
+        color: var(--primary-gray);
+        transition: 0.75s;
+    }
+
+    .primblue {
+        background-color: var(--primary-blue);
+    }    
+
+    .primtxtblue {
+        color: var(--primary-blue);
+    }
+
+    .primgraynblue {
+        background-color: var(--primary-gray);
+        color: var(--primary-blue);
+    }
+
+    .primyellow {
+    background-color: var(--primary-yellow);
+
+    }
+    .primgreen {
+    background-color: var(--primary-green);
+
+    }
+
+    .primgray {
+    background-color: var(--primary-gray);
+    }
+    .primbluegraygradient {
+        background-image: linear-gradient(#453740, #fffb1e23);
+    }
+
+    a {
+        color: #5bfe60;
+    }
+
+    a:hover {
+        color:#fffa1e
+
+    }
+
+    .tables {
+        font-family: "Nuu";
+        font-weight: 400;
+        font-style: normal;
+        color: var(--primary-blue);
+        src: url(Nuu-Regular.woff) format("woff");
+        display: table;
+        width: 95%;
+        border-collapse: collapse;
+        border-radius: 10px;
+        padding: 100px;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .cell:hover {
+        background-color: var(--primary-green);
+        color: var(--primary-gray);
+        transition: 0.75s;
+    }
+
+    .row {
+        display: table-row;
+
+    }
+    .header {
+        display: table-header-group;
+        font-weight: bold;
+    }
+    .cell {
+        display: table-cell;
+        border: 1px solid white; 
+    }

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Div Albums Script</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="primgraynblue"> 
+    <div class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="wow.html">WoW</a></li>
+            <li><a href="JS.html">Intro til JS</a></li>
+            <li><a href="Musik-Arkiv.html">Musik Opgaven</a></li>
+            <li><a href="Musik-Arkiv via div.html">Musik Opgaven uden Tabel </a></li>
+        </ul>
+    </div>
+
+    <h1>Musik Arkiv - Mine top 5 af album fra json filen</h1>
+
+    <p style="color: #fffa1e;"> Ja det her gik ikke super godt - Det så faktisk lidt anderledes ud før jeg begyndte med CSS til min div tabel. Det har ændret format efter det, så nu står det "rigtigt" men ser <span style="color: red;">helt forkert ud.</span>
+    </p>
+
+    <h2>Albums</h2>
+    <div class="tables" id="table">
+        <div class="row header">
+            <div class="cell">Album Cover</div>
+            <div class="cell">Album Navn</div>
+            <div class="cell">Kunstner Navn</div>
+            <div class="cell">Udgivelses År</div>
+            <div class="cell">Mængde af numre</div>
+            <div class="cell">Total løbetid</div>
+        </div>
+    
+        <!-- her bliver dataen fra scriptet sat ind -->
+    </div>
+
+    <script>
+        function calculateTotalRuntime(trackList) {
+            const totalSeconds = trackList.reduce((total, track) => total + track.trackTimeInSeconds, 0);
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            return `${minutes}m ${seconds}s`;
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("albums.json")
+                .then(response => response.json())
+                .then(data => {
+                    const albumIds = [2, 3, 4, 5, 9];
+                    const albumTable = document.getElementById("table");
+
+                    albumIds.forEach(id => {
+                        const album = data.find(item => item.id === id);
+
+                        if (album) {
+                            let row = document.createElement("div");
+                            row.classList.add("row");
+                            /*
+                            let albumDiv = document.createElement("p");
+                            albumDiv.classList.add("cells"); */
+                            row.innerHTML = `
+                                <div class='cell'><img src="${album.albumCover}" alt="${album.albumName}" width='150' height='150'></div>
+                                <div class='cell'>${album.albumName}</div>
+                                <div class='cell'>${album.artistName}</div>
+                                <div class='cell'>${album.productionYear}</div>
+                                <div class='cell'>${album.trackList.length}</div>
+                                <div class='cell'>${calculateTotalRuntime(album.trackList)}</div>
+                            `;
+                            //row.appendChild(albumDiv);
+
+                            albumTable.appendChild(row);
+                        }
+                    });
+                })
+                .catch(error => console.error("Error fetching data:", error));
+        });
+    </script>
+</body>
+</html>
