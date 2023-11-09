@@ -32,6 +32,43 @@
         font-style: normal;
         src: url(Nuu-Bold.woff) format("woff")
     }
+
+    .navbar {
+        width: 85%;
+        height: auto;
+        padding: 35px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .navbar ul li{
+        list-style: none;
+        display: inline-block;
+        margin: 0 20px;
+        position: relative;
+    }
+    
+    .navbar ul li a{
+     text-decoration: none;
+     color: #6e6eff;
+     text-transform: uppercase;
+        
+    }
+
+    .navbar ul li::after{
+        content: '';
+        height: 3px;
+        width: 0;
+        background: var(--primary-blue);
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        transition: 0.5s;
+    }
+
+    .navbar ul li:hover::after{
+        width: 100%;
+    }
     
     .primblue {
         background-color: var(--primary-blue);
