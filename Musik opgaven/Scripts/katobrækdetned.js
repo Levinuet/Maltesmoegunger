@@ -1,6 +1,6 @@
 // Width og height til SVG-elementet
-const w = 700;
-const h = 300;
+const w = 1200;
+const h = 500;
 
 /**
  * De tre datasæt, vi kan vælge imellem - Bemærk at de IKKE har samme længde!
@@ -9,33 +9,42 @@ const h = 300;
  * Det betyder at vi skal bruge enter() og exit().
  * */
 
-const dataset1 = [
-  [12, 12],
-  [210, 71],
-  [230, 55],
-  [154, 31],
-  [182, 74],
-  [380, 19],
-  [415, 44],
-];
-const dataset2 = [
-  [10, 10],
-  [170, 90],
-  [180, 20],
-  [120, 13],
-  [319, 75],
-  [232, 42],
-  [271, 34],
-  [127, 13],
-  [134, 91],
-];
-const dataset3 = [
-  [312, 23],
-  [17, 19],
-  [88, 88],
-  [44, 44],
-  [71, 10],
-];
+async function fetchAllData () {
+    // await response of a fetch call
+    let data = await d3.json("Scripts/newalbums.json");
+    console.log('Initial data:', data);
+    return data;
+  }
+
+  fetchAllData();
+
+  const dataset1 = [
+    [12, 12],
+    [210, 71],
+    [230, 55],
+    [154, 31],
+    [182, 74],
+    [380, 19],
+    [415, 44],
+  ];
+  const dataset2 = [
+    [10, 10],
+    [170, 90],
+    [180, 20],
+    [120, 13],
+    [319, 75],
+    [232, 42],
+    [271, 34],
+    [127, 13],
+    [134, 91],
+  ];
+  const dataset3 = [
+    [312, 23],
+    [17, 19],
+    [88, 88],
+    [44, 44],
+    [71, 10],
+  ];
 
 //Kald til init-funktionen med datasæt1, h og w som argumenter for at konstruere det første scatter plot
 init(dataset1, w, h);
@@ -118,19 +127,15 @@ function init(dataset, svgWidth, svgHeight) {
 
   //Scatter plot
   svg
+    .svg.append('g')
     .selectAll("circle")
-    .data(dataset)
+    .data(data)
     .enter()
     .append("circle")
-    .attr("cx", function (d) {
-      return xScale(d[0]);
-    })
-    .attr("cy", function (d) {
-      return yScale(d[1]);
-    })
-    .attr("r", function (d) {
-      return Math.sqrt(d[1]);
-    });
+    .attr("cx", d => x (d.id))
+    .attr("cy", d => y (d.streams / 1000))
+    .attr("r", d => (d.rating))
+    .style("fill", d => (d.AlbumCover))
 
   //Labels
   svg

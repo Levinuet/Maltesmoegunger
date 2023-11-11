@@ -102,7 +102,7 @@
     body {
         padding: 0px;
         margin: 0px;
-        background-color: var(--primary-gray);
+        background-color: #483c32;
         color: var(--primary-blue);
       }
 
