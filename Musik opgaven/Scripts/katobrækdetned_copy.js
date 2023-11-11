@@ -1,76 +1,89 @@
 // Width and height for the SVG element
-const w = 1700;
+const w = 1400;
 const h = 600;
+let allData = [];
+let xScale, yScale, svg;
 
 // Function to fetch data from the JSON file
 async function fetchData() {
-    try {
-        const response = await fetch("Scripts/newalbums.json");
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error("Error fetching data:", error);
+    if (allData.length === 0) {
+        try {
+            const response = await fetch("Scripts/newalbums.json");
+            allData = await response.json();
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
     }
+    return allData;
 }
 
-// Function to create the scatter plot
-async function createScatterPlot() {
-    // Fetch the data
+// Function to create or update the scatter plot
+async function updateScatterPlot(xAttr, yAttr) {
     const data = await fetchData();
 
-    // Create SVG element
-    const svg = d3.select("#scatter-plot")
-        .append("svg")
-        .attr("width", w)
-        .attr("height", h)
-        .attr("padding", '50px');
+    // Initialize SVG and scales if not already done
+    if (!svg) {
+        svg = d3.select("#scatter-plot")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
 
-    // Create scales for x and y axes
-    const xScale = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d.id)])
-        .range([30, w - 300])
-        .nice();
+        xScale = d3.scaleLinear().range([50, w - 50]);
+        yScale = d3.scaleLinear().range([h - 50, 50]);
 
-    const yScale = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d.streams / 1000)])
-        .range([h - 30, 30])
-        .nice();
+        svg.append("g").attr("class", "x-axis").attr("transform", `translate(0,${h - 50})`);
+        svg.append("g").attr("class", "y-axis").attr("transform", "translate(50,0)");
+    }
 
-    // Create x and y axes
-    const xAxis = d3.axisBottom().scale(xScale).ticks(10);
-    const yAxis = d3.axisLeft().scale(yScale).ticks(5);
+    // Update scales based on specified attributes
+    xScale.domain([0, d3.max(data, d => d[xAttr])]);
+    yScale.domain([0, d3.max(data, d => d[yAttr])]);
 
-    // Add x and y axes to the SVG
-    svg.append("g")
-        .attr("transform", `translate(60,${h - 30})`)
-        .call(xAxis);
+    // Update axes
+    svg.select(".x-axis").transition().duration(1000).call(d3.axisBottom(xScale));
+    svg.select(".y-axis").transition().duration(1000).call(d3.axisLeft(yScale));
 
-    svg.append("g")
-        .attr("transform", `translate(90,0)`)
-        .call(yAxis);
+    // Update circles
+    const circles = svg.selectAll("circle").data(data);
+    circles.enter()
+        .append("circle")
+        .merge(circles)
+        .transition().duration(1000)
+        .attr("cx", d => xScale(d[xAttr]))
+        .attr("cy", d => yScale(d[yAttr]))
+        .attr("r", d => d.rating * 5)
+        .attr("fill", "#6e6eff");
+    circles.exit().remove();
 
-    // Create groups for each data point
-    const groups = svg.selectAll("g.data-point")
-        .data(data)
-        .enter()
-        .append("g")
-        .attr("class", "data-point")
-        .attr("transform", d => `translate(${xScale(d.id)}, ${yScale(d.streams / 1000)})`);
-
-    // Append circles to each group
-    groups.append("circle")
-        .attr("r", d => (d.rating * 5))
-        .attr("fill", "#6e6eff"); // or any color
-
-    // Append text to each group
-    groups.append("text")
-        .text(d => d.albumName)
-        .attr("x", d => (d.rating * 5))  // Adjust as needed for positioning
-        .attr("y", -10) // Adjust as needed for positioning
+    // Update labels
+    const labels = svg.selectAll("text.label").data(data);
+    labels.enter()
+        .append("text")
+        .attr("class", "label")
+        .merge(labels)
+        .transition().duration(1000)
+        .text(d => d.id)
+        .attr("x", d => xScale(d[xAttr]) + 5)
+        .attr("y", d => yScale(d[yAttr]) - 15)
         .attr("font-family", "sans-serif")
         .attr("font-size", "11px")
         .attr("fill", "white");
+    labels.exit().remove();
 }
 
-// Call the createScatterPlot function to create the scatter plot
-createScatterPlot();
+// Fetch data initially
+fetchData().then(() => {
+    // Set up buttons
+    document.getElementById('idStream').addEventListener('click', () => {
+        updateScatterPlot('id', 'streams');
+    });
+
+    document.getElementById('yeartracks').addEventListener('click', () => {
+        updateScatterPlot('productionYear', 'd.trackList[d.trackList.length');
+    });
+
+    // Add more buttons here as needed
+
+    // Initial scatter plot creation
+    updateScatterPlot('id', 'streams');
+});
