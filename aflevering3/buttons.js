@@ -56,7 +56,7 @@ function draw(data, valueX, valueY) {
     let arrayOfNumbers = sortedData.map(d => d[valueY])
 
     // sætter x-aksen til at starte ved mindste value i arrayet//
-    let minValue = Math.min(...arrayOfNumbers)
+    let minValue = Math.min(...arrayOfNumbers) - 1
 
 let scaleX = d3.scaleLinear()
                 .domain([minValue,d3.max(processedData[0].data, d =>d[valueY])])         
@@ -91,7 +91,6 @@ let axisY = svg.append('g')
         update(data,scaleX,scaleY, valueX, valueY, minValue)
         
 }
- 
 
 const buttonGroup = document.querySelector(".buttonGroup").children;
 const aButton = document.querySelector(".buttonGroup button:nth-child(1)");
@@ -114,8 +113,6 @@ cButton.addEventListener('click', async(e) =>{
    changeData("albumName","productionYear")
 });
 
-
-
 async function runBoilerPlateColourChange (button){
     await removeSelected();
 
@@ -137,9 +134,6 @@ function removeSelected() {
     })
 }
 
-
-
-
 function update(data, scaleX, scaleY, valueX, valueY, minValue) {
     let colors = d3.scaleOrdinal()
         .domain(processedData[0].data.map(d => d[valueX]))
@@ -155,7 +149,7 @@ function update(data, scaleX, scaleY, valueX, valueY, minValue) {
     rects.transition(t)
         .attr('y', (d) => scaleY(d[valueX]))
         .attr('width', (d) => scaleX(d[valueY]) - scaleX(minValue))
-        .attr('x', (d) => scaleX(minX));
+        .attr('x', (d) => scaleX(minValue));
 
     // Create new rectangles
     rects.enter()
@@ -163,7 +157,7 @@ function update(data, scaleX, scaleY, valueX, valueY, minValue) {
         .attr('x', (d) => scaleX(minValue))
         .attr('y', (d) => scaleY(d[valueX]))
         .attr('width', 0)  // Start with zero width for entering bars
-        .attr('height', 30)
+        .attr('height', 25)
         .attr('fill', (d) => colors(d[valueX]))
         .merge(rects)  // Merge new and existing rectangles
         .transition(t)
