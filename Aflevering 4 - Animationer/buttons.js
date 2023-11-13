@@ -1,7 +1,7 @@
 let dim = {
     'width': 780, 
-   'height':500, 
-   'margin':50   
+    'height':500, 
+    'margin':50   
 };
 
 let svg = d3.select('#chart').append('svg')  
@@ -33,7 +33,6 @@ svg = d3.select('#chart').append('svg')
             data: []
         })
 
-
         for(let j=0; j < albums.length; j++){
             processedData[i].data.push({
                 [valueX]:albums[j][valueX],
@@ -41,11 +40,10 @@ svg = d3.select('#chart').append('svg')
         
             })
         }
-
     }
  console.log("processedData",processedData)        
 
-    sortedData = processedData[0].data.slice().sort((a,b) =>d3.descending(a[valueY], b[valueY]));
+sortedData = processedData[0].data.slice().sort((a,b) =>d3.descending(a[valueY], b[valueY]));
 draw(sortedData,valueX, valueY)
 };
 
@@ -88,8 +86,7 @@ let axisY = svg.append('g')
     axisY
         .transition(t)
         .call(d3.axisLeft(scaleY));
-        update(data,scaleX,scaleY, valueX, valueY, minValue)
-        
+        update(data,scaleX,scaleY, valueX, valueY, minValue)     
 }
 
 const buttonGroup = document.querySelector(".buttonGroup").children;
@@ -101,8 +98,8 @@ aButton.addEventListener('click', async(e) =>{
 console.log("abutton")
     runBoilerPlateColourChange(aButton);
     changeData("albumName","rating")
-
 });
+
 bButton.addEventListener('click', async(e) =>{    
     runBoilerPlateColourChange(bButton);  
    changeData("albumName","streams")
@@ -115,7 +112,6 @@ cButton.addEventListener('click', async(e) =>{
 
 async function runBoilerPlateColourChange (button){
     await removeSelected();
-
     //add the selected class
     button.classList.remove("unselected");
     button.classList.add("selected");
@@ -124,11 +120,8 @@ async function runBoilerPlateColourChange (button){
 function removeSelected() {
     return new Promise(resolve => {
             Array.from(buttonGroup).forEach(item => {
-
                 item.classList.remove("selected");
-        
                 item.classList.add("unselected");
-        
              });
             resolve("Success");
     })
@@ -141,32 +134,31 @@ function update(data, scaleX, scaleY, valueX, valueY, minValue) {
 
     let t = d3.transition().duration(2000);
 
-    // Select all existing and new rectangles
     let rects = svg.selectAll('rect')
         .data(data, d => d[valueX]);
 
-    // Update existing rectangles
+    // Opdatere rektangler
     rects.transition(t)
         .attr('y', (d) => scaleY(d[valueX]))
         .attr('width', (d) => scaleX(d[valueY]) - scaleX(minValue))
         .attr('x', (d) => scaleX(minValue));
 
-    // Create new rectangles
+    // Laver nye rektangler
     rects.enter()
         .append('rect')
         .attr('x', (d) => scaleX(minValue))
         .attr('y', (d) => scaleY(d[valueX]))
-        .attr('width', 0)  // Start with zero width for entering bars
+        .attr('width', 0)  // Start med nul
         .attr('height', 25)
         .attr('fill', (d) => colors(d[valueX]))
-        .merge(rects)  // Merge new and existing rectangles
+        .merge(rects)
         .transition(t)
         .attr('width', (d) => scaleX(d[valueY]) - scaleX(minValue))
         .attr('x', (d) => scaleX(minValue));
 
-    // Remove old rectangles
+    // Fjernelse af datapunkter
     rects.exit()
         .transition(t)
-        .attr('width', 0)  // Set width to zero for exiting bars
+        .attr('width', 0)
         .remove();
 }
