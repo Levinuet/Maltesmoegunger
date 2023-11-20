@@ -3,20 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stilark.css">
-
-    <title>Min HTML-side</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Skovrydningsquizzen</title>
 </head>
  
 <body>
-
-    <h1>Skkkkovrydnign</h1>
+<div id="explanation"></div>
+<div class = "container">
+       <div id="question-container" class="hide">
+        <div id="question">Spørgsmål</div>
+        <div id="answer-buttons" class="btn-grid">
+            <button class="btn">Svarmulighed 1</button>
+            <button class="btn">Svarmulighed 2</button>
+            <button class="btn">Svarmulighed 3</button>
+            <button class="btn">Svarmulighed 4</button>
+       </div> 
+    </div>
+    <div class="controls">
+        <button id="start-btn" class = "start-btn btn">Start</button>
+        <button id="next-btn" class = "next-btn btn hide">Næste</button>
+     </div>
+    </div>    
     
-    <p>Vi har valgt at fokusere på verdensmål 15.2</p>
 
-    <button onclick="startQuiz()">Start Quiz</button>
-
-    <script src="Scripts/Script.js"></script>
-
+<script src="scripts/script.js"></script>
 </body>
 </html>
