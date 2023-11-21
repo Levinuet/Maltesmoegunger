@@ -21,7 +21,9 @@ body.wrong{
 }
 
 div {
-
+display: block;
+justify-content: center;
+align-items: center;
 }
 
 .container{
@@ -37,8 +39,20 @@ div {
     background-size: auto;
     background-position: center;
     background-repeat: no-repeat;
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
+   /* filter: blur(8px);
+    -webkit-filter: blur(8px);*/
+}
+
+#explanation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    max-width: 80%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
 }
 
 #question-container{
