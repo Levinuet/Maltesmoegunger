@@ -1,3 +1,4 @@
+// Hent DOM-elementer ved hjælp af deres id
 const startButton = document.getElementById("start-btn");
 const nextButton = document.getElementById("next-btn");
 const questionContainerElement = document.getElementById("question-container");
@@ -6,9 +7,16 @@ const answerButtonsElement = document.getElementById("answer-buttons");
 const explanationElement = document.getElementById("explanation");
 const nextQuestionButton = document.getElementById("next-question-btn");
 
+
+let shuffledQuestions, currentQuestionIndex;
+startButton.addEventListener("click", startQuiz);
+// Initialiser variabler
 let shuffledQuestions, currentQuestionIndex;
 
+// Eventlistener til startknappen
 startButton.addEventListener("click", startQuiz);
+
+// Eventlistener til næste-knappen
 nextButton.addEventListener("click", () => {
   setNextQuestion();
 });
@@ -19,12 +27,28 @@ function startQuiz() {
   shuffledQuestions = questions.sort(() => Math.random() - 0.5);
   currentQuestionIndex = 0;
   questionContainerElement.classList.remove("hide");
+// Funktion til at starte quizzen
+function startQuiz() {
+  console.log("Started");
+  // Skjul startknappen
+  startButton.classList.add("hide");
+  // Shuffle spørgsmålene
+  shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+  // Initialiser index for det aktuelle spørgsmål
+  currentQuestionIndex = 0;
+  // Vis containeren til spørgsmål
+  questionContainerElement.classList.remove("hide");
+  // Vis det første 
   setNextQuestion();
 }
 
-function setNextQuestion() {
+// Funktion til at sætte næste spørgsmål
+function setNextQuestion
+  resetState
+  // Nulstil visningen
   resetState();
 
+  // Hvis der er flere spørgsmål tilbage, vis det 
   if (currentQuestionIndex < shuffledQuestions.length) {
     showQuestion(shuffledQuestions[currentQuestionIndex]);
     currentQuestionIndex++;
@@ -32,11 +56,10 @@ function setNextQuestion() {
     console.log("End of Quiz");
   }
 }
-
 function showQuestion(question) {
   // Set the question text
-  questionElement.innerText = question.question;
 
+  questionElement.innerText = question.question;
   // Set the explanation text to an empty string
   explanationElement.innerText = "";
 
@@ -54,33 +77,67 @@ function showQuestion(question) {
     // Add the 'btn' class to the button
     button.classList.add("btn");
 
-    // Set the dataset properties for explanation and correct
+    // Set the dataset properties for explanation and 
+// Funktion til at vise et spørgsmål
+function showQuestion(question) {
+  // Sæt teksten for spørgsmålet
+  questionElement.innerText = question.question;
+
+  // Sæt teksten for forklaringen til tom streng
+  explanationElement.innerText = "";
+
+  // Ryd svarknapperne
+  answerButtonsElement.innerHTML = "";
+
+  // Iterér gennem hvert svarmulighed i spørgsmålet
+  question.answers.forEach((answer) => {
+    // Opret et knappelement
+    const button = document.createElement("button");
+
+    // Sæt knapteksten til svarsteksten
+    button.innerText = answer.text;
+
+    // Tilføj klassen 'btn' til knappen
+    button.classList.add("btn");
+
+    // Sæt dataset-egenskaber for forklaring og 
     button.dataset.explanation = answer.explanation;
     if (answer.correct) {
       button.dataset.correct = answer.correct;
     }
-
     // Set the dataset property for imagePath
     button.dataset.imagePath = question.imagePath;
 
     // Add an event listener for the click event
     button.addEventListener("click", selectAnswer);
 
-    // Append the button to the answer buttons container
+    // Append the button to the answer buttons 
+    // Sæt dataset-egenskab for imagePath
+    button.dataset.imagePath = question.imagePath;
+
+    // Tilføj en eventlistener for klikhændelsen
+    button.addEventListener("click", selectAnswer);
+
+    // Tilføj knappen til 
     answerButtonsElement.appendChild(button);
   });
 }
-
 function resetState() {
   clearStatusClass(document.body);
+  nextButton.classList.add("hide
+// Funktion til at nulstille tilstanden
+function resetState() {
+  // Ryd statusklassen fra hele dokumentet
+  clearStatusClass(document.body);
+  // Skjul næste-knappen
   nextButton.classList.add("hide");
+  // Fjern alle børnelementer fra 
   while (answerButtonsElement.firstChild) {
     answerButtonsElement.removeChild(answerButtonsElement.firstChild);
   }
 }
 
-// ...
-
+// Funktion til at håndtere valg af svar
 function selectAnswer(e) {
   const selectedButton = e.target;
   const correct = selectedButton.dataset.correct;
@@ -89,23 +146,36 @@ function selectAnswer(e) {
   setStatusClass(selectedButton, correct);
 
   // Set status class for other buttons
+
+  // Sæt statusklassen for det valgte svar
+  setStatusClass(selectedButton, correct);
+
   Array.from(answerButtonsElement.children).forEach((button) => {
     if (button !== selectedButton) {
       setStatusClass(button, button.dataset.correct);
     }
   });
 
+
   // Show explanation on a new page with a unique image path
   const imagePath = selectedButton.dataset.imagePath; // Use the provided image path
   showExplanationPage(selectedButton.dataset.explanation, imagePath);
 
   // Show next button or end of quiz
+
+  // Vis forklaring på en ny side med et unikt billede
+  const imagePath = selectedButton.dataset.imagePath;
+  showExplanationPage(selectedButton.dataset.explanation, imagePath);
+
+  // Vis næste-knappen eller afslut quizzen
+
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove("hide");
   } else {
     startButton.innerText = "Start quizzen igen";
     startButton.classList.remove("hide");
   }
+
 }
 
 function showExplanationPage(explanation, imagePath, question) {
@@ -150,6 +220,44 @@ function setStatusClass(element, correct) {
   }
 }
 
+function clearStatusClass(element) {
+  element.classList.remove("correct");
+  element.classList.remove("wrong");
+}
+
+
+}
+
+// Funktion til at vise siden med forklaring
+function showExplanationPage(explanation, imagePath) {
+  // Ryd spørgsmålet og svarknapperne
+  questionElement.innerText = "";
+  answerButtonsElement.innerHTML = "";
+
+  // Sæt teksten for forklaringen
+  explanationElement.innerText = explanation;
+
+  // Opret et billed-element
+  const imageElement = document.createElement("img");
+
+  // Sæt src-attributten til stien for billedet
+  imageElement.src = imagePath;
+
+  // Tilføj billedet til forklaringssiden
+  explanationElement.appendChild(imageElement);
+}
+
+// Funktion til at sætte statusklassen for et element baseret på korrekthed
+function setStatusClass(element, correct) {
+  clearStatusClass(element);
+  if (correct) {
+    element.classList.add("correct");
+  } else {
+    element.classList.add("wrong");
+  }
+}
+
+// Funktion til at rydde statusklassen for et element
 function clearStatusClass(element) {
   element.classList.remove("correct");
   element.classList.remove("wrong");
