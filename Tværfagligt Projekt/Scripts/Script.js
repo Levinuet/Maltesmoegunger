@@ -7,6 +7,9 @@ const answerButtonsElement = document.getElementById("answer-buttons");
 const explanationElement = document.getElementById("explanation");
 const nextQuestionButton = document.getElementById("next-question-btn");
 
+
+let shuffledQuestions, currentQuestionIndex;
+startButton.addEventListener("click", startQuiz);
 // Initialiser variabler
 let shuffledQuestions, currentQuestionIndex;
 
@@ -18,6 +21,12 @@ nextButton.addEventListener("click", () => {
   setNextQuestion();
 });
 
+function startQuiz() {
+  console.log("Started");
+  startButton.classList.add("hide");
+  shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+  currentQuestionIndex = 0;
+  questionContainerElement.classList.remove("hide");
 // Funktion til at starte quizzen
 function startQuiz() {
   console.log("Started");
@@ -29,16 +38,17 @@ function startQuiz() {
   currentQuestionIndex = 0;
   // Vis containeren til spørgsmål
   questionContainerElement.classList.remove("hide");
-  // Vis det første spørgsmål
+  // Vis det første 
   setNextQuestion();
 }
 
 // Funktion til at sætte næste spørgsmål
-function setNextQuestion() {
+function setNextQuestion
+  resetState
   // Nulstil visningen
   resetState();
 
-  // Hvis der er flere spørgsmål tilbage, vis det næste
+  // Hvis der er flere spørgsmål tilbage, vis det 
   if (currentQuestionIndex < shuffledQuestions.length) {
     showQuestion(shuffledQuestions[currentQuestionIndex]);
     currentQuestionIndex++;
@@ -46,7 +56,28 @@ function setNextQuestion() {
     console.log("End of Quiz");
   }
 }
+function showQuestion(question) {
+  // Set the question text
 
+  questionElement.innerText = question.question;
+  // Set the explanation text to an empty string
+  explanationElement.innerText = "";
+
+  // Clear the answer buttons
+  answerButtonsElement.innerHTML = "";
+
+  // Iterate through each answer in the question
+  question.answers.forEach((answer) => {
+    // Create a button element
+    const button = document.createElement("button");
+
+    // Set the button text to the answer text
+    button.innerText = answer.text;
+
+    // Add the 'btn' class to the button
+    button.classList.add("btn");
+
+    // Set the dataset properties for explanation and 
 // Funktion til at vise et spørgsmål
 function showQuestion(question) {
   // Sæt teksten for spørgsmålet
@@ -69,30 +100,38 @@ function showQuestion(question) {
     // Tilføj klassen 'btn' til knappen
     button.classList.add("btn");
 
-    // Sæt dataset-egenskaber for forklaring og korrekt
+    // Sæt dataset-egenskaber for forklaring og 
     button.dataset.explanation = answer.explanation;
     if (answer.correct) {
       button.dataset.correct = answer.correct;
     }
+    // Set the dataset property for imagePath
+    button.dataset.imagePath = question.imagePath;
 
+    // Add an event listener for the click event
+    button.addEventListener("click", selectAnswer);
+
+    // Append the button to the answer buttons 
     // Sæt dataset-egenskab for imagePath
     button.dataset.imagePath = question.imagePath;
 
     // Tilføj en eventlistener for klikhændelsen
     button.addEventListener("click", selectAnswer);
 
-    // Tilføj knappen til svarsknapcontaineren
+    // Tilføj knappen til 
     answerButtonsElement.appendChild(button);
   });
 }
-
+function resetState() {
+  clearStatusClass(document.body);
+  nextButton.classList.add("hide
 // Funktion til at nulstille tilstanden
 function resetState() {
   // Ryd statusklassen fra hele dokumentet
   clearStatusClass(document.body);
   // Skjul næste-knappen
   nextButton.classList.add("hide");
-  // Fjern alle børnelementer fra svarsknapcontaineren
+  // Fjern alle børnelementer fra 
   while (answerButtonsElement.firstChild) {
     answerButtonsElement.removeChild(answerButtonsElement.firstChild);
   }
@@ -103,27 +142,90 @@ function selectAnswer(e) {
   const selectedButton = e.target;
   const correct = selectedButton.dataset.correct;
 
+  // Set status class for selected answer
+  setStatusClass(selectedButton, correct);
+
+  // Set status class for other buttons
+
   // Sæt statusklassen for det valgte svar
   setStatusClass(selectedButton, correct);
 
-  // Sæt statusklassen for andre knapper
   Array.from(answerButtonsElement.children).forEach((button) => {
     if (button !== selectedButton) {
       setStatusClass(button, button.dataset.correct);
     }
   });
 
+
+  // Show explanation on a new page with a unique image path
+  const imagePath = selectedButton.dataset.imagePath; // Use the provided image path
+  showExplanationPage(selectedButton.dataset.explanation, imagePath);
+
+  // Show next button or end of quiz
+
   // Vis forklaring på en ny side med et unikt billede
   const imagePath = selectedButton.dataset.imagePath;
   showExplanationPage(selectedButton.dataset.explanation, imagePath);
 
   // Vis næste-knappen eller afslut quizzen
+
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove("hide");
   } else {
     startButton.innerText = "Start quizzen igen";
     startButton.classList.remove("hide");
   }
+
+}
+
+function showExplanationPage(explanation, imagePath, question) {
+  // Clear the question and answer buttons
+  questionElement.innerText = "";
+  while (answerButtonsElement.firstChild) {
+    answerButtonsElement.removeChild(answerButtonsElement.firstChild);
+  }
+
+  // Display the explanation text
+  explanationElement.innerText = explanation;
+  explanationElement.classList.remove("hide");
+
+  // Show only the "next-btn" button
+  nextButton.classList.remove("hide");
+
+  // Remove the "Næste spørgsmål" button if it exists
+  if (nextQuestionButton) {
+    nextQuestionButton.remove();
+  }
+
+  // Create an image element
+  const imageElement = document.createElement("img");
+  imageElement.src = imagePath;
+  imageElement.alt = "Explanation Image"; // Add a descriptive alt text
+  console.log("imagePath:", imagePath);
+
+  // Add styles to the image for maximum width
+  imageElement.style.maxWidth = "100%"; // Adjust the value as needed
+  imageElement.style.height = "auto";
+
+  // Append the image to the answer buttons element
+  answerButtonsElement.appendChild(imageElement);
+}
+
+function setStatusClass(element, correct) {
+  clearStatusClass(element);
+  if (correct) {
+    element.classList.add("correct");
+  } else {
+    element.classList.add("wrong");
+  }
+}
+
+function clearStatusClass(element) {
+  element.classList.remove("correct");
+  element.classList.remove("wrong");
+}
+
+
 }
 
 // Funktion til at vise siden med forklaring
