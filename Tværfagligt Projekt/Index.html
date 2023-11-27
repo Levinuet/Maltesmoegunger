@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Skovrydningsquizzen</title>
-</head>
-<body>
-
-<div class = "container">
-       <div id="question-container" class="hide">
+  </head>
+  <body>
+    <div class="container">
+      <div id="question-container" class="hide">
         <div id="question">Spørgsmål</div>
         <div id="explanation"></div>
         <div id="answer-buttons" class="btn-grid">
-            <button class="btn">Svarmulighed 1</button>
-            <button class="btn">Svarmulighed 2</button>
-            <button class="btn">Svarmulighed 3</button>
-            <button class="btn">Svarmulighed 4</button>
-       </div> 
+          <button class="btn">Svarmulighed 1</button>
+          <button class="btn">Svarmulighed 2</button>
+          <button class="btn">Svarmulighed 3</button>
+          <button class="btn">Svarmulighed 4</button>
+        </div>
 
-       <div id="explanation-container" class="hide">
+        <div id="explanation-container" class="hide"></div>
+      </div>
+      <div class="controls">
+        <button id="start-btn" class="start-btn btn">Start</button>
+        <button id="next-btn" class="next-btn btn hide">Næste</button>
+      </div>
+      <div id="explanation"></div>
     </div>
-    </div>
-    <div class="controls">
-        <button id="start-btn" class = "start-btn btn">Start</button>
-        <button id="next-btn" class = "next-btn btn hide">Næste</button>
-     </div>
-     <div id="explanation"></div>
-    </div>
-    
-<script src="scripts/script.js"></script>
-</body>
+
+    <script src="scripts/script.js"></script>
+  </body>
 </html>
