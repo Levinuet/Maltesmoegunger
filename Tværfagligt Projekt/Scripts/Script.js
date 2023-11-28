@@ -165,7 +165,7 @@ const questions = [
   {
     question:
       "Det bliver fældet meget skov hvert minut, men hvor meget er det egentligt der bliver fældet?",
-    imagePath: "annual-deforestation.png",
+    imagePath: "resources/imgs/annual-deforestation.png",
     answers: [
       {
         text: "16 fodboldbaner i minuttet",
@@ -190,7 +190,7 @@ const questions = [
   {
     question:
       "Beboeligt land på jorden udgør 29% det svarer til 149 million km^2. Hvor mange procent af beboeligt land bliver brugt til landbrug?",
-    imagePath: "landuse.png",
+    imagePath: "resources/imgs/landuse.png",
     answers: [
       {
         text: "36%",
@@ -214,7 +214,7 @@ const questions = [
   },
   {
     question: "Hvor mange køer bliver slagtet hver dag for kødindtag?",
-    imagePath: "cows.png",
+    imagePath: "resources/imgs/cows.png",
     answers: [
       {
         text: "500.000",
@@ -238,7 +238,7 @@ const questions = [
   },
   {
     question: "Hvilken afgrøde er mest brugt i verden?",
-    imagePath: "crop.png",
+    imagePath: "resources/imgs/crop.png",
     answers: [
       {
         text: "Hvede",
@@ -263,7 +263,7 @@ const questions = [
   {
     question:
       "Hvis verdensbefolkningen spiste plantebaseret hvor meget af landbrugsjorden ville blive frigjort?  ",
-    imagePath: "diets.png",
+    imagePath: "resources/imgs/diets.png",
     answers: [
       {
         text: "45%",
