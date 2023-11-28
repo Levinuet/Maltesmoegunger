@@ -20,7 +20,7 @@ nextButton.addEventListener("click", () => {
 
 // Funktion til at starte quizzen
 function startQuiz() {
-  console.log("Started");
+  console.log("Started Quiz");
   // Skjul startknappen
   startButton.classList.add("hide");
   // Shuffle spørgsmålene
@@ -39,9 +39,12 @@ function setNextQuestion() {
   resetState();
 
   // Hvis der er flere spørgsmål tilbage, vis det næste
+  console.log(`Current Question Index: ${currentQuestionIndex}`);
+  console.log(`Shuffled Questions Length: ${shuffledQuestions.length}`);
+
   if (currentQuestionIndex < shuffledQuestions.length) {
-    showQuestion(shuffledQuestions[currentQuestionIndex]);
     currentQuestionIndex++;
+    showQuestion(shuffledQuestions[currentQuestionIndex - 1]);
   } else {
     console.log("End of Quiz");
   }
@@ -118,7 +121,7 @@ function selectAnswer(e) {
   showExplanationPage(selectedButton.dataset.explanation, imagePath);
 
   // Vis næste-knappen eller afslut quizzen
-  if (shuffledQuestions.length > currentQuestionIndex + 1) {
+  if (shuffledQuestions.length > currentQuestionIndex) {
     nextButton.classList.remove("hide");
   } else {
     startButton.innerText = "Start quizzen igen";
