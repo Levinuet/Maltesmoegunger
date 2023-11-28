@@ -43,12 +43,18 @@ body.wrong {
 }
 
 #explanation {
-  width: 100%;
+  width: inherit;
   margin: 20px 0;
-  background-color: white;
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: 0 0 10px 2px;
+  background-color: transparent;
+  /* border-radius: 10px;
+  padding: 10px;  
+  box-shadow: 0 0 10px 2px; */
+}
+
+#explanation img {
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
 }
 
 #question-container {
