@@ -3,6 +3,8 @@ const app = express();
 const port = 3000;
 const { Client } = require("pg");
 var pg = require("pg");
+const cors = require("cors");
+app.use(cors());
 
 const klient = new Client({
   user: "thsvrkvn",
