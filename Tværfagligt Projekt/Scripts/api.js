@@ -36,9 +36,9 @@ app.get("/changes", async (req, res) => {
     });
   }
 });
-app.get("/forestfires", async (req, res) => {
+app.get("/brazil", async (req, res) => {
   try {
-    let queryData = await klient.query("SELECT * from forestfires");
+    let queryData = await klient.query("SELECT * from brazil");
     res.json({
       ok: true,
       skovData: queryData.rows,

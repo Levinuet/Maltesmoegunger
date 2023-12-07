@@ -36,7 +36,7 @@ body.wrong {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 800px;
+  width: 2200px;
   max-width: 80%;
   background-color: transparent;
 }
@@ -48,12 +48,6 @@ body.wrong {
   /* border-radius: 10px;
   padding: 10px;  
   box-shadow: 0 0 10px 2px; */
-}
-
-#explanation img {
-  margin-top: 20px;
-  width: 100%;
-  height: auto;
 }
 
 #question-container {

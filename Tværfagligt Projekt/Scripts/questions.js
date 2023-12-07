@@ -29,9 +29,9 @@ const questions = [
   {
     question:
       "Beboeligt land på jorden udgør 29% det svarer til 149 million km^2. Hvor mange procent af beboeligt land bliver brugt til landbrug?",
-    apiEndpoint: "http://localhost:8080/forestfires",
-    yAxis: "name",
-    xAxis: "Brand",
+    apiEndpoint: "http://localhost:8080/brazil",
+    yAxis: "pasture",
+    xAxis: "year",
     answers: [
       {
         text: "36%",
@@ -56,8 +56,8 @@ const questions = [
   {
     question: "Hvor mange køer bliver slagtet hver dag for kødindtag?",
     apiEndpoint: "http://localhost:8080/brazilfires",
-    yAxis: "name",
-    xAxis: "Brand",
+    yAxis: "Brand",
+    xAxis: "year",
     answers: [
       {
         text: "500.000",
@@ -82,6 +82,8 @@ const questions = [
   {
     question: "Hvilken afgrøde er mest brugt i verden?",
     apiEndpoint: "http://localhost:8080/smallchanges",
+    yAxis: "Net Ændringer",
+    xAxis: "Lande Navn",
     answers: [
       {
         text: "Hvede",
@@ -107,6 +109,8 @@ const questions = [
     question:
       "Hvis verdensbefolkningen spiste plantebaseret hvor meget af landbrugsjorden ville blive frigjort?  ",
     apiEndpoint: "http://localhost:8080/pasturepercentage",
+    yAxis: "name",
+    xAxis: "Brand",
     answers: [
       {
         text: "45%",
