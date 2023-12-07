@@ -148,16 +148,9 @@ function showExplanationPage(explanation, imagePath) {
   // Ryd spørgsmålet og svarknapperne
   questionElement.innerText = "";
   answerButtonsElement.innerHTML = "";
-
+}
   // Sæt teksten for forklaringen
   explanationElement.innerText = explanation;
-
-  // Opret et billed-element
-  const imageElement = document.createElement("img");
-
-  // Tilføj billedet til forklaringssiden
-  explanationElement.appendChild(imageElement);
-}
 
 // Funktion til at sætte statusklassen for et element baseret på korrekthed
 function setStatusClass(element, correct) {
