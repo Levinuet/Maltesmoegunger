@@ -18,7 +18,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url(resources/imgs/lonetrees.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -68,7 +67,7 @@ body.wrong {
 
 .btn-grid {
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: repeat(1, auto);
   gap: 10px;
   margin: 20px 0;
 }
@@ -85,7 +84,7 @@ body.wrong {
 
 .btn:hover {
   cursor: pointer;
-  transition: linear 0.25s;
+  transition: all 0.25s ease-in-out;
   transform: scale(1.02);
   color: black;
   background: linear-gradient(225deg, #f0f0f0, #cacaca);
