@@ -30,6 +30,36 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-image: url("images/baggrund.jpg");
+}
+
+body {
+  --hue: var(--hue-neutral);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('images/baggrund.jpg');
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8); /* Adjust the alpha value for transparency */
+  z-index: 0;
 }
 
 body.correct {

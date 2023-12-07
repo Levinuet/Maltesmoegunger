@@ -8,6 +8,7 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
   </head>
   <body>
+    <div class="overlay"></div>
     <div class="container">
       <div id="question-container" class="hide">
         <div id="question">Spørgsmål</div>
@@ -24,7 +25,9 @@
       <div class="controls">
         <button id="start-btn" class="start-btn btn">Start</button>
         <button id="next-btn" class="next-btn btn hide">Næste</button>
-        <button id="results-btn" class="hide" onclick="showResults()">Se resultat</button>
+        <button id="results-btn" class="hide" onclick="showResults()">
+          Se resultat
+        </button>
       </div>
     </div>
     <script src="scripts/questions.js"></script>
