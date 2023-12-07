@@ -5,10 +5,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz Results</title>
-        <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
   </head>
   <body>
     <h1>Quiz Results</h1>
+    <p>Correct Answers: <span id="correct-answers-count"></span></p>
+    <script>
+      // Retrieve and display correct answers count
+      const correctAnswersCountElement = document.getElementById(
+        "correct-answers-count"
+      );
+      const storedCorrectAnswersCount = localStorage.getItem(
+        "correctAnswersCount"
+      );
+
+      if (storedCorrectAnswersCount !== null) {
+        correctAnswersCountElement.innerText = storedCorrectAnswersCount;
+      } else {
+        correctAnswersCountElement.innerText = "N/A";
+      }
+    </script>
     <script src="scripts/questions.js"></script>
     <script src="scripts/script.js"></script>
     <script src="scripts/graph.js"></script>
