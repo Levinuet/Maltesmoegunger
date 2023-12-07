@@ -1,9 +1,11 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = 8080;
 const { Client } = require("pg");
-var pg = require("pg");
 const cors = require("cors");
+app.use(cors());
+
+// Tillad alle klientside-anmodninger (Dette er for demonstration. Brug mere specifikke regler i produktion.)
 app.use(cors());
 
 const klient = new Client({
@@ -17,15 +19,15 @@ const klient = new Client({
   },
 });
 
-const qry = "SELECT * from skov";
+const qry = "SELECT * from changes";
 
 klient.connect();
-app.get("/skov", async (req, res) => {
+app.get("/changes", async (req, res) => {
   try {
     let queryData = await klient.query(qry);
     res.json({
       ok: true,
-      foods: queryData.rows,
+      skovData: queryData.rows,
     });
   } catch (error) {
     res.json({
@@ -34,7 +36,62 @@ app.get("/skov", async (req, res) => {
     });
   }
 });
-
+app.get("/forestfires", async (req, res) => {
+  try {
+    let queryData = await klient.query("SELECT * from forestfires");
+    res.json({
+      ok: true,
+      skovData: queryData.rows,
+    });
+  } catch (error) {
+    res.json({
+      ok: false,
+      message: error.message,
+    });
+  }
+});
+app.get("/brazilfires", async (req, res) => {
+  try {
+    let queryData = await klient.query("SELECT * FROM brazilfires");
+    res.json({
+      ok: true,
+      skovData: queryData.rows,
+    });
+  } catch (error) {
+    res.json({
+      ok: false,
+      message: error.message,
+    });
+  }
+});
 app.listen(port, () => {
-  console.log(`Appl. lytter på http://localhost:${port}`);
+  console.log(`Server kører på http://localhost:${port}`);
+  app.get("/pasturepercentage", async (req, res) => {
+    try {
+      let queryData = await klient.query(qry);
+      res.json({
+        ok: true,
+        skovData: queryData.rows,
+      });
+    } catch (error) {
+      res.json({
+        ok: false,
+        message: error.message,
+      });
+    }
+  });
+  app.get("/smallchanges", async (req, res) => {
+    try {
+      let queryData = await klient.query(qry);
+      res.json({
+        ok: true,
+        skovData: queryData.rows,
+      });
+    } catch (error) {
+      res.json({
+        ok: false,
+        message: error.message,
+      });
+    }
+  });
 });
