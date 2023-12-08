@@ -81,7 +81,7 @@ body.wrong {
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 100px; /* Adjust as needed */
+  max-width: 1600px; /* Adjust as needed */
   background-color: transparent;
 }
 

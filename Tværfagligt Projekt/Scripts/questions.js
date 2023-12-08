@@ -5,6 +5,7 @@ const questions = [
     apiEndpoint: "http://localhost:8080/changes",
     yAxis: "Net Ændringer",
     xAxis: "Lande Navn",
+    graphType: "bar",
     answers: [
       {
         text: "16 fodboldbaner i minuttet",
@@ -32,6 +33,7 @@ const questions = [
     apiEndpoint: "http://localhost:8080/brazil",
     yAxis: "pasture",
     xAxis: "year",
+    graphType: "bar",
     answers: [
       {
         text: "36%",
@@ -58,6 +60,7 @@ const questions = [
     apiEndpoint: "http://localhost:8080/brazilfires",
     yAxis: "Brand",
     xAxis: "year",
+    graphType: "bar",
     answers: [
       {
         text: "cirka 2200 kvadratkilometer",
@@ -84,6 +87,7 @@ const questions = [
     apiEndpoint: "http://localhost:8080/smallchanges",
     yAxis: "Net Ændringer",
     xAxis: "Lande Navn",
+    graphType: "bar",
     answers: [
       {
         text: "Hvede",
@@ -111,6 +115,7 @@ const questions = [
     apiEndpoint: "http://localhost:8080/pasturepercentage",
     yAxis: "name",
     xAxis: "Brand",
+    graphType: "bar",
     answers: [
       {
         text: "45%",
