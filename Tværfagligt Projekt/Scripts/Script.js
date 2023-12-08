@@ -135,7 +135,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const apiUrl = currentQuestion.apiEndpoint;
     const yAxis = currentQuestion.yAxis;
     const xAxis = currentQuestion.xAxis;
-    fetchDataAndCreateVisualization(apiUrl, yAxis, xAxis, svg);
+    const graphType = currentQuestion.graphType;
+    fetchDataAndCreateVisualization(apiUrl, yAxis, xAxis, svg, graphType);
 
     // Increment the correctAnswersCount if the selected answer is correct
     if (selectedButton.dataset.correct === "true") {
