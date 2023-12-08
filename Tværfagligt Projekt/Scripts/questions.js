@@ -83,11 +83,11 @@ const questions = [
     ],
   },
   {
-    question: "Hvilken afgrøde er mest brugt i verden?",
-    apiEndpoint: "http://localhost:8080/smallchanges",
-    yAxis: "Net Ændringer",
-    xAxis: "Lande Navn",
-    graphType: "bar",
+    question: "Noget med net ændringer",
+    apiEndpoint: "http://localhost:8080/brazilfires",
+    yAxis: "Brand",
+    xAxis: "year",
+    graphType: "line",
     answers: [
       {
         text: "Hvede",
