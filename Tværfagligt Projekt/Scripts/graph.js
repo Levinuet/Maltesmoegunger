@@ -36,7 +36,10 @@ function createD3Visualization(data, yAxis, xAxis, svg, graphType) {
   const styling = {
     width: 1600,
     height: 503,
-    margin: { top: 20, right: 20, bottom: 30, left: 40 },
+    marginTop: 20,
+    marginRight: 20,
+    marginBottom: 30,
+    marginLeft: 40,
   };
   switch (graphType) {
     case "bar":
@@ -44,6 +47,9 @@ function createD3Visualization(data, yAxis, xAxis, svg, graphType) {
       break;
     case "line":
       createLineChart(data, yAxis, xAxis, svg, styling);
+      break;
+    case "map":
+      createMapChart(data, yAxis, xAxis, svg, styling);
       break;
 
     default:

@@ -1,70 +1,73 @@
-function createLineChart(data, xAxis, yAxis, container) {
-  const width = 928;
-  const height = 500;
-  const marginTop = 20;
-  const marginRight = 30;
-  const marginBottom = 30;
-  const marginLeft = 40;
+function createLineChart(data, xAxis, yAxis, svg, styling) {
+  const { width, height, marginLeft, marginBottom, marginRight, marginTop } =
+    styling;
 
   // Declare the x (horizontal position) scale.
-  const x = d3
-    .scaleUtc()
-    .domain(d3.extent(skovData, (d) => d.year))
+  const xScale = d3
+    .scaleLinear()
+    .domain(d3.extent(data, (d) => d[xAxis]))
     .range([marginLeft, width - marginRight]);
 
   // Declare the y (vertical position) scale.
-  const y = d3
+  const yScale = d3
     .scaleLinear()
-    .domain([0, d3.max(skovData, (d) => d.Brand)])
+    .domain([0, d3.max(data, (d) => d[yAxis])])
     .range([height - marginBottom, marginTop]);
-
-  const colorScale = d3
-    .scaleOrdinal()
-    .domain(data.map((d, i) => i))
-    .range([
-      "#1b5e20",
-      "#2e7d32",
-      "#388e3c",
-      "#43a047",
-      "#1565c0",
-      "#1976d2",
-      "#1e88e5",
-      "#2196f3",
-      "#8d6e63",
-      "#bf360c",
-      "#ff9800",
-    ]); // Greens, Blues, Browns, Gold
 
   // Declare the line generator.
   const line = d3
     .line()
-    .x((d) => x(d.year))
-    .y((d) => y(d.Brand));
+    .x((d) => xScale(d[xAxis]))
+    .y((d) => yScale(d[yAxis]));
 
-  // Create the SVG container.
-  const svgContainer = d3
-    .create("svg")
+  // Create or select SVG
+  svg = d3
+    .select("#chart-container")
+    .append("svg")
     .attr("width", width)
-    .attr("height", height)
-    .attr("viewBox", [0, 0, width, height])
-    .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
+    .attr("height", height);
+
+  // Append a path for the line.
+  const path = svg
+    .append("path")
+    .attr("fill", "none")
+    .attr("stroke", "steelblue")
+    .attr("stroke-width", 1.5)
+    .attr("d", line(data));
+
+  // Animation: Drawing the line
+  path
+    .attr("stroke-dasharray", function () {
+      const length = this.getTotalLength();
+      return length + " " + length;
+    })
+    .attr("stroke-dashoffset", function () {
+      const length = this.getTotalLength();
+      return length;
+    })
+    .transition()
+    .duration(4000) // Animation duration in milliseconds
+    .ease(d3.easeLinear)
+    .attr("stroke-dashoffset", 0);
 
   // Add the x-axis.
-  svgContainer
+  svg
     .append("g")
+    .attr("class", "x-axis") // Add the class "x-axis"
     .attr("transform", `translate(0,${height - marginBottom})`)
     .call(
       d3
-        .axisBottom(xAxis)
+        .axisBottom(xScale)
         .ticks(width / 80)
         .tickSizeOuter(0)
     );
 
   // Add the y-axis, remove the domain line, add grid lines and a label.
-  svgContainer
+  svg
     .append("g")
+    .attr("class", "y-axis") // Add the class "y-axis"
     .attr("transform", `translate(${marginLeft},0)`)
-    .call(d3.axisLeft(y).ticks(height / 40))
+    .call(d3.axisLeft(yScale).ticks(height / 40))
     .call((g) => g.select(".domain").remove())
     .call((g) =>
       g
@@ -80,16 +83,8 @@ function createLineChart(data, xAxis, yAxis, container) {
         .attr("y", 10)
         .attr("fill", "currentColor")
         .attr("text-anchor", "start")
-        .text("↑ Daily close ($)")
+        .text(`↑ ${yAxis} values`)
     );
 
-  // Append a path for the line.
-  svgContainer
-    .append("path")
-    .attr("fill", "none")
-    .attr("stroke", "steelblue")
-    .attr("stroke-width", 1.5)
-    .attr("d", line(data));
-
-  return svgContainer.node();
+  return svg.node();
 }
