@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  function selectAnswer(e) {
+  async function selectAnswer(e) {
     const selectedButton = e.target;
     const currentQuestion = shuffledQuestions[currentQuestionIndex];
 
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const yAxis = currentQuestion.yAxis;
     const xAxis = currentQuestion.xAxis;
     const graphType = currentQuestion.graphType;
-    fetchDataAndCreateVisualization(apiUrl, yAxis, xAxis, svg, graphType);
+    await fetchDataAndCreateVisualization(apiUrl, yAxis, xAxis, svg, graphType);
 
     // Increment the correctAnswersCount if the selected answer is correct
     if (selectedButton.dataset.correct === "true") {

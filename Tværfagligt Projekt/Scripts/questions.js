@@ -28,30 +28,27 @@ const questions = [
     ],
   },
   {
-    question:
-      "Beboeligt land på jorden udgør 29% det svarer til 149 million km^2. Hvor mange procent af beboeligt land bliver brugt til landbrug?",
+    question: "Hvad har du at sige",
     apiEndpoint: "http://localhost:8080/brazil",
     yAxis: "pasture",
     xAxis: "year",
-    graphType: "bar",
+    graphType: "stacked",
     answers: [
       {
-        text: "36%",
+        text: "Monner fra Kannern",
         correct: false,
-        explanation:
-          "Du svarede desværre forkert... Af det beboelige land på jorden, der udgør 29%, bliver omkring 46% anvendt til landbrug. Desværre spiller skovrydning en betydelig rolle i denne procentdel, da landbrugsaktiviteter ofte indebærer fjernelse af skovområder for at skabe plads til dyrkning. Denne procentdel afspejler ikke blot landbrugets omfang, men også den udfordring, som skovrydning udgør for biodiversitet og økologisk balance. Skovene, der engang dækkede store dele af det beboelige land, bliver ofte ofret for at imødekomme den stigende efterspørgsel efter landbrugsprodukter. For at adressere denne udfordring er det afgørende at fremme bæredygtige landbrugspraksisser og bevare skovområder. Balancen mellem landbrugsproduktion og bevarelse af skove er afgørende for at sikre en langsigtet og bæredygtig fremtid for vores planet.",
+        explanation: "Waaahhh bros det er forkert",
       },
       {
-        text: "46%",
+        text: "Pestobolle%",
         correct: true,
         explanation:
-          "Det er helt rigtigt!  Af det beboelige land på jorden, der udgør 29%, bliver omkring 46% anvendt til landbrug. Desværre spiller skovrydning en betydelig rolle i denne procentdel, da landbrugsaktiviteter ofte indebærer fjernelse af skovområder for at skabe plads til dyrkning. Denne procentdel afspejler ikke blot landbrugets omfang, men også den udfordring, som skovrydning udgør for biodiversitet og økologisk balance. Skovene, der engang dækkede store dele af det beboelige land, bliver ofte ofret for at imødekomme den stigende efterspørgsel efter landbrugsprodukter. For at adressere denne udfordring er det afgørende at fremme bæredygtige landbrugspraksisser og bevare skovområder. Balancen mellem landbrugsproduktion og bevarelse af skove er afgørende for at sikre en langsigtet og bæredygtig fremtid for vores planet.",
+          "Godt brølt løve! Du ved det er ingen kasket på baby på gud.",
       },
       {
-        text: "56%",
+        text: "21st century skills",
         correct: false,
-        explanation:
-          "Du svarede desværre forkert...  Af det beboelige land på jorden, der udgør 29%, bliver omkring 46% anvendt til landbrug. Desværre spiller skovrydning en betydelig rolle i denne procentdel, da landbrugsaktiviteter ofte indebærer fjernelse af skovområder for at skabe plads til dyrkning. Denne procentdel afspejler ikke blot landbrugets omfang, men også den udfordring, som skovrydning udgør for biodiversitet og økologisk balance. Skovene, der engang dækkede store dele af det beboelige land, bliver ofte ofret for at imødekomme den stigende efterspørgsel efter landbrugsprodukter. For at adressere denne udfordring er det afgørende at fremme bæredygtige landbrugspraksisser og bevare skovområder. Balancen mellem landbrugsproduktion og bevarelse af skove er afgørende for at sikre en langsigtet og bæredygtig fremtid for vores planet.",
+        explanation: "cap.",
       },
     ],
   },
@@ -93,19 +90,19 @@ const questions = [
         text: "Hvede",
         correct: true,
         explanation:
-          "Det er helt rigtigt! Selvom hvede ikke er direkte ansvarlig for skovrydning, spiller udvidelsen af ​​landbrugsarealer, herunder hvededyrkning, en rolle i nedbrydningen af verdens skove. Den stigende efterspørgsel efter landbrugsprodukter kan presse på for at frigøre nye arealer, og i nogle tilfælde fører dette desværre til skovrydning. Nogle regioner, hvor skovområder er rige på biodiversitet, står over for udfordringer, da landbrugsaktiviteter, herunder hvededyrkning, udvider sig. Fældning af skove for at skabe plads til landbrugsjord kan have alvorlige konsekvenser for økosystemet, med tab af levesteder og ødelæggelse af naturlige balance. Samtidig er det vigtigt at nævne, at bæredygtige landbrugspraksisser og teknologier kan hjælpe med at mindske presset på skove. Effektiv ressourceforvaltning, herunder brugen af avancerede landbrugsmetoder og bevarelse af eksisterende skovområder, er nødvendige for at sikre en balance mellem landbrugsproduktion og bevaring af vigtige økosystemer. Hvededyrkning og andre landbrugsaktiviteter bør derfor gennemføres med omhu og bæredygtighed for øje, for at bevare skove som afgørende aktiver for planetens sundhed og biodiversitet.",
+          "Det er helt rigtigt! Selvom hvede ikke er direkte ansvarlig for skovrydning, spiller udvidelsen af landbrugsarealer, herunder hvededyrkning, en rolle i nedbrydningen af verdens skove. Den stigende efterspørgsel efter landbrugsprodukter kan presse på for at frigøre nye arealer, og i nogle tilfælde fører dette desværre til skovrydning. Nogle regioner, hvor skovområder er rige på biodiversitet, står over for udfordringer, da landbrugsaktiviteter, herunder hvededyrkning, udvider sig. Fældning af skove for at skabe plads til landbrugsjord kan have alvorlige konsekvenser for økosystemet, med tab af levesteder og ødelæggelse af naturlige balance. Samtidig er det vigtigt at nævne, at bæredygtige landbrugspraksisser og teknologier kan hjælpe med at mindske presset på skove. Effektiv ressourceforvaltning, herunder brugen af avancerede landbrugsmetoder og bevarelse af eksisterende skovområder, er nødvendige for at sikre en balance mellem landbrugsproduktion og bevaring af vigtige økosystemer. Hvededyrkning og andre landbrugsaktiviteter bør derfor gennemføres med omhu og bæredygtighed for øje, for at bevare skove som afgørende aktiver for planetens sundhed og biodiversitet.",
       },
       {
         text: "Majs",
         correct: false,
         explanation:
-          "Du svarede desværre forkert... Selvom hvede ikke er direkte ansvarlig for skovrydning, spiller udvidelsen af ​​landbrugsarealer, herunder hvededyrkning, en rolle i nedbrydningen af verdens skove. Den stigende efterspørgsel efter landbrugsprodukter kan presse på for at frigøre nye arealer, og i nogle tilfælde fører dette desværre til skovrydning. Nogle regioner, hvor skovområder er rige på biodiversitet, står over for udfordringer, da landbrugsaktiviteter, herunder hvededyrkning, udvider sig. Fældning af skove for at skabe plads til landbrugsjord kan have alvorlige konsekvenser for økosystemet, med tab af levesteder og ødelæggelse af naturlige balance. Samtidig er det vigtigt at nævne, at bæredygtige landbrugspraksisser og teknologier kan hjælpe med at mindske presset på skove. Effektiv ressourceforvaltning, herunder brugen af avancerede landbrugsmetoder og bevarelse af eksisterende skovområder, er nødvendige for at sikre en balance mellem landbrugsproduktion og bevaring af vigtige økosystemer. Hvededyrkning og andre landbrugsaktiviteter bør derfor gennemføres med omhu og bæredygtighed for øje, for at bevare skove som afgørende aktiver for planetens sundhed og biodiversitet.",
+          "Du svarede desværre forkert... Selvom hvede ikke er direkte ansvarlig for skovrydning, spiller udvidelsen af landbrugsarealer, herunder hvededyrkning, en rolle i nedbrydningen af verdens skove. Den stigende efterspørgsel efter landbrugsprodukter kan presse på for at frigøre nye arealer, og i nogle tilfælde fører dette desværre til skovrydning. Nogle regioner, hvor skovområder er rige på biodiversitet, står over for udfordringer, da landbrugsaktiviteter, herunder hvededyrkning, udvider sig. Fældning af skove for at skabe plads til landbrugsjord kan have alvorlige konsekvenser for økosystemet, med tab af levesteder og ødelæggelse af naturlige balance. Samtidig er det vigtigt at nævne, at bæredygtige landbrugspraksisser og teknologier kan hjælpe med at mindske presset på skove. Effektiv ressourceforvaltning, herunder brugen af avancerede landbrugsmetoder og bevarelse af eksisterende skovområder, er nødvendige for at sikre en balance mellem landbrugsproduktion og bevaring af vigtige økosystemer. Hvededyrkning og andre landbrugsaktiviteter bør derfor gennemføres med omhu og bæredygtighed for øje, for at bevare skove som afgørende aktiver for planetens sundhed og biodiversitet.",
       },
       {
         text: "Ris",
         correct: false,
         explanation:
-          "Du svarede desværre forkert... Selvom hvede ikke er direkte ansvarlig for skovrydning, spiller udvidelsen af ​​landbrugsarealer, herunder hvededyrkning, en rolle i nedbrydningen af verdens skove. Den stigende efterspørgsel efter landbrugsprodukter kan presse på for at frigøre nye arealer, og i nogle tilfælde fører dette desværre til skovrydning. Nogle regioner, hvor skovområder er rige på biodiversitet, står over for udfordringer, da landbrugsaktiviteter, herunder hvededyrkning, udvider sig. Fældning af skove for at skabe plads til landbrugsjord kan have alvorlige konsekvenser for økosystemet, med tab af levesteder og ødelæggelse af naturlige balance. Samtidig er det vigtigt at nævne, at bæredygtige landbrugspraksisser og teknologier kan hjælpe med at mindske presset på skove. Effektiv ressourceforvaltning, herunder brugen af avancerede landbrugsmetoder og bevarelse af eksisterende skovområder, er nødvendige for at sikre en balance mellem landbrugsproduktion og bevaring af vigtige økosystemer. Hvededyrkning og andre landbrugsaktiviteter bør derfor gennemføres med omhu og bæredygtighed for øje, for at bevare skove som afgørende aktiver for planetens sundhed og biodiversitet.",
+          "Du svarede desværre forkert... Selvom hvede ikke er direkte ansvarlig for skovrydning, spiller udvidelsen af landbrugsarealer, herunder hvededyrkning, en rolle i nedbrydningen af verdens skove. Den stigende efterspørgsel efter landbrugsprodukter kan presse på for at frigøre nye arealer, og i nogle tilfælde fører dette desværre til skovrydning. Nogle regioner, hvor skovområder er rige på biodiversitet, står over for udfordringer, da landbrugsaktiviteter, herunder hvededyrkning, udvider sig. Fældning af skove for at skabe plads til landbrugsjord kan have alvorlige konsekvenser for økosystemet, med tab af levesteder og ødelæggelse af naturlige balance. Samtidig er det vigtigt at nævne, at bæredygtige landbrugspraksisser og teknologier kan hjælpe med at mindske presset på skove. Effektiv ressourceforvaltning, herunder brugen af avancerede landbrugsmetoder og bevarelse af eksisterende skovområder, er nødvendige for at sikre en balance mellem landbrugsproduktion og bevaring af vigtige økosystemer. Hvededyrkning og andre landbrugsaktiviteter bør derfor gennemføres med omhu og bæredygtighed for øje, for at bevare skove som afgørende aktiver for planetens sundhed og biodiversitet.",
       },
     ],
   },

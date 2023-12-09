@@ -1,15 +1,16 @@
 function createBarChart(data, yAxis, xAxis, svg, styling) {
-  const { width, height, margin } = styling;
+  const { width, height, marginTop, marginRight, marginBottom, marginLeft } =
+    styling;
   const xScale = d3
     .scaleBand()
     .domain(data.map((d) => d.year)) // Adjust based on your data structure
-    .range([margin.left, width - margin.right])
+    .range([marginLeft, width - marginRight])
     .padding(0.1);
 
   const yScale = d3
     .scaleLinear()
     .domain([0, d3.max(data, (d) => d[yAxis])])
-    .range([height - margin.bottom, margin.top]);
+    .range([height - marginBottom, marginTop]);
 
   const colorScale = d3
     .scaleOrdinal()
@@ -45,7 +46,7 @@ function createBarChart(data, yAxis, xAxis, svg, styling) {
     .enter()
     .append("rect")
     .attr("x", (d) => xScale(d.year))
-    .attr("y", height - margin.bottom) // Start the bars at the baseline
+    .attr("y", height - marginBottom) // Start the bars at the baseline
     .attr("width", xScale.bandwidth())
     .attr("height", 0) // Start the bars with height 0
     .attr("fill", (d, i) => colorScale(i))
@@ -54,7 +55,7 @@ function createBarChart(data, yAxis, xAxis, svg, styling) {
     .ease(d3.easeElasticOut) // Use the "elastic" easing function
     .delay((d, i) => i * 100) // Introduce a delay for each bar
     .attr("y", (d) => yScale(d[yAxis]))
-    .attr("height", (d) => height - yScale(d[yAxis]) - margin.bottom)
+    .attr("height", (d) => height - yScale(d[yAxis]) - marginBottom)
     .on("end", function (d, i) {
       // Add labels after the animation ends for each bar
       const bar = d3.select(this);
@@ -74,12 +75,12 @@ function createBarChart(data, yAxis, xAxis, svg, styling) {
   // Add X axis
   svg
     .append("g")
-    .attr("transform", `translate(0, ${height - margin.bottom})`)
+    .attr("transform", `translate(0, ${height - marginBottom})`)
     .call(d3.axisBottom(xScale));
   // Add Y axis
   svg
     .append("g")
-    .attr("transform", `translate(${margin.left}, 0)`)
+    .attr("transform", `translate(${marginLeft}, 0)`)
     .call(d3.axisLeft(yScale))
     .selectAll("text")
     .style("text-anchor", "end"); // Adjust text anchor as needed
