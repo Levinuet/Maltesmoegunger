@@ -1,7 +1,6 @@
 function createBarChart(data, yAxis, xAxis, svg, styling) {
-  const { width, height, marginLeft, marginBottom, marginRight, marginTop } =
+  const { width, height, marginTop, marginRight, marginBottom, marginLeft } =
     styling;
-
   const xScale = d3
     .scaleBand()
     .domain(data.map((d) => d.year)) // Adjust based on your data structure

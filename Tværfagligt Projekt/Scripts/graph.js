@@ -4,9 +4,6 @@ const container = document.getElementById("chart-container");
 const containerWidth = container.clientWidth;
 const containerHeight = container.clientHeight;
 
-// Adjust the margin based on your requirements
-const margin = { top: 20, right: 20, bottom: 30, left: 40 };
-
 function fetchDataAndCreateVisualization(url, yAxis, xAxis, svg, graphType) {
   fetch(url)
     .then((response) => response.json())
@@ -14,6 +11,9 @@ function fetchDataAndCreateVisualization(url, yAxis, xAxis, svg, graphType) {
       // Data is available here
       // Call a function to create the D3 visualization with the data
       createD3Visualization(data.skovData, yAxis, xAxis, svg, graphType);
+      console.log(
+        "fetchDataAndCreateVisualization function is loaded and called."
+      );
     })
     .catch((error) => console.error("Error fetching data:", error));
 }
@@ -41,6 +41,7 @@ function createD3Visualization(data, yAxis, xAxis, svg, graphType) {
     marginBottom: 30,
     marginLeft: 40,
   };
+
   switch (graphType) {
     case "bar":
       createBarChart(data, yAxis, xAxis, svg, styling);
@@ -48,6 +49,8 @@ function createD3Visualization(data, yAxis, xAxis, svg, graphType) {
     case "line":
       createLineChart(data, yAxis, xAxis, svg, styling);
       break;
+    case "stacked":
+      createStackedChart(data, yAxis, xAxis, svg, styling);
     case "map":
       createMapChart(data, yAxis, xAxis, svg, styling);
       break;
