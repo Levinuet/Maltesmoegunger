@@ -1,11 +1,10 @@
 const questions = [
   {
-    question:
-      "Det bliver fældet meget skov hvert minut, men hvor meget er det egentligt der bliver fældet?",
+    question: "verdenskort med changes",
     apiEndpoint: "http://localhost:8080/changes",
-    yAxis: "Net Ændringer",
+    yAxis: "net ændringer",
     xAxis: "Lande Navn",
-    graphType: "bar",
+    graphType: "map",
     answers: [
       {
         text: "16 fodboldbaner i minuttet",
@@ -83,11 +82,11 @@ const questions = [
     ],
   },
   {
-    question: "Hvilken afgrøde er mest brugt i verden?",
-    apiEndpoint: "http://localhost:8080/smallchanges",
-    yAxis: "Net Ændringer",
-    xAxis: "Lande Navn",
-    graphType: "bar",
+    question: "Noget med net ændringer",
+    apiEndpoint: "http://localhost:8080/brazilfires",
+    yAxis: "year",
+    xAxis: "Brand",
+    graphType: "line",
     answers: [
       {
         text: "Hvede",
@@ -112,7 +111,7 @@ const questions = [
   {
     question:
       "Hvis verdensbefolkningen spiste plantebaseret hvor meget af landbrugsjorden ville blive frigjort?  ",
-    apiEndpoint: "http://localhost:8080/pasturepercentage",
+    apiEndpoint: "null",
     yAxis: "name",
     xAxis: "Brand",
     graphType: "bar",

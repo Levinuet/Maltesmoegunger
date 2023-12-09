@@ -11,11 +11,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const width = 780;
   const height = 503;
+
   let svg = d3
     .select("#chart-container")
     .append("svg")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .attr("viewBox", [0, 0, width, height])
+    .attr("style", "max-width: 100%; height: auto;");
 
   let shuffledQuestions = [];
   let currentQuestionIndex = -1;
