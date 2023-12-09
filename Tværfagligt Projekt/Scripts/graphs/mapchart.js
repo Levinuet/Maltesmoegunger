@@ -1,16 +1,20 @@
-let width = 1600;
-let height = 503;
+document.addEventListener("DOMContentLoaded", function () {
+  // Your existing code here
 
-// Select the map container and append an SVG element
-const svg = d3
-  .select(".map-container") // Use ".map-container" to select by class
-  .append("svg")
-  .attr("width", width)
-  .attr("height", height);
+  let width = 1600;
+  let height = 503;
 
-// Fetch world map data
-d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(
-  (data) => {
+  // Select the map container and append an SVG element
+  const svg = d3
+    .select(".map-container") // Use ".map-container" to select by class
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+  // Fetch world map data
+  d3.json(
+    "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
+  ).then((data) => {
     console.log("World map data:", data);
 
     // Check if world map data is valid
@@ -19,7 +23,6 @@ d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(
       const countries = topojson.feature(data, data.objects.countries);
       console.log("Processed countries data:", countries);
 
-      // Set up projection and path
       const projection = d3.geoMercator().fitSize([width, height], countries);
       const path = d3.geoPath().projection(projection);
 
@@ -37,5 +40,5 @@ d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(
         .attr("class", "country")
         .attr("d", path);
     }
-  }
-);
+  });
+});
