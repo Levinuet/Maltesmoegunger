@@ -182,3 +182,14 @@ button {
 button:hover {
   background-color: var(--color-secondary);
 }
+
+.map-container {
+  width: 100%; /* or a specific width */
+  height: 500px; /* or a specific height */
+}
+
+.country {
+  fill: #ccc;
+  stroke: #fff;
+  stroke-width: 1;
+}

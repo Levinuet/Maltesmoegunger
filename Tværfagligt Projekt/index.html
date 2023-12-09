@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz Start Page</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
+    <script src="https://unpkg.com/geojson@0.5.0"></script>
+    <script src="scripts/graphs/mapchart.js"></script>
   </head>
   <body>
     <div class="overlay"></div>
     <div class="container">
+      <div class="map-container"></div>
       <h1>Velkommen til den store Skovrydningsquiz!</h1>
       <p>
         Skovrydning er en alvorlig global udfordring, der har betydelige
