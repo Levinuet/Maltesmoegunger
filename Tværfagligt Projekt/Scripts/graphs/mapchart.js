@@ -1,6 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Your existing code here
-
+  const tooltip = d3
+    .select("body")
+    .append("div")
+    .attr("id", "tooltip")
+    .style("position", "absolute")
+    .style("display", "none")
+    .style("background", "rgba(255,255,255,0.8)")
+    .style("padding", "5px")
+    .style("border", "1px solid #ccc")
+    .style("border-radius", "5px");
   let width = 1600;
   let height = 503;
 
@@ -37,25 +46,52 @@ document.addEventListener("DOMContentLoaded", function () {
         if (response.ok) {
           const apiData = response.skovData;
 
-          // Convert "net ændringer" to numeric format
+          // Initialize an empty dataMap object
+          const dataMap = {};
+
+          // Populate dataMap using country names as keys
           apiData.forEach((entry) => {
-            entry["net ændringer"] = parseFloat(entry["net ændringer"]);
+            // Convert "net ændringer" to numeric format
+            entry["netChanges"] = parseFloat(entry["netChanges"]);
+
+            // Use the updated property name as the key (assuming it's now "name")
+            dataMap[entry.name] = dataMap[entry.name] || {
+              name: entry.name,
+              netChanges: 0,
+            };
+
+            // Sum up netChanges values for the combined years
+            if (entry.year === "2010-2015" || entry.year === "2015-2020") {
+              dataMap[entry.name].netChanges += entry["netChanges"];
+            }
           });
 
-          // Extract an array of net_ændringer values
-          const netAendringerValues = apiData.map(
-            (entry) => entry["net ændringer"]
+          // Extract an array of netChanges values
+          const netChangesValues = Object.values(dataMap).map(
+            (entry) => entry.netChanges
           );
 
-          const uniqueYears = [...new Set(apiData.map((entry) => entry.år))];
-          const colorScales = {};
+          // Calculate the midpoint value to separate green and red shades
+          const midpoint = d3.mean(netChangesValues);
+
+          // Define a color scale with 12 steps from green to yellow to red
+          const defaultColorScale = d3
+            .scaleLinear()
+            .domain([
+              d3.min(netChangesValues),
+              midpoint,
+              d3.max(netChangesValues),
+            ])
+            .range(["green", "yellow", "red"]);
+
+          const uniqueYears = [...new Set(apiData.map((entry) => entry.year))];
 
           uniqueYears.forEach((year) => {
             const netAendringerValues = apiData
-              .filter((entry) => entry.år === year)
-              .map((entry) => entry["net ændringer"]);
+              .filter((entry) => entry.year === year)
+              .map((entry) => entry["netChanges"]);
 
-            colorScales[year] = d3
+            defaultColorScale[year] = d3
               .scaleLinear()
               .domain([
                 d3.min(netAendringerValues),
@@ -64,19 +100,11 @@ document.addEventListener("DOMContentLoaded", function () {
               .range(["green", "red"]);
           });
 
-          // Define a default color scale (you can choose a specific year or average values)
-          const defaultColorScale = colorScales[uniqueYears[0]]; // Adjust this as needed
-
           // Create a dictionary to map country codes to API data
-          const dataMap = {};
-          apiData.forEach((entry) => {
-            dataMap[entry.country_code] = entry;
-          });
-
           const projection = d3
             .geoMercator()
             .scale(140)
-            .translate([width / 2, height / 2]);
+            .translate([width / 2, height / 1.5]);
           const path = d3.geoPath().projection(projection);
 
           // Append a group element to the SVG
@@ -93,15 +121,56 @@ document.addEventListener("DOMContentLoaded", function () {
             .attr("class", "country")
             .attr("d", path)
             .style("fill", (d) => {
-              // Use the dataMap to determine the color based on API data
-              const countryData = dataMap[d.id];
-              return countryData
-                ? colorScale(countryData["net ændringer"])
-                : "#ccc";
+              const countryName = d.properties.name;
+              const countryData = dataMap[countryName];
+
+              // Use the color scale to determine the fill color
+              if (countryData && countryData["netChanges"] !== undefined) {
+                return defaultColorScale(countryData["netChanges"]);
+              } else {
+                return "#000"; // Display countries with null values as black
+              }
+            })
+
+            .on("mouseover", function (event, d) {
+              // Show tooltip on hover
+              const countryName = d.properties.name;
+              const countryData = dataMap[countryName];
+
+              let netChangesText =
+                countryData && !isNaN(countryData["netChanges"])
+                  ? countryData["netChanges"]
+                  : "Not reported";
+
+              // Modify the year text to display "2010-2020" when not reported
+              let yearText =
+                countryData && countryData.year
+                  ? countryData.year
+                  : "2010-2020";
+
+              // Highlight the border on hover with a black color
+              d3.select(this).style("stroke", "black").style("stroke-width", 2);
+
+              tooltip
+                .style("display", "block")
+                .html(
+                  `<strong>${countryName}</strong><br>Year: ${yearText}<br>Net Changes: ${netChangesText}`
+                )
+                .style("left", event.pageX + "px")
+                .style("top", event.pageY + "px");
+            })
+            .on("mouseout", function () {
+              // Remove border highlight on mouseout
+              d3.select(this).style("stroke", "none");
+
+              // Hide tooltip on mouseout
+              tooltip.style("display", "none");
             });
 
           // Add a color legend
-          addColorLegend(colorScale);
+          addColorLegend(defaultColorScale);
+
+          // ...
         } else {
           console.error("API request failed:", response.message);
         }
@@ -110,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Function to add a color legend
-  function addColorLegend(colorScale) {
+  function addColorLegend(defaultColorScale) {
     const legendWidth = 200;
     const legendHeight = 20;
 
@@ -125,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const legendScale = d3
       .scaleLinear()
       .range([0, legendWidth])
-      .domain(colorScale.domain());
+      .domain(defaultColorScale.domain());
 
     const axis = d3.axisBottom(legendScale).tickSize(13).ticks(5);
 

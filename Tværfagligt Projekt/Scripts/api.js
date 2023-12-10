@@ -95,14 +95,3 @@ app.listen(port, () => {
     }
   });
 });
-
-export async function fetchChanges() {
-  try {
-    const response = await fetch("/changes");
-    const data = await response.json();
-    return data.skovData; // Assuming skovData contains the relevant data
-  } catch (error) {
-    console.error("Error fetching changes data:", error);
-    return []; // Return an empty array or handle the error accordingly
-  }
-}
