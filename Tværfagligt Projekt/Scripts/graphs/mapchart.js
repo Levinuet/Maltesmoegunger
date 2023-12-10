@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const projection = d3
             .geoMercator()
             .scale(140)
-            .translate([width / 2, height / 1.5]);
+            .translate([width / 3, height / 1.5]);
           const path = d3.geoPath().projection(projection);
 
           // Append a group element to the SVG
