@@ -1,20 +1,27 @@
 :root {
-  --color-primary: #607d8b; /* Greyish Blue-Gray */
+  --color-primary: #705f5f; /* Greyish Blue-Gray */
   --color-secondary: #455a64; /* Darker Blue-Gray */
   --color-accent: #2196f3; /* Accent Blue */
   --color-background: #333; /* Charcoal Background */
   --color-text: #000; /* Black Text */
+  font-family: "Oswald", sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 body {
-  margin: 0;
-  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   background: var(--color-background);
   color: var(--color-text);
+  height: 100%;
 }
 
 .container {
@@ -27,6 +34,7 @@ body {
   background: var(--color-background);
   padding: 40px;
   border-radius: 10px;
+  height: 100%;
 }
 
 #explanation,
@@ -82,7 +90,7 @@ p {
 button {
   padding: 12px 24px;
   font-size: 16px;
-  background: var(--color-primary);
+  background: black;
   color: white;
   border: none;
   cursor: pointer;
@@ -95,12 +103,28 @@ button:hover {
 }
 
 .map-container {
+  position: relative;
   width: 70%;
   height: 100%;
+  border-right: 10px solid #000; /* Thick Black Border on the Right Side */
+}
+
+.map-header {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-family: "Oswald", sans-serif;
+  font-size: 1.5rem;
+  color: white;
 }
 
 .country {
   fill: #3f98d3;
-  stroke: #fff;
+  stroke: transparent; /* Set stroke color to transparent */
   stroke-width: 1;
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.country:hover {
+  fill: #2962a2; /* Change fill color on hover */
 }

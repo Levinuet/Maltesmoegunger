@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
     .style("padding", "5px")
     .style("border", "1px solid #ccc")
     .style("border-radius", "5px");
-  let width = 1600;
-  let height = 503;
+  let width = 1300;
+  let height = 900;
 
   // Select the map container and append an SVG element
   const svg = d3
@@ -103,8 +103,8 @@ document.addEventListener("DOMContentLoaded", function () {
           // Create a dictionary to map country codes to API data
           const projection = d3
             .geoMercator()
-            .scale(140)
-            .translate([width / 3, height / 1.5]);
+            .scale(200)
+            .translate([width / 2.4, height / 1.4]);
           const path = d3.geoPath().projection(projection);
 
           // Append a group element to the SVG
@@ -177,34 +177,4 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   });
-
-  // Function to add a color legend
-  function addColorLegend(defaultColorScale) {
-    const legendWidth = 200;
-    const legendHeight = 20;
-
-    const legend = svg
-      .append("g")
-      .attr("class", "legend")
-      .attr(
-        "transform",
-        `translate(${width - legendWidth}, ${height - 2 * legendHeight})`
-      );
-
-    const legendScale = d3
-      .scaleLinear()
-      .range([0, legendWidth])
-      .domain(defaultColorScale.domain());
-
-    const axis = d3.axisBottom(legendScale).tickSize(13).ticks(5);
-
-    legend.append("g").call(axis);
-
-    legend
-      .append("rect")
-      .attr("width", legendWidth)
-      .attr("height", legendHeight)
-      .style("fill", "url(#gradient)")
-      .style("stroke", "black");
-  }
 });
