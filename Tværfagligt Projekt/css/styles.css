@@ -24,7 +24,7 @@ body {
 }
 
 .container {
-  display: flex;
+  display: block;
   flex: 1;
   max-width: 100vw;
   max-height: 100vh;
@@ -103,6 +103,7 @@ body {
 }
 
 #question-container {
+  display: grid;
   border-radius: 10px;
   padding: 20px;
 }

@@ -17,6 +17,13 @@
   </head>
   <body>
     <div class="container">
+      <div class="controls">
+        <button id="start-btn" class="start-btn btn">Start quizzen</button>
+        <button id="next-btn" class="next-btn btn hide">Næste spørgsmål</button>
+        <button id="results-btn" class="hide" onclick="showResults()">
+          Se resultat
+        </button>
+      </div>
       <div id="question-container" class="hide">
         <div id="question">Spørgsmål</div>
         <div id="explanation"></div>
@@ -28,13 +35,6 @@
 
         <div id="explanation-container" class="hide"></div>
         <div id="chart-container"></div>
-      </div>
-      <div class="controls">
-        <button id="start-btn" class="start-btn btn">Start quizzen</button>
-        <button id="next-btn" class="next-btn btn hide">Næste spørgsmål</button>
-        <button id="results-btn" class="hide" onclick="showResults()">
-          Se resultat
-        </button>
       </div>
     </div>
     <script src="scripts/graph.js"></script>
