@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
     .style("padding", "5px")
     .style("border", "1px solid #ccc")
     .style("border-radius", "5px");
-  let width = 1300;
-  let height = 900;
+  let width = 900;
+  let height = 480;
 
   // Select the map container and append an SVG element
   const svg = d3
@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
     .append("svg")
     .attr("width", width)
     .attr("height", height);
+
+  // Your existing code...
 
   // Fetch world map data
   d3.json(
@@ -58,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
             dataMap[entry.name] = dataMap[entry.name] || {
               name: entry.name,
               netChanges: 0,
+              year: entry.year, // Keep year translation
             };
 
             // Sum up netChanges values for the combined years
@@ -103,8 +106,8 @@ document.addEventListener("DOMContentLoaded", function () {
           // Create a dictionary to map country codes to API data
           const projection = d3
             .geoMercator()
-            .scale(200)
-            .translate([width / 2.4, height / 1.4]);
+            .scale(120)
+            .translate([width / 2.3, height / 1.4]);
           const path = d3.geoPath().projection(projection);
 
           // Append a group element to the SVG
@@ -125,10 +128,15 @@ document.addEventListener("DOMContentLoaded", function () {
               const countryData = dataMap[countryName];
 
               // Use the color scale to determine the fill color
-              if (countryData && countryData["netChanges"] !== undefined) {
+              if (
+                countryData &&
+                countryData["netChanges"] !== undefined &&
+                !isNaN(countryData["netChanges"])
+              ) {
                 return defaultColorScale(countryData["netChanges"]);
-              } else {
-                return "#000"; // Display countries with null values as black
+              } // Replace the existing else condition
+              else {
+                return "#78909C"; // Subtle greyish-blue color for countries with no data
               }
             })
 
@@ -137,10 +145,10 @@ document.addEventListener("DOMContentLoaded", function () {
               const countryName = d.properties.name;
               const countryData = dataMap[countryName];
 
-              let netChangesText =
+              let afskovningText =
                 countryData && !isNaN(countryData["netChanges"])
-                  ? countryData["netChanges"]
-                  : "Not reported";
+                  ? `Afskovning i 1000 hektar: ${countryData["netChanges"]}`
+                  : "Afskovning data er ikke reporteret";
 
               // Modify the year text to display "2010-2020" when not reported
               let yearText =
@@ -154,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
               tooltip
                 .style("display", "block")
                 .html(
-                  `<strong>${countryName}</strong><br>Year: ${yearText}<br>Net Changes: ${netChangesText}`
+                  `<strong>${countryName}</strong><br>År: ${yearText}<br>${afskovningText}`
                 )
                 .style("left", event.pageX + "px")
                 .style("top", event.pageY + "px");

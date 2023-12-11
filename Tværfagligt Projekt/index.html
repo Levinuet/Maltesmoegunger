@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Poppins:wght@600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/styles.css" />
@@ -17,28 +17,48 @@
     <script type="module" src="Scripts/graphs/mapchart.js"></script>
   </head>
   <body>
-    <div class="map-container">
-      <h2 class="map-header">Skovfældning</h2>
-    </div>
     <div class="container">
-      <div id="tooltip" style="position: absolute; display: none"></div>
+      <div class="map-container">
+        <p class="map-header">
+          Dette interaktive verdenskort viser afskovning fra 2010 til 2020.
+          Landene repræsenteres med værdier, der afspejler deres individuelle
+          afskovningsniveauer. Kortet muliggør sammenligninger mellem nationer
+          og fremhæver behovet for bæredygtige tiltag for at bevare verdens
+          skove.
+        </p>
+      </div>
 
-      <h1>Velkommen til den store Skovrydningsquiz!</h1>
-      <p>
-        Skovrydning er en alvorlig global udfordring, der har betydelige
-        konsekvenser for vores planet. Dette komplekse problem opstår primært
-        som følge af menneskelig aktivitet, hvor store skovområder ryddes for at
-        imødekomme behovene inden for landbrug, infrastruktur, og industri.
-        Desværre fører denne praksis til ødelæggelse af verdens skove, som udgør
-        et kritisk element i opretholdelsen af ​​økosystemets balance. Den
-        primære årsag til bekymring ved skovrydning er tabet af biodiversitet.
-        Skovene er hjemsted for en utrolig mangfoldighed af plante- og
-        dyrearter, hvor mange af dem er unikke og ikke findes andre steder. Når
-        skovene fjernes, mister disse organismer deres levesteder og bliver
-        udsat for risikoen for udryddelse.
-      </p>
-      <p>Klik på knappen for at komme i gang med quizzen.</p>
-      <button class="start-btn" onclick="startQuiz()">Start Quiz</button>
+      <div class="info-container">
+        <div class="quiz-box">
+          <h2>Afskovningsquizzen</h2>
+          <p>
+            Deltag i vores informativ afskovningsquiz og få indsigt i de
+            komplekse udfordringer, årsager og virkninger af skovrydning. Vi
+            stiller spørgsmål, der dækker forskellige aspekter af denne globale
+            udfordring og håber at øge din bevidsthed om betydningen af
+            bæredygtig skovforvaltning. Tryk på startknappen for at begynde din
+            rejse mod at forstå og bidrage til bevarelsen af vores verdens
+            skove.
+          </p>
+          <button class="start-btn" onclick="startQuiz()">Læs mere..</button>
+        </div>
+
+        <div class="additional-info-box">
+          <h2>Mere om afskovning</h2>
+          <p>
+            Skovrydning er en bekymrende praksis, hvor store skovområder fjernes
+            for at imødekomme menneskelige behov som landbrug, minedrift og
+            infrastrukturudvikling. Dette påvirker klimaet negativt ved at
+            frigive store mængder drivhusgasser og truer biodiversiteten ved at
+            ødelægge naturlige levesteder.
+          </p>
+          <p>
+            Skovrydning kræver global opmærksomhed og bæredygtige tiltag.
+            Forståelse af konsekvenserne er afgørende for bevarelse af verdens
+            skove og sikring af en sund fremtid for vores planet.
+          </p>
+        </div>
+      </div>
     </div>
 
     <script>
