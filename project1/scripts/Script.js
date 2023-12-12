@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const questionElement = document.getElementById("question");
   const answerButtonsElement = document.getElementById("answer-buttons");
   const explanationElement = document.getElementById("explanation");
-  const nextQuestionButton = document.getElementById("next-question-btn");
 
   const width = 780;
   const height = 503;
@@ -30,7 +29,19 @@ document.addEventListener("DOMContentLoaded", function () {
     nextQuestion();
   });
 
+  // Function to hide the intro container
+  function hideIntroContainer() {
+    const introContainer = document.getElementById("intro-container"); // Updated to select by ID
+    if (introContainer) {
+      introContainer.style.display = "none";
+    } else {
+      console.error("Intro container not found");
+    }
+  }
+
   function startQuiz() {
+    hideIntroContainer();
+
     // set arr to be a list of random numbers
     const arr = [];
 
@@ -40,6 +51,13 @@ document.addEventListener("DOMContentLoaded", function () {
         arr.push(randomNumber);
       }
     }
+    // Event listener for the start button
+    startButton.addEventListener("click", startQuiz);
+
+    // Event listener for the next button
+    nextButton.addEventListener("click", () => {
+      nextQuestion(); // Assuming nextQuestion is a function defined elsewhere
+    });
 
     // go through arr and push question into shuffledQuestions
     arr.forEach((index) => {
@@ -50,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
     startButton.classList.add("hide");
     // Vis containeren til spørgsmål
     questionContainerElement.classList.remove("hide");
+    document.getElementById("intro-container").classList.add("hide");
     nextQuestion();
 
     const container = document.querySelector(".container");
