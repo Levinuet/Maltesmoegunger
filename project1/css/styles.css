@@ -103,6 +103,7 @@ body {
 }
 
 #question-container {
+  display: grid;
   border-radius: 10px;
   padding: 20px;
 }
@@ -140,6 +141,7 @@ body {
 .hide {
   display: none;
   visibility: hidden;
+
 }
 
 h1,
