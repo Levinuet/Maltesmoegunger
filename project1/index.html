@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. semesterprojekt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
+    <script src="https://unpkg.com/geojson@0.5.0"></script>
+    <script type="module" src="scripts/graphs/mapchart.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="map-container">
+        <p class="map-header">
+          Dette interaktive verdenskort viser afskovning fra 2010 til 2020.
+          Landene repræsenteres med værdier, der afspejler deres individuelle
+          afskovningsniveauer. Kortet muliggør sammenligninger mellem nationer
+          og fremhæver behovet for bæredygtige tiltag for at bevare verdens
+          skove.
+        </p>
+      </div>
+
+      <div class="info-container">
+        <div class="quiz-box">
+          <h2>Afskovningsquizzen</h2>
+          <p>
+            Deltag i vores informative afskovningsquiz og få indsigt i de
+            komplekse udfordringer, årsager og virkninger af afskovning. Vi
+            stiller spørgsmål, der dækker forskellige aspekter af denne globale
+            udfordring og håber at øge din bevidsthed om betydningen af
+            bæredygtig skovforvaltning. Tryk på 'Læs mere' for at begynde din
+            rejse mod at forstå og bidrage til bevarelsen af vores verdens
+            skove.
+          </p>
+          <button class="start-btn" onclick="startQuiz()">Læs mere..</button>
+        </div>
+
+        <div class="additional-info-box">
+          <h2>Mere om afskovning</h2>
+          <p>
+            Skovrydning er en bekymrende praksis, hvor store skovområder fjernes
+            for at imødekomme menneskelige behov som landbrug, minedrift og
+            infrastrukturudvikling. Dette påvirker klimaet negativt ved at
+            frigive store mængder drivhusgasser og truer biodiversiteten ved at
+            ødelægge naturlige levesteder.
+          </p>
+          <p>
+            Skovrydning kræver global opmærksomhed og bæredygtige tiltag.
+            Forståelse af konsekvenserne er afgørende for bevarelse af verdens
+            skove og sikring af en sund fremtid for vores planet.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function startQuiz() {
+        // Redirect to quiz.html
+        window.location.href = "quiz.html";
+      }
+    </script>
+  </body>
+</html>

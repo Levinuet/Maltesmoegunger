@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Skovrydningsquizzen</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
+    <script src="https://unpkg.com/geojson@0.5.0"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="intro-container">
+        <img
+          src="/Tværfagligt Projekt/css/images/afskovning1.jpg"
+          alt="Descriptive text about the image"
+          class="intro-image"
+        />
+        <div id="question-container" class="hide">
+          <div id="question">Spørgsmål</div>
+          <div id="explanation"></div>
+          <div id="answer-buttons" class="btn-grid">
+            <button class="btn">Svarmulighed 1</button>
+            <button class="btn">Svarmulighed 2</button>
+            <button class="btn">Svarmulighed 3</button>
+          </div>
+
+          <p>
+            Welcome to the Skovrydningsquizzen! Are you ready to test your
+            knowledge and learn something new? Click 'Start quizzen' when you're
+            ready to begin.
+          </p>
+        </div>
+
+        <div id="explanation-container" class="hide"></div>
+        <div id="chart-container"></div>
+      </div>
+      <div class="controls">
+        <button id="start-btn" class="start-btn btn">Start quizzen</button>
+        <button id="next-btn" class="next-btn btn hide">Næste spørgsmål</button>
+        <button id="results-btn" class="hide">Se resultat</button>
+      </div>
+    </div>
+    <script src="scripts/graph.js"></script>
+    <script src="scripts/questions.js"></script>
+    <script src="scripts/graphs/barchart.js"></script>
+    <script src="scripts/graphs/linechart.js"></script>
+    <script src="scripts/graphs/mapchart.js"></script>
+    <script src="scripts/graphs/stackedchart.js"></script>
+    <script src="scripts/script.js"></script>
+  </body>
+</html>
