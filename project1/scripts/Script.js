@@ -7,6 +7,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const questionElement = document.getElementById("question");
   const answerButtonsElement = document.getElementById("answer-buttons");
   const explanationElement = document.getElementById("explanation");
+  const resultsButton = document.getElementById("results-btn");
+  if (resultsButton) {
+    resultsButton.addEventListener("click", function () {
+      window.location.href = "results.html"; // Redirect to results page
+    });
+  }
 
   const width = 780;
   const height = 503;
@@ -46,11 +52,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const arr = [];
 
     while (arr.length < questions.length) {
-      const randomNumber = Math.floor(Math.random() * questions.length - 1) + 1;
+      const randomNumber = Math.floor(Math.random() * questions.length);
       if (arr.indexOf(randomNumber) === -1) {
         arr.push(randomNumber);
       }
+      console.log(shuffledQuestions);
     }
+
     // Event listener for the start button
     startButton.addEventListener("click", startQuiz);
 
@@ -91,8 +99,12 @@ document.addEventListener("DOMContentLoaded", function () {
   function showResults() {
     // Store the correct answers count in localStorage
     localStorage.setItem("correctAnswersCount", correctAnswersCount);
-    // Redirect to the results page
-    window.location.href = "results.html";
+
+    // Show the results button instead of redirecting
+    const resultsButton = document.getElementById("results-btn");
+    if (resultsButton) {
+      resultsButton.classList.remove("hide"); // Show the button
+    }
   }
 
   // Funktion til at nulstille tilstanden

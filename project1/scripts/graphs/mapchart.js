@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
               tooltip
                 .style("display", "block")
                 .html(
-                  `<strong>${countryName}</strong><br>År: ${yearText}<br>${afskovningText}`
+                  `<strong>${countryName}</strong><br>År: ${"2010-2020"}<br>${afskovningText}`
                 )
                 .style("left", event.pageX + "px")
                 .style("top", event.pageY + "px");
