@@ -51,6 +51,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Vis containeren til spørgsmål
     questionContainerElement.classList.remove("hide");
     nextQuestion();
+
+    const container = document.querySelector(".container");
+    container.classList.add("quiz-started");
   }
 
   function nextQuestion() {

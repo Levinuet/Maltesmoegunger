@@ -17,13 +17,26 @@
   </head>
   <body>
     <div class="container">
-      <div id="question-container" class="hide">
-        <div id="question">Spørgsmål</div>
-        <div id="explanation"></div>
-        <div id="answer-buttons" class="btn-grid">
-          <button class="btn">Svarmulighed 1</button>
-          <button class="btn">Svarmulighed 2</button>
-          <button class="btn">Svarmulighed 3</button>
+      <div class="intro-container">
+        <img
+          src="/Tværfagligt Projekt/css/images/afskovning1.jpg"
+          alt="Descriptive text about the image"
+          class="intro-image"
+        />
+        <div id="question-container" class="hide">
+          <div id="question">Spørgsmål</div>
+          <div id="explanation"></div>
+          <div id="answer-buttons" class="btn-grid">
+            <button class="btn">Svarmulighed 1</button>
+            <button class="btn">Svarmulighed 2</button>
+            <button class="btn">Svarmulighed 3</button>
+          </div>
+
+          <p>
+            Welcome to the Skovrydningsquizzen! Are you ready to test your
+            knowledge and learn something new? Click 'Start quizzen' when you're
+            ready to begin.
+          </p>
         </div>
 
         <div id="explanation-container" class="hide"></div>
@@ -32,9 +45,7 @@
       <div class="controls">
         <button id="start-btn" class="start-btn btn">Start quizzen</button>
         <button id="next-btn" class="next-btn btn hide">Næste spørgsmål</button>
-        <button id="results-btn" class="hide" onclick="showResults()">
-          Se resultat
-        </button>
+        <button id="results-btn" class="hide">Se resultat</button>
       </div>
     </div>
     <script src="scripts/graph.js"></script>

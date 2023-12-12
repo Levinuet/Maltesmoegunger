@@ -79,29 +79,29 @@ const questions = [
     ],
   },
   {
-    question: "Noget med net ændringer",
+    question: "Hvor meget skov er blevet afbrændt i Brasilien fra 2000-2017?",
     apiEndpoint: "http://localhost:8080/brazilfires",
     yAxis: "year",
     xAxis: "Brand",
     graphType: "line",
     answers: [
       {
-        text: "Hvede",
+        text: "cirka 2200 kvadratkilometer",
+        correct: false,
+        explanation:
+          "Du svarede desværre forkert...  Fra 2000-2017 oplevede Brasilien betydelig skovrydning, især i Amazonas-regnskoven. I løbet af denne periode blev der ryddet store områder skov, primært som følge af landbrugsudvidelse, skovhugst og minedrift. Ifølge data fra det brasilianske rumforskningsinstitut INPE (Instituto Nacional de Pesquisas Espaciais) blev der i 2017 ryddet omkring 6.624 kvadratkilometer skov i Brasilien. Dette tal repræsenterede en stigning i forhold til tidligere år og var en bekymrende indikation af den vedvarende trussel mod skovområder. Dette svarer til størrelsen på den amerikanske stats Delaware. Det er vigtigt at forstå, at dette ikke kun repræsenterer et fysisk område, men også en betydelig del af et komplekst økosystem, der er afgørende for planetens miljømæssige sundhed. Skovrydning på denne skala har dybtgående konsekvenser for biodiversitet, klima og menneskelige samfund.",
+      },
+      {
+        text: "cirka 4400 kvadratkilometer",
+        correct: false,
+        explanation:
+          "Du svarede desværre forkert... Fra 2000-2017 oplevede Brasilien betydelig skovrydning, især i Amazonas-regnskoven. I løbet af denne periode blev der ryddet store områder skov, primært som følge af landbrugsudvidelse, skovhugst og minedrift. Ifølge data fra det brasilianske rumforskningsinstitut INPE (Instituto Nacional de Pesquisas Espaciais) blev der i 2017 ryddet omkring 6.624 kvadratkilometer skov i Brasilien. Dette tal repræsenterede en stigning i forhold til tidligere år og var en bekymrende indikation af den vedvarende trussel mod skovområder. Dette svarer til størrelsen på den amerikanske stats Delaware. Det er vigtigt at forstå, at dette ikke kun repræsenterer et fysisk område, men også en betydelig del af et komplekst økosystem, der er afgørende for planetens miljømæssige sundhed. Skovrydning på denne skala har dybtgående konsekvenser for biodiversitet, klima og menneskelige samfund.",
+      },
+      {
+        text: "cirka 6600 kvadratkilometer",
         correct: true,
         explanation:
-          "Det er helt rigtigt! Selvom hvede ikke er direkte ansvarlig for skovrydning, spiller udvidelsen af landbrugsarealer, herunder hvededyrkning, en rolle i nedbrydningen af verdens skove. Den stigende efterspørgsel efter landbrugsprodukter kan presse på for at frigøre nye arealer, og i nogle tilfælde fører dette desværre til skovrydning. Nogle regioner, hvor skovområder er rige på biodiversitet, står over for udfordringer, da landbrugsaktiviteter, herunder hvededyrkning, udvider sig. Fældning af skove for at skabe plads til landbrugsjord kan have alvorlige konsekvenser for økosystemet, med tab af levesteder og ødelæggelse af naturlige balance. Samtidig er det vigtigt at nævne, at bæredygtige landbrugspraksisser og teknologier kan hjælpe med at mindske presset på skove. Effektiv ressourceforvaltning, herunder brugen af avancerede landbrugsmetoder og bevarelse af eksisterende skovområder, er nødvendige for at sikre en balance mellem landbrugsproduktion og bevaring af vigtige økosystemer. Hvededyrkning og andre landbrugsaktiviteter bør derfor gennemføres med omhu og bæredygtighed for øje, for at bevare skove som afgørende aktiver for planetens sundhed og biodiversitet.",
-      },
-      {
-        text: "Majs",
-        correct: false,
-        explanation:
-          "Du svarede desværre forkert... Selvom hvede ikke er direkte ansvarlig for skovrydning, spiller udvidelsen af landbrugsarealer, herunder hvededyrkning, en rolle i nedbrydningen af verdens skove. Den stigende efterspørgsel efter landbrugsprodukter kan presse på for at frigøre nye arealer, og i nogle tilfælde fører dette desværre til skovrydning. Nogle regioner, hvor skovområder er rige på biodiversitet, står over for udfordringer, da landbrugsaktiviteter, herunder hvededyrkning, udvider sig. Fældning af skove for at skabe plads til landbrugsjord kan have alvorlige konsekvenser for økosystemet, med tab af levesteder og ødelæggelse af naturlige balance. Samtidig er det vigtigt at nævne, at bæredygtige landbrugspraksisser og teknologier kan hjælpe med at mindske presset på skove. Effektiv ressourceforvaltning, herunder brugen af avancerede landbrugsmetoder og bevarelse af eksisterende skovområder, er nødvendige for at sikre en balance mellem landbrugsproduktion og bevaring af vigtige økosystemer. Hvededyrkning og andre landbrugsaktiviteter bør derfor gennemføres med omhu og bæredygtighed for øje, for at bevare skove som afgørende aktiver for planetens sundhed og biodiversitet.",
-      },
-      {
-        text: "Ris",
-        correct: false,
-        explanation:
-          "Du svarede desværre forkert... Selvom hvede ikke er direkte ansvarlig for skovrydning, spiller udvidelsen af landbrugsarealer, herunder hvededyrkning, en rolle i nedbrydningen af verdens skove. Den stigende efterspørgsel efter landbrugsprodukter kan presse på for at frigøre nye arealer, og i nogle tilfælde fører dette desværre til skovrydning. Nogle regioner, hvor skovområder er rige på biodiversitet, står over for udfordringer, da landbrugsaktiviteter, herunder hvededyrkning, udvider sig. Fældning af skove for at skabe plads til landbrugsjord kan have alvorlige konsekvenser for økosystemet, med tab af levesteder og ødelæggelse af naturlige balance. Samtidig er det vigtigt at nævne, at bæredygtige landbrugspraksisser og teknologier kan hjælpe med at mindske presset på skove. Effektiv ressourceforvaltning, herunder brugen af avancerede landbrugsmetoder og bevarelse af eksisterende skovområder, er nødvendige for at sikre en balance mellem landbrugsproduktion og bevaring af vigtige økosystemer. Hvededyrkning og andre landbrugsaktiviteter bør derfor gennemføres med omhu og bæredygtighed for øje, for at bevare skove som afgørende aktiver for planetens sundhed og biodiversitet.",
+          "Det er helt rigtigt! Fra 2000-2017 oplevede Brasilien betydelig skovrydning, især i Amazonas-regnskoven. I løbet af denne periode blev der ryddet store områder skov, primært som følge af landbrugsudvidelse, skovhugst og minedrift. Ifølge data fra det brasilianske rumforskningsinstitut INPE (Instituto Nacional de Pesquisas Espaciais) blev der i 2017 ryddet omkring 6.624 kvadratkilometer skov i Brasilien. Dette tal repræsenterede en stigning i forhold til tidligere år og var en bekymrende indikation af den vedvarende trussel mod skovområder. Dette svarer til størrelsen på den amerikanske stats Delaware. Det er vigtigt at forstå, at dette ikke kun repræsenterer et fysisk område, men også en betydelig del af et komplekst økosystem, der er afgørende for planetens miljømæssige sundhed. Skovrydning på denne skala har dybtgående konsekvenser for biodiversitet, klima og menneskelige samfund.",
       },
     ],
   },

@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
     .style("padding", "5px")
     .style("border", "1px solid #ccc")
     .style("border-radius", "5px");
-  let width = 900;
-  let height = 480;
+  let width = 1400;
+  let height = 800;
 
   // Select the map container and append an SVG element
   const svg = d3
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
           // Create a dictionary to map country codes to API data
           const projection = d3
             .geoMercator()
-            .scale(120)
+            .scale(200)
             .translate([width / 2.3, height / 1.4]);
           const path = d3.geoPath().projection(projection);
 
@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
               tooltip
                 .style("display", "block")
                 .html(
-                  `<strong>${countryName}</strong><br>År: ${yearText}<br>${afskovningText}`
+                  `<strong>${countryName}</strong><br>År: ${"2010 - 2020"}<br>${afskovningText}`
                 )
                 .style("left", event.pageX + "px")
                 .style("top", event.pageY + "px");
@@ -174,13 +174,6 @@ document.addEventListener("DOMContentLoaded", function () {
               // Hide tooltip on mouseout
               tooltip.style("display", "none");
             });
-
-          // Add a color legend
-          addColorLegend(defaultColorScale);
-
-          // ...
-        } else {
-          console.error("API request failed:", response.message);
         }
       });
     }
