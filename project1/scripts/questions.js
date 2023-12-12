@@ -115,7 +115,7 @@ const questions = [
     apiEndpoint: "http://localhost:8080/bubbleforest",
     yAxis: "reforestation",
     xAxis: "expansion",
-    graphType: "some",
+    graphType: "stacked",
     answers: [
       {
         text: "Udsat",

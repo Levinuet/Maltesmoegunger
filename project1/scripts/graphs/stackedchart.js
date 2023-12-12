@@ -56,13 +56,13 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
   // Append the x-axis
   svg
     .append("g")
-    .attr("transform", `translate(0,${height - marginBottom})`)
+    .attr("transform", `translate(-54,${height - marginBottom})`)
     .call(xAxis)
     .call((g) => g.select(".domain").remove())
     .append("text")
     .attr("x", width - marginRight)
     .attr("y", -6)
-    .attr("text-anchor", "end")
+    .attr("text-anchor", "start")
     .attr("fill", "currentColor");
 
   // Append the y-axis
@@ -91,16 +91,17 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
 
   legend
     .append("rect")
-    .attr("x", width - 19)
-    .attr("width", 19)
-    .attr("height", 19)
+    .attr("x", width - 135)
+    .attr("width", 25)
+    .attr("height", 25)
     .attr("fill", color);
 
   legend
     .append("text")
-    .attr("x", width - 24 + 20) // Adjust x position to be to the right of the square
-    .attr("y", 9.5)
+    .attr("x", width - 105) // Adjust x position to be to the right of the square
+    .attr("y", 12.5)
     .attr("dy", "0.32em")
+    .style("font-size", "16px") // Change the font size as needed
     .text((d) => d);
 
   // Return the chart with the color scale as a property (for the legend).

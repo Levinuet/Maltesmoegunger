@@ -3,9 +3,11 @@ function createBarChart(data, yAxis, xAxis, svg, styling) {
     styling;
   const xScale = d3
     .scaleBand()
-    .domain(data.map((d) => d.name)) // Adjust based on your data structure
+    .domain(0, 69) // Adjust based on your data structure
     .range([marginLeft, width - marginRight])
     .padding(0.1);
+
+  console.log(xScale);
 
   const yScale = d3
     .scaleLinear()
@@ -68,9 +70,6 @@ function createBarChart(data, yAxis, xAxis, svg, styling) {
         .attr("alignment-baseline", "middle")
         .attr("fill", "black"); // Change text color to white or another suitable color
     });
-
-  // Make bars fill the whole container
-  const barWidth = width / data.length;
 
   // Add X axis
   svg

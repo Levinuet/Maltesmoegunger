@@ -54,9 +54,6 @@ function createD3Visualization(data, yAxis, xAxis, svg, graphType) {
       break;
     case "stacked":
       createStackedChart(data, yAxis, xAxis, svg, styling);
-    case "map":
-      createMapChart(data, yAxis, xAxis, svg, styling);
-      break;
 
     default:
       break;
