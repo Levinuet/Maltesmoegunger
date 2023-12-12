@@ -139,6 +139,7 @@ body {
 
 .hide {
   display: none;
+  visibility: hidden;
 }
 
 h1,
