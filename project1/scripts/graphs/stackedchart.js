@@ -10,7 +10,7 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
   // Configure the D3 stack layout with the specified keys
   const series = d3.stack().keys(keys).offset(d3.stackOffsetExpand)(data);
 
-  // Prepare the scales for positional and color encodings.
+  // Prepare the scales for positional and color encodings
   const xScale = d3
     .scaleBand()
     .domain(data.map((d) => d.year))
@@ -63,7 +63,8 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
     .attr("x", width - marginRight)
     .attr("y", -6)
     .attr("text-anchor", "end")
-    .attr("fill", "currentColor");
+    .attr("fill", "currentColor")
+    .text(xAxisLabel);
 
   // Append the y-axis
   svg
@@ -75,33 +76,8 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
     .attr("x", 6)
     .attr("y", marginTop)
     .attr("text-anchor", "start")
-    .attr("fill", "currentColor");
-
-  // Legend setup
-  const legend = svg
-    .append("g")
-    .attr("font-family", "sans-serif")
-    .attr("font-size", 10)
-    .attr("text-anchor", "start") // Change text-anchor to start
-    .selectAll("g")
-    .data(keys.slice().reverse())
-    .enter()
-    .append("g")
-    .attr("transform", (d, i) => `translate(0,${i * 20})`);
-
-  legend
-    .append("rect")
-    .attr("x", width - 19)
-    .attr("width", 19)
-    .attr("height", 19)
-    .attr("fill", color);
-
-  legend
-    .append("text")
-    .attr("x", width - 24 + 20) // Adjust x position to be to the right of the square
-    .attr("y", 9.5)
-    .attr("dy", "0.32em")
-    .text((d) => d);
+    .attr("fill", "currentColor")
+    .text(yAxisLabel);
 
   // Return the chart with the color scale as a property (for the legend).
   return Object.assign(svg.node(), { scales: { color } });

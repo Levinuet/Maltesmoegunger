@@ -19,12 +19,10 @@ const klient = new Client({
   },
 });
 
-const qry = "SELECT * from changes";
-
 klient.connect();
 app.get("/changes", async (req, res) => {
   try {
-    let queryData = await klient.query(qry);
+    let queryData = await klient.query("SELECT * from changes");
     res.json({
       ok: true,
       skovData: queryData.rows,
