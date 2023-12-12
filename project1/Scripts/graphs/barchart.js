@@ -77,7 +77,7 @@ function createBarChart(data, yAxis, xAxis, svg, styling) {
     .append("g")
     .attr("transform", `translate(0, ${height - marginBottom})`)
     .call(d3.axisBottom(xScale));
-  // Add Y axis
+  // Add Y axis :)
   svg
     .append("g")
     .attr("transform", `translate(${marginLeft}, 0)`)

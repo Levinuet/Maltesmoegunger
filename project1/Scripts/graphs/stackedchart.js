@@ -10,7 +10,7 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
   // Configure the D3 stack layout with the specified keys
   const series = d3.stack().keys(keys).offset(d3.stackOffsetExpand)(data);
 
-  // Prepare the scales for positional and color encodings.
+  // Prepare the scales for positional and color encodings
   const xScale = d3
     .scaleBand()
     .domain(data.map((d) => d.year))
