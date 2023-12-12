@@ -1,0 +1,217 @@
+:root {
+  --color-primary: #4caf50; /* Bright Green */
+  --color-secondary: #8bc34a; /* Lighter Green */
+  --color-accent: #2196f3; /* Accent Blue */
+  --color-background: #f5f5f5; /* Light Gray Background */
+  --color-text: #333; /* Dark Gray Text */
+  font-family: "Poppins", sans-serif;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-image: url("images/baggrund.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden; /* Fjerner rullebjælker */
+}
+
+.map-container {
+  flex: 1;
+  overflow: hidden;
+  padding: 20px;
+  background-color: rgba(
+    224,
+    224,
+    224,
+    0
+  ); /* Juster "0.5" for at ændre gennemsigtigheden */
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  flex: 0.3;
+  overflow: hidden;
+}
+
+.quiz-box,
+.additional-info-box {
+  flex: 1;
+}
+
+.quiz-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
+  background-color: #f4f4f4;
+  padding: 20px;
+  margin: 10px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+}
+
+.additional-info-box {
+  text-align: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  margin: 10px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 1920px) {
+  /* Styles for 1920px width screens */
+}
+
+@media only screen and (max-width: 768px) {
+  /* Styles for 768px width screens */
+}
+
+@media only screen and (max-width: 480px) {
+  /* Styles for 480px width screens */
+}
+
+.map-container,
+.container {
+  flex-direction: row;
+}
+
+#explanation,
+#question-container {
+  width: 100%;
+  margin: 20px 0;
+}
+
+#question-container {
+  display: grid;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.btn,
+.start-btn,
+.next-btn,
+.btn.answer-btn {
+  padding: 12px 24px;
+  border-radius: 25px;
+  border: none;
+  background: var(--color-primary);
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.btn:hover,
+.start-btn:hover,
+.next-btn:hover,
+.btn.answer-btn:hover {
+  background: var(--color-secondary);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.hide {
+  display: none;
+  visibility: hidden;
+
+}
+
+h1,
+p {
+  color: var(--color-primary);
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background: var(--color-text);
+  color: var(--color-background);
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background: var(--color-secondary);
+}
+
+.map-container {
+  flex: 0.7;
+  overflow: hidden;
+  padding: 100px;
+  background-color: rgba(224, 224, 224, 0); /* Juster gennemsigtigheden her */
+  position: relative; /* Tilføjet: Position relative for at gøre det lettere at positionere map-header */
+}
+
+.map-header {
+  position: absolute; /* Ændret til absolute position for at tage udgangspunkt i .map-container */
+  top: 0px; /* Juster denne værdi efter behov for at positionere map-header opad */
+  left: 20px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #145a32;
+  padding: 8px 12px;
+  border-radius: 5px;
+  line-height: 1;
+}
+
+.country {
+  fill: #81c784; /* Light Green */
+  stroke: transparent;
+  stroke-width: 1;
+  cursor: pointer;
+}
+
+.country:hover {
+  fill: #66bb6a; /* Darker Green on hover */
+}
+
+.container.quiz-started {
+  flex-direction: column;
+}
+/* quiz.css */
+.intro-container {
+  text-align: center; /* Center the text and image */
+  padding: 20px; /* Add some padding */
+  background-color: #fff; /* Optional: Set a background color */
+  border-radius: 10px; /* Optional: Round the corners */
+  margin-bottom: 20px; /* Space before the controls */
+  background-color: rgba(224, 224, 224, 0); /* Juster gennemsigtigheden her */
+}
+
+.intro-image {
+  max-width: 1000px; /* Adjust the max-width to suit your layout */
+  max-height: 800px; /* Adjust the max-height to suit your layout */
+  height: auto;
+  display: block;
+  margin: 20px auto; /* Added some vertical spacing */
+}
