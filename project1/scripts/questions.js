@@ -1,53 +1,56 @@
 const questions = [
   {
-    question: "verdenskort med changes",
-    apiEndpoint: "http://localhost:8080/changes",
-    yAxis: "net ændringer",
-    xAxis: "Lande Navn",
-    graphType: "map",
+    question: "Hvilket land har den største skovrydning i 2010 frem til 2020?",
+    apiEndpoint: "http://localhost:8080/smallchanges",
+    yAxis: "netChanges",
+    xAxis: "Name",
+    graphType: "bar",
     answers: [
       {
-        text: "16 fodboldbaner i minuttet",
+        text: "Indonesien",
         correct: false,
         explanation:
-          "Du svarede desværre forkert... 13 millioner hektar bliver fældet hver dag! Det svarer til 36 Fodboldbaner i minuttet. Skovene, som udgør en afgørende del af vores globale økosystem, står over for en udfordring af alarmerende proportioner. Hvert minut bliver et betragteligt areal af skovrydning registreret på verdensplan, hvilket har dybtgående konsekvenser for biodiversitet, klima og miljøet som helhed. Der er flere hovedårsager til skovrydning, herunder behovet for landbrugsarealer, produktion af papir og træprodukter, samt urbanisering. Uheldigvis fører denne praksis til tab af levesteder for utallige plante- og dyrearter, og det accelererer klimaforandringer ved at reducere skovens kapacitet til at absorbere CO2. At forstå omfanget af skovrydningen er afgørende for at tackle dette problem. Initiativer såsom bæredygtigt skovbrug, bevarelse af naturområder og anvendelse af alternative materialer kan bidrage til at mindske det aktuelle tempo for skovnedbrydning. Derfor er det vigtigt at øge bevidstheden om dette spørgsmål, da det berører os alle og har konsekvenser for fremtidige generationer.",
+          "Du svarede desværre forkert... Illustrationen viser betydelig skovrydning i Brasilien i perioden 2010 til 2020. Dette udgør en alvorlig trussel mod Amazonas junglens komplekse økosystemer og har væsentlige konsekvenser for klimaet. Skovrydningen resulterer i tab af levesteder for det rige dyreliv i Amazonas jungle, og flere arter står nu over for fare for udryddelse. Det er værd at bemærke, at skovrydningen ofte realiseres gennem metoder som påsatte brænde, der i nogle tilfælde kan være drevet af landbrugsinteresser.",
       },
       {
-        text: "26 fodboldbaner i minuttet",
+        text: "Indien",
         correct: false,
         explanation:
-          "Du svarede desværre forkert... 13 millioner hektar bliver fældet hver dag! Det svarer til 36 Fodboldbaner i minuttet. Skovene, som udgør en afgørende del af vores globale økosystem, står over for en udfordring af alarmerende proportioner. Hvert minut bliver et betragteligt areal af skovrydning registreret på verdensplan, hvilket har dybtgående konsekvenser for biodiversitet, klima og miljøet som helhed. Der er flere hovedårsager til skovrydning, herunder behovet for landbrugsarealer, produktion af papir og træprodukter, samt urbanisering. Uheldigvis fører denne praksis til tab af levesteder for utallige plante- og dyrearter, og det accelererer klimaforandringer ved at reducere skovens kapacitet til at absorbere CO2. At forstå omfanget af skovrydningen er afgørende for at tackle dette problem. Initiativer såsom bæredygtigt skovbrug, bevarelse af naturområder og anvendelse af alternative materialer kan bidrage til at mindske det aktuelle tempo for skovnedbrydning. Derfor er det vigtigt at øge bevidstheden om dette spørgsmål, da det berører os alle og har konsekvenser for fremtidige generationer.",
+          "Du svarede desværre forkert... Illustrationen viser betydelig skovrydning i Brasilien i perioden 2010 til 2020. Dette udgør en alvorlig trussel mod Amazonas junglens komplekse økosystemer og har væsentlige konsekvenser for klimaet. Skovrydningen resulterer i tab af levesteder for det rige dyreliv i Amazonas jungle, og flere arter står nu over for fare for udryddelse. Det er værd at bemærke, at skovrydningen ofte realiseres gennem metoder som påsatte brænde, der i nogle tilfælde kan være drevet af landbrugsinteresser.",
       },
       {
-        text: "36 fodboldbaner i minuttet",
+        text: "Brasilien",
         correct: true,
         explanation:
-          "Det er helt rigtigt! 13 millioner hektar bliver fældet hver dag! Det svarer til 36 Fodboldbaner i minuttet. Skovene, som udgør en afgørende del af vores globale økosystem, står over for en udfordring af alarmerende proportioner. Hvert minut bliver et betragteligt areal af skovrydning registreret på verdensplan, hvilket har dybtgående konsekvenser for biodiversitet, klima og miljøet som helhed. Der er flere hovedårsager til skovrydning, herunder behovet for landbrugsarealer, produktion af papir og træprodukter, samt urbanisering. Uheldigvis fører denne praksis til tab af levesteder for utallige plante- og dyrearter, og det accelererer klimaforandringer ved at reducere skovens kapacitet til at absorbere CO2. At forstå omfanget af skovrydningen er afgørende for at tackle dette problem. Initiativer såsom bæredygtigt skovbrug, bevarelse af naturområder og anvendelse af alternative materialer kan bidrage til at mindske det aktuelle tempo for skovnedbrydning. Derfor er det vigtigt at øge bevidstheden om dette spørgsmål, da det berører os alle og har konsekvenser for fremtidige generationer.",
+          "Det er helt rigtigt! Illustrationen viser betydelig skovrydning i Brasilien i perioden 2010 til 2020. Dette udgør en alvorlig trussel mod Amazonas junglens komplekse økosystemer og har væsentlige konsekvenser for klimaet. Skovrydningen resulterer i tab af levesteder for det rige dyreliv i Amazonas jungle, og flere arter står nu over for fare for udryddelse. Det er værd at bemærke, at skovrydningen ofte realiseres gennem metoder som påsatte brænde, der i nogle tilfælde kan være drevet af landbrugsinteresser.",
       },
     ],
   },
   {
-    question: "Hvad har du at sige",
+    question:
+      "Hvilke faktorer har haft størst indflydelse på skovrydningen af den brasilianske regnskov?",
     apiEndpoint: "http://localhost:8080/brazil",
     yAxis: "pasture",
     xAxis: "year",
     graphType: "stacked",
     answers: [
       {
-        text: "Monner fra Kannern",
+        text: "Sojabønneproduktionen",
         correct: false,
-        explanation: "Waaahhh bros det er forkert",
+        explanation:
+          "Desværre du svarede forkert på spørgsmålet... Stakdiagrammet illustrerer de faktorer, der har haft størst betydning på skovrydningen i Brasilien i perioden 2001-2013. kvægopdræt er den mest betydningsfulde faktorer for skovrydningen af den brasilianske regnskov i løbet af denne periode, idet det gennemsnitligt udgør 62,7% af alle påvirkende faktorer årligt. Hvis vi antager at kvægopdræt har samme betydning for skovrydning globalt vil det, have en positiv betydning at reducere kødforbruget.",
       },
       {
-        text: "Pestobolle%",
+        text: "Kvægopdræft",
         correct: true,
         explanation:
-          "Godt brølt løve! Du ved det er ingen kasket på baby på gud.",
+          "Du svarede rigtigt på spørgsmålet! Stakdiagrammet illustrerer de faktorer, der har haft størst betydning på skovrydningen i Brasilien i perioden 2001-2013. kvægopdræt er den mest betydningsfulde faktorer for skovrydningen af den brasilianske regnskov i løbet af denne periode, idet det gennemsnitligt udgør 62,7% af alle påvirkende faktorer årligt. Hvis vi antager at kvægopdræt har samme betydning for skovrydning globalt vil det, have en positiv betydning at reducere kødforbruget. ",
       },
       {
-        text: "21st century skills",
+        text: "Skovbrænde",
         correct: false,
-        explanation: "cap.",
+        explanation:
+          "Desværre du svarede forkert på spørgsmålet... Stakdiagrammet illustrerer de faktorer, der har haft størst betydning på skovrydningen i Brasilien i perioden 2001-2013. kvægopdræt er den mest betydningsfulde faktorer for skovrydningen af den brasilianske regnskov i løbet af denne periode, idet det gennemsnitligt udgør 62,7% af alle påvirkende faktorer årligt. Hvis vi antager at kvægopdræt har samme betydning for skovrydning globalt vil det, have en positiv betydning at reducere kødforbruget.",
       },
     ],
   },
@@ -62,74 +65,75 @@ const questions = [
         text: "cirka 2200 kvadratkilometer",
         correct: false,
         explanation:
-          "Du svarede desværre forkert...  Fra 2000-2017 oplevede Brasilien betydelig skovrydning, især i Amazonas-regnskoven. I løbet af denne periode blev der ryddet store områder skov, primært som følge af landbrugsudvidelse, skovhugst og minedrift. Ifølge data fra det brasilianske rumforskningsinstitut INPE (Instituto Nacional de Pesquisas Espaciais) blev der i 2017 ryddet omkring 6.624 kvadratkilometer skov i Brasilien. Dette tal repræsenterede en stigning i forhold til tidligere år og var en bekymrende indikation af den vedvarende trussel mod skovområder. Dette svarer til størrelsen på den amerikanske stats Delaware. Det er vigtigt at forstå, at dette ikke kun repræsenterer et fysisk område, men også en betydelig del af et komplekst økosystem, der er afgørende for planetens miljømæssige sundhed. Skovrydning på denne skala har dybtgående konsekvenser for biodiversitet, klima og menneskelige samfund.",
+          "Du svarede desværre forkert... 13 millioner hektar bliver fældet hver dag! Det svarer til 36 Fodboldbaner i minuttet. Skovene, som udgør en afgørende del af vores globale økosystem, står over for en udfordring af alarmerende proportioner. Hvert minut bliver et betragteligt areal af skovrydning registreret på verdensplan, hvilket har dybtgående konsekvenser for biodiversitet, klima og miljøet som helhed. Der er flere hovedårsager til skovrydning, herunder behovet for landbrugsarealer, produktion af papir og træprodukter, samt urbanisering. Uheldigvis fører denne praksis til tab af levesteder for utallige plante- og dyrearter, og det accelererer klimaforandringer ved at reducere skovens kapacitet til at absorbere CO2. At forstå omfanget af skovrydningen er afgørende for at tackle dette problem. Initiativer såsom bæredygtigt skovbrug, bevarelse af naturområder og anvendelse af alternative materialer kan bidrage til at mindske det aktuelle tempo for skovnedbrydning. Derfor er det vigtigt at øge bevidstheden om dette spørgsmål, da det berører os alle og har konsekvenser for fremtidige generationer.",
       },
       {
         text: "cirka 4400 kvadratkilometer",
         correct: false,
         explanation:
-          "Du svarede desværre forkert... Fra 2000-2017 oplevede Brasilien betydelig skovrydning, især i Amazonas-regnskoven. I løbet af denne periode blev der ryddet store områder skov, primært som følge af landbrugsudvidelse, skovhugst og minedrift. Ifølge data fra det brasilianske rumforskningsinstitut INPE (Instituto Nacional de Pesquisas Espaciais) blev der i 2017 ryddet omkring 6.624 kvadratkilometer skov i Brasilien. Dette tal repræsenterede en stigning i forhold til tidligere år og var en bekymrende indikation af den vedvarende trussel mod skovområder. Dette svarer til størrelsen på den amerikanske stats Delaware. Det er vigtigt at forstå, at dette ikke kun repræsenterer et fysisk område, men også en betydelig del af et komplekst økosystem, der er afgørende for planetens miljømæssige sundhed. Skovrydning på denne skala har dybtgående konsekvenser for biodiversitet, klima og menneskelige samfund.",
+          "Du svarede desværre forkert... 13 millioner hektar bliver fældet hver dag! Det svarer til 36 Fodboldbaner i minuttet. Skovene, som udgør en afgørende del af vores globale økosystem, står over for en udfordring af alarmerende proportioner. Hvert minut bliver et betragteligt areal af skovrydning registreret på verdensplan, hvilket har dybtgående konsekvenser for biodiversitet, klima og miljøet som helhed. Der er flere hovedårsager til skovrydning, herunder behovet for landbrugsarealer, produktion af papir og træprodukter, samt urbanisering. Uheldigvis fører denne praksis til tab af levesteder for utallige plante- og dyrearter, og det accelererer klimaforandringer ved at reducere skovens kapacitet til at absorbere CO2. At forstå omfanget af skovrydningen er afgørende for at tackle dette problem. Initiativer såsom bæredygtigt skovbrug, bevarelse af naturområder og anvendelse af alternative materialer kan bidrage til at mindske det aktuelle tempo for skovnedbrydning. Derfor er det vigtigt at øge bevidstheden om dette spørgsmål, da det berører os alle og har konsekvenser for fremtidige generationer.",
       },
       {
         text: "cirka 6600 kvadratkilometer",
         correct: true,
         explanation:
-          "Det er helt rigtigt! Fra 2000-2017 oplevede Brasilien betydelig skovrydning, især i Amazonas-regnskoven. I løbet af denne periode blev der ryddet store områder skov, primært som følge af landbrugsudvidelse, skovhugst og minedrift. Ifølge data fra det brasilianske rumforskningsinstitut INPE (Instituto Nacional de Pesquisas Espaciais) blev der i 2017 ryddet omkring 6.624 kvadratkilometer skov i Brasilien. Dette tal repræsenterede en stigning i forhold til tidligere år og var en bekymrende indikation af den vedvarende trussel mod skovområder. Dette svarer til størrelsen på den amerikanske stats Delaware. Det er vigtigt at forstå, at dette ikke kun repræsenterer et fysisk område, men også en betydelig del af et komplekst økosystem, der er afgørende for planetens miljømæssige sundhed. Skovrydning på denne skala har dybtgående konsekvenser for biodiversitet, klima og menneskelige samfund.",
+          "Det er helt rigtigt! 13 millioner hektar bliver fældet hver dag! Det svarer til 36 Fodboldbaner i minuttet. Skovene, som udgør en afgørende del af vores globale økosystem, står over for en udfordring af alarmerende proportioner. Hvert minut bliver et betragteligt areal af skovrydning registreret på verdensplan, hvilket har dybtgående konsekvenser for biodiversitet, klima og miljøet som helhed. Der er flere hovedårsager til skovrydning, herunder behovet for landbrugsarealer, produktion af papir og træprodukter, samt urbanisering. Uheldigvis fører denne praksis til tab af levesteder for utallige plante- og dyrearter, og det accelererer klimaforandringer ved at reducere skovens kapacitet til at absorbere CO2. At forstå omfanget af skovrydningen er afgørende for at tackle dette problem. Initiativer såsom bæredygtigt skovbrug, bevarelse af naturområder og anvendelse af alternative materialer kan bidrage til at mindske det aktuelle tempo for skovnedbrydning. Derfor er det vigtigt at øge bevidstheden om dette spørgsmål, da det berører os alle og har konsekvenser for fremtidige generationer.",
       },
     ],
   },
   {
-    question: "Hvor meget skov er blevet afbrændt i Brasilien fra 2000-2017?",
+    question:
+      "I 2015 blev der brændt 73017.07 tusind hektar af Amazonas junglen. Hvor meget svarer det til? ",
     apiEndpoint: "http://localhost:8080/brazilfires",
     yAxis: "year",
     xAxis: "Brand",
     graphType: "line",
     answers: [
       {
-        text: "cirka 2200 kvadratkilometer",
-        correct: false,
-        explanation:
-          "Du svarede desværre forkert...  Fra 2000-2017 oplevede Brasilien betydelig skovrydning, især i Amazonas-regnskoven. I løbet af denne periode blev der ryddet store områder skov, primært som følge af landbrugsudvidelse, skovhugst og minedrift. Ifølge data fra det brasilianske rumforskningsinstitut INPE (Instituto Nacional de Pesquisas Espaciais) blev der i 2017 ryddet omkring 6.624 kvadratkilometer skov i Brasilien. Dette tal repræsenterede en stigning i forhold til tidligere år og var en bekymrende indikation af den vedvarende trussel mod skovområder. Dette svarer til størrelsen på den amerikanske stats Delaware. Det er vigtigt at forstå, at dette ikke kun repræsenterer et fysisk område, men også en betydelig del af et komplekst økosystem, der er afgørende for planetens miljømæssige sundhed. Skovrydning på denne skala har dybtgående konsekvenser for biodiversitet, klima og menneskelige samfund.",
-      },
-      {
-        text: "cirka 4400 kvadratkilometer",
-        correct: false,
-        explanation:
-          "Du svarede desværre forkert... Fra 2000-2017 oplevede Brasilien betydelig skovrydning, især i Amazonas-regnskoven. I løbet af denne periode blev der ryddet store områder skov, primært som følge af landbrugsudvidelse, skovhugst og minedrift. Ifølge data fra det brasilianske rumforskningsinstitut INPE (Instituto Nacional de Pesquisas Espaciais) blev der i 2017 ryddet omkring 6.624 kvadratkilometer skov i Brasilien. Dette tal repræsenterede en stigning i forhold til tidligere år og var en bekymrende indikation af den vedvarende trussel mod skovområder. Dette svarer til størrelsen på den amerikanske stats Delaware. Det er vigtigt at forstå, at dette ikke kun repræsenterer et fysisk område, men også en betydelig del af et komplekst økosystem, der er afgørende for planetens miljømæssige sundhed. Skovrydning på denne skala har dybtgående konsekvenser for biodiversitet, klima og menneskelige samfund.",
-      },
-      {
-        text: "cirka 6600 kvadratkilometer",
+        text: "To gange Tysklands areal",
         correct: true,
         explanation:
-          "Det er helt rigtigt! Fra 2000-2017 oplevede Brasilien betydelig skovrydning, især i Amazonas-regnskoven. I løbet af denne periode blev der ryddet store områder skov, primært som følge af landbrugsudvidelse, skovhugst og minedrift. Ifølge data fra det brasilianske rumforskningsinstitut INPE (Instituto Nacional de Pesquisas Espaciais) blev der i 2017 ryddet omkring 6.624 kvadratkilometer skov i Brasilien. Dette tal repræsenterede en stigning i forhold til tidligere år og var en bekymrende indikation af den vedvarende trussel mod skovområder. Dette svarer til størrelsen på den amerikanske stats Delaware. Det er vigtigt at forstå, at dette ikke kun repræsenterer et fysisk område, men også en betydelig del af et komplekst økosystem, der er afgørende for planetens miljømæssige sundhed. Skovrydning på denne skala har dybtgående konsekvenser for biodiversitet, klima og menneskelige samfund.",
+          "Det er helt rigtigt! Den Brasilianske skov er præget af massive skovbrænde. I 2015 blev cirka to gange af Tysklands samlede areal brændt af. Disse brænde er katastrofale for økosystemer og stiller vigtige spørgsmål vedrørende vores fællesansvar for at beskytte regnskoven. Amazon junglen er kendt, som verdens lunger og spiller en central rolle i at bremse klimaforandringerne. Disse brænde kan være udløst af menneskelig aktivitet såsom skovrydning, landbrug og tørke. Der frigives enorme mængder af CO2 i atmosfæren, når skoven brænder. Dette er med til at fremme drivhuseffekten og gøre klimamålene endnu sværere at realisere.",
+      },
+      {
+        text: "Ruslands areal",
+        correct: false,
+        explanation:
+          "Du svarede desværre forkert... Den Brasilianske skov er præget af massive skovbrænde. I 2015 blev cirka to gange af Tysklands samlede areal brændt af. Disse brænde er katastrofale for økosystemer og stiller vigtige spørgsmål vedrørende vores fællesansvar for at beskytte regnskoven. Amazon junglen er kendt, som verdens lunger og spiller en central rolle i at bremse klimaforandringerne. Disse brænde kan være udløst af menneskelig aktivitet såsom skovrydning, landbrug og tørke. Der frigives enorme mængder af CO2 i atmosfæren, når skoven brænder. Dette er med til at fremme drivhuseffekten og gøre klimamålene endnu sværere at realisere.",
+      },
+      {
+        text: "Mexicos areal",
+        correct: false,
+        explanation:
+          "Du svarede desværre forkert... Den Brasilianske skov er præget af massive skovbrænde. I 2015 blev cirka to gange af Tysklands samlede areal brændt af. Disse brænde er katastrofale for økosystemer og stiller vigtige spørgsmål vedrørende vores fællesansvar for at beskytte regnskoven. Amazon junglen er kendt, som verdens lunger og spiller en central rolle i at bremse klimaforandringerne. Disse brænde kan være udløst af menneskelig aktivitet såsom skovrydning, landbrug og tørke. Der frigives enorme mængder af CO2 i atmosfæren, når skoven brænder. Dette er med til at fremme drivhuseffekten og gøre klimamålene endnu sværere at realisere.",
       },
     ],
   },
   {
     question:
-      "Hvis verdensbefolkningen spiste plantebaseret hvor meget af landbrugsjorden ville blive frigjort?  ",
-    apiEndpoint: "null",
-    yAxis: "name",
-    xAxis: "Brand",
-    graphType: "bar",
+      "Hvordan er det gået med at genoprette skovområder i verden fra 2010-2020?",
+    apiEndpoint: "http://localhost:8080/bubbleforest",
+    yAxis: "reforestation",
+    xAxis: "expansion",
+    graphType: "some",
     answers: [
       {
-        text: "45%",
+        text: "Udsat",
         correct: false,
         explanation:
-          "Du svarede desværre forkert...  Hvis verdensbefolkningen skiftede til en plantebaseret kost, ville der potentielt blive frigivet 75% landbrugsjord. Dette skyldes, at plantebaserede diæter kræver mindre arealressourcer sammenlignet med kødbaserede diæter, da dyreopdræt kræver mere plads, vand og føde end planteproduktion. En betydelig del af den globale landbrugsjord anvendes i øjeblikket til dyrkning af afgrøder, der bruges som dyrefoder, samt græsningsområder til husdyr. Hvis disse arealer blev omfordelt til dyrkning af direkte menneskeføde, kunne vi se en markant frigivelse af landbrugsjord. Estimater varierer, men nogle studier antyder, at en overgang til en plantebaseret kost kunne reducere behovet for landbrugsjord med op til 75%, afhængigt af faktorer som ernæringsmønstre og landbrugspraksis. Dette ville have betydelige positive virkninger på bevarelsen af naturressourcer, biodiversitet og reduktion af skovrydning, da mindre areal ville være nødvendigt for at imødekomme fødevarebehovene for en plantebaseret befolkning. Denne omlægning af kostvaner og landbrugspraksisser er dog en kompleks udfordring og kræver overvejelser om adfærdsændringer, teknologiske innovationer og politiske tiltag. Ikke desto mindre peger mange eksperter på en plantebaseret kost som en bæredygtig løsning for at imødegå udfordringerne ved global fødevaresikkerhed og miljøpåvirkning.",
+          "Du svarede desværre forkert... Genoprettelsen af skovområder er der kommet et stigende fokus på i det seneste årti. I denne periode er der flere lande, som har lavet programmer, der har til formål at genoprette skovområder, der har været udsat for skovrydning og afbrænding. Nogle af de mest markante udforinger for skovgenoprettelse er økonomiske og politiske. Den gennemgribende konflikt er behovet for landbrugsjord og bevarelsen af skovområder. Hvis et skovgenopretningsprojekt skal være succesfuldt, kræver det ofte inddragelse fra lokalsamfundet.",
       },
       {
-        text: "65%",
+        text: "Droppet",
         correct: false,
         explanation:
-          "Du svarede desværre forkert...   Hvis verdensbefolkningen skiftede til en plantebaseret kost, ville der potentielt blive frigivet 75% landbrugsjord. Dette skyldes, at plantebaserede diæter kræver mindre arealressourcer sammenlignet med kødbaserede diæter, da dyreopdræt kræver mere plads, vand og føde end planteproduktion. En betydelig del af den globale landbrugsjord anvendes i øjeblikket til dyrkning af afgrøder, der bruges som dyrefoder, samt græsningsområder til husdyr. Hvis disse arealer blev omfordelt til dyrkning af direkte menneskeføde, kunne vi se en markant frigivelse af landbrugsjord. Estimater varierer, men nogle studier antyder, at en overgang til en plantebaseret kost kunne reducere behovet for landbrugsjord med op til 75%, afhængigt af faktorer som ernæringsmønstre og landbrugspraksis. Dette ville have betydelige positive virkninger på bevarelsen af naturressourcer, biodiversitet og reduktion af skovrydning, da mindre areal ville være nødvendigt for at imødekomme fødevarebehovene for en plantebaseret befolkning. Denne omlægning af kostvaner og landbrugspraksisser er dog en kompleks udfordring og kræver overvejelser om adfærdsændringer, teknologiske innovationer og politiske tiltag. Ikke desto mindre peger mange eksperter på en plantebaseret kost som en bæredygtig løsning for at imødegå udfordringerne ved global fødevaresikkerhed og miljøpåvirkning.",
+          "Du svarede desværre forkert... Genoprettelsen af skovområder er der kommet et stigende fokus på i det seneste årti. I denne periode er der flere lande, som har lavet programmer, der har til formål at genoprette skovområder, der har været udsat for skovrydning og afbrænding. Nogle af de mest markante udforinger for skovgenoprettelse er økonomiske og politiske. Den gennemgribende konflikt er behovet for landbrugsjord og bevarelsen af skovområder. Hvis et skovgenopretningsprojekt skal være succesfuldt, kræver det ofte inddragelse fra lokalsamfundet.",
       },
       {
-        text: "75%",
+        text: "Stigende tendens",
         correct: true,
         explanation:
-          "Det er helt rigtigt!  Hvis verdensbefolkningen skiftede til en plantebaseret kost, ville der potentielt blive frigivet 75% landbrugsjord. Dette skyldes, at plantebaserede diæter kræver mindre arealressourcer sammenlignet med kødbaserede diæter, da dyreopdræt kræver mere plads, vand og føde end planteproduktion. En betydelig del af den globale landbrugsjord anvendes i øjeblikket til dyrkning af afgrøder, der bruges som dyrefoder, samt græsningsområder til husdyr. Hvis disse arealer blev omfordelt til dyrkning af direkte menneskeføde, kunne vi se en markant frigivelse af landbrugsjord. Estimater varierer, men nogle studier antyder, at en overgang til en plantebaseret kost kunne reducere behovet for landbrugsjord med op til 75%, afhængigt af faktorer som ernæringsmønstre og landbrugspraksis. Dette ville have betydelige positive virkninger på bevarelsen af naturressourcer, biodiversitet og reduktion af skovrydning, da mindre areal ville være nødvendigt for at imødekomme fødevarebehovene for en plantebaseret befolkning. Denne omlægning af kostvaner og landbrugspraksisser er dog en kompleks udfordring og kræver overvejelser om adfærdsændringer, teknologiske innovationer og politiske tiltag. Ikke desto mindre peger mange eksperter på en plantebaseret kost som en bæredygtig løsning for at imødegå udfordringerne ved global fødevaresikkerhed og miljøpåvirkning.",
+          "Det er helt rigtigt! Genoprettelsen af skovområder er der kommet et stigende fokus på i det seneste årti. I denne periode er der flere lande, som har lavet programmer, der har til formål at genoprette skovområder, der har været udsat for skovrydning og afbrænding. Nogle af de mest markante udforinger for skovgenoprettelse er økonomiske og politiske. Den gennemgribende konflikt er behovet for landbrugsjord og bevarelsen af skovområder. Hvis et skovgenopretningsprojekt skal være succesfuldt, kræver det ofte inddragelse fra lokalsamfundet.",
       },
     ],
   },
