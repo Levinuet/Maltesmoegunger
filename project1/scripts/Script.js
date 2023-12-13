@@ -68,18 +68,12 @@ document.addEventListener("DOMContentLoaded", function () {
     currentQuestionIndex++;
 
     if (currentQuestionIndex < shuffledQuestions.length) {
+      // Show the next question
       showQuestion(shuffledQuestions[currentQuestionIndex]);
-
-      // Check if this is the last question
-      if (currentQuestionIndex === shuffledQuestions.length - 1) {
-        // Last question: Prepare to show the "Results" button
-        resultsButton.classList.remove("hide");
-        nextButton.classList.add("hide");
-      }
     } else {
-      // No more questions: Ensure only the "Results" button is shown
-      resultsButton.classList.remove("hide");
+      // Hide both "Next" and "Results" buttons as no more questions are left
       nextButton.classList.add("hide");
+      resultsButton.classList.add("hide");
     }
   }
 
@@ -180,12 +174,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Show explanation on a new page
     showExplanationPage(selectedButton.dataset.explanation, isCorrect);
 
+    // Determine if the current question is the last one
     if (currentQuestionIndex === shuffledQuestions.length - 1) {
-      // Last question: Show the "Results" button and hide the "Next" button
+      // Last question and an answer has been selected
+      // Show the "Results" button and hide the "Next" button
       resultsButton.classList.remove("hide");
       nextButton.classList.add("hide");
     } else {
-      // Not the last question: Show the "Next" button
+      // Not the last question, show the "Next" button
       nextButton.classList.remove("hide");
     }
 
