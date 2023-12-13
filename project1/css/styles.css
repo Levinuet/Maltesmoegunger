@@ -68,14 +68,13 @@ body {
 
 #question-container {
   display: grid;
+  place-items: center; /* This shorthand property centers both horizontally and vertically */
   border-radius: 10px;
-  width: 1620px;
+  width: 100%; /* Use 100% width for responsiveness */
   height: 200px;
-  justify-content: center;
-  align-content: center;
   font-size: 1rem;
   margin: 50px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 .map-header {
