@@ -19,7 +19,7 @@ function createBartChart(data, yAxis, xAxis, svg, styling) {
     .domain([0, d3.max(data, (d) => d[yAxis])]) // Assuming yAxis is your variable for bar height
     .range(["#2e7d32", "#bf360c"]); // Example: color range from orange to green
 
-  // Remove existing SVG elements
+  // Remove existing SVG element
   d3.select("#chart-container").selectAll("svg").remove();
 
   // Create new SVG
