@@ -14,8 +14,7 @@ function fetchDataAndCreateVisualization(url, yAxis, xAxis, svg, graphType) {
       console.log(
         "fetchDataAndCreateVisualization function is loaded and called."
       );
-    })
-    .catch((error) => console.error("Error fetching data:", error));
+    });
 }
 
 function createD3Visualization(data, yAxis, xAxis, svg, graphType) {

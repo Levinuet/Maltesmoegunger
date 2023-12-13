@@ -107,6 +107,8 @@ document.addEventListener("DOMContentLoaded", function () {
       existingImage.remove();
     }
 
+    answerButtonsElement.style.display = "";
+
     // Check if there's an image for the question and add it
     if (question.imagePath) {
       const imageElement = document.createElement("img");
@@ -157,48 +159,42 @@ document.addEventListener("DOMContentLoaded", function () {
     const selectedButton = e.target;
     const currentQuestion = shuffledQuestions[currentQuestionIndex];
 
-    // Determine if the selected answer is correct
     const isCorrect = selectedButton.dataset.correct === "true";
+    showExplanationPage(selectedButton.dataset.explanation, isCorrect);
 
-    // Apply the correct or wrong class to the selected button
-    if (isCorrect) {
+    const questionImage =
+      questionContainerElement.querySelector(".question-image");
+    if (questionImage) {
+      questionImage.style.display = "none"; // or questionImage.remove(); if you want to remove it from the DOM
+    }
+    answerButtonsElement.style.display = "none";
+    // Show explanation on a new page
+    showExplanationPage(selectedButton.dataset.explanation);
+
+    // fetch data and show graph
+    const apiUrl = currentQuestion.apiEndpoint;
+    const yAxis = currentQuestion.yAxis;
+    const xAxis = currentQuestion.xAxis;
+    const graphType = currentQuestion.graphType;
+    await fetchDataAndCreateVisualization(apiUrl, yAxis, xAxis, svg, graphType);
+
+    if (selectedButton.dataset.correct === "true") {
       selectedButton.classList.add("correct");
       correctAnswersCount++;
     } else {
       selectedButton.classList.add("wrong");
     }
 
-    // Show explanation with the corresponding icon
-    showExplanationPage(selectedButton.dataset.explanation, isCorrect);
-
-    // Hide the question image if it exists
-    const questionImage =
-      questionContainerElement.querySelector(".question-image");
-    if (questionImage) {
-      questionImage.style.display = "none"; // or questionImage.remove();
-    }
-
-    // Fetch data and show graph if necessary
-    // This part assumes fetchDataAndCreateVisualization is a function that updates the graph
-    // based on the question and doesn't return a value we need to wait for
-    const apiUrl = currentQuestion.apiEndpoint;
-    const yAxis = currentQuestion.yAxis;
-    const xAxis = currentQuestion.xAxis;
-    const graphType = currentQuestion.graphType;
-    fetchDataAndCreateVisualization(apiUrl, yAxis, xAxis, svg, graphType);
-
-    // Display the next question button or finish the quiz
-    if (currentQuestionIndex < shuffledQuestions.length - 1) {
+    // Vis næste-knappen eller afslut quizzen
+    if (shuffledQuestions.length > currentQuestionIndex) {
       nextButton.classList.remove("hide");
     } else {
-      // If there are no more questions, show results or reset
       startButton.innerText = "Start quizzen igen";
       startButton.classList.remove("hide");
-      // Here you might also want to hide the current question and show results
     }
   }
 
-  // Function to display the explanation and icon
+  // Funktion til at vise siden med forklaring
   function showExplanationPage(explanation, isCorrect) {
     // Clear the content of explanationElement
     explanationElement.innerHTML = "";
@@ -214,11 +210,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Append the icon to the explanation element
     explanationElement.appendChild(iconElement);
 
-    // Append the explanation text
-    explanationElement.append(document.createTextNode(" " + explanation));
+    // Create a text node for the explanation text and append it
+    const textNode = document.createTextNode(explanation);
+    explanationElement.appendChild(textNode);
   }
-
-  // Function to clear the status classes
   function clearStatusClass(element) {
     const children = element.children;
     for (let i = 0; i < children.length; i++) {
