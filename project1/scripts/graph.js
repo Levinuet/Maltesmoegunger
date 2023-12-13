@@ -14,7 +14,8 @@ function fetchDataAndCreateVisualization(url, yAxis, xAxis, svg, graphType) {
       console.log(
         "fetchDataAndCreateVisualization function is loaded and called."
       );
-    });
+    })
+    .catch((error) => console.error("Error fetching data:", error));
 }
 
 function createD3Visualization(data, yAxis, xAxis, svg, graphType) {
@@ -33,8 +34,8 @@ function createD3Visualization(data, yAxis, xAxis, svg, graphType) {
   }
 
   const styling = {
-    width: containerWidth,
-    height: containerHeight,
+    width: 1920,
+    height: 550,
     marginTop: 20,
     marginRight: 20,
     marginBottom: 30,
@@ -45,14 +46,14 @@ function createD3Visualization(data, yAxis, xAxis, svg, graphType) {
     case "bar":
       createBarChart(data, yAxis, xAxis, svg, styling);
       break;
+    case "bart":
+      createBartChart(data, yAxis, xAxis, svg, styling);
+      break;
     case "line":
       createLineChart(data, yAxis, xAxis, svg, styling);
       break;
     case "stacked":
       createStackedChart(data, yAxis, xAxis, svg, styling);
-    case "map":
-      createMapChart(data, yAxis, xAxis, svg, styling);
-      break;
 
     default:
       break;
