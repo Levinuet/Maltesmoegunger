@@ -64,22 +64,22 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function nextQuestion() {
-    // Reset the state for the new question
     resetState();
-
-    // Increment the question index
     currentQuestionIndex++;
 
-    // Check if there are more questions
     if (currentQuestionIndex < shuffledQuestions.length) {
-      // Still have questions left, show the next question
       showQuestion(shuffledQuestions[currentQuestionIndex]);
-      nextButton.classList.remove("hide"); // Ensure the next button is shown if we're not at the last question
-      resultsButton.classList.add("hide"); // Ensure the results button is hidden if we're not at the last question
+
+      // Check if this is the last question
+      if (currentQuestionIndex === shuffledQuestions.length - 1) {
+        // Last question: Prepare to show the "Results" button
+        resultsButton.classList.remove("hide");
+        nextButton.classList.add("hide");
+      }
     } else {
-      // No more questions, hide the next button and show the results button
-      nextButton.classList.add("hide");
+      // No more questions: Ensure only the "Results" button is shown
       resultsButton.classList.remove("hide");
+      nextButton.classList.add("hide");
     }
   }
 
@@ -180,6 +180,15 @@ document.addEventListener("DOMContentLoaded", function () {
     // Show explanation on a new page
     showExplanationPage(selectedButton.dataset.explanation, isCorrect);
 
+    if (currentQuestionIndex === shuffledQuestions.length - 1) {
+      // Last question: Show the "Results" button and hide the "Next" button
+      resultsButton.classList.remove("hide");
+      nextButton.classList.add("hide");
+    } else {
+      // Not the last question: Show the "Next" button
+      nextButton.classList.remove("hide");
+    }
+
     // fetch data and show graph
     const apiUrl = currentQuestion.apiEndpoint;
     const yAxis = currentQuestion.yAxis;
@@ -192,14 +201,6 @@ document.addEventListener("DOMContentLoaded", function () {
       correctAnswersCount++;
     } else {
       selectedButton.classList.add("wrong");
-    }
-
-    // Vis næste-knappen eller afslut quizzen
-    if (shuffledQuestions.length > currentQuestionIndex) {
-      nextButton.classList.remove("hide");
-    } else {
-      startButton.innerText = "Start quizzen igen";
-      startButton.classList.remove("hide");
     }
   }
 
