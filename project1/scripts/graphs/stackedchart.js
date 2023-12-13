@@ -10,7 +10,7 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
   // Configure the D3 stack layout with the specified keys
   const series = d3.stack().keys(keys).offset(d3.stackOffsetExpand)(data);
 
-  // Prepare the scales for positional and color encodings
+  // Prepare the scales for positional and color encodings.
   const xScale = d3
     .scaleBand()
     .domain(data.map((d) => d.year))
@@ -56,15 +56,14 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
   // Append the x-axis
   svg
     .append("g")
-    .attr("transform", `translate(0,${height - marginBottom})`)
+    .attr("transform", `translate(-54,${height - marginBottom})`)
     .call(xAxis)
     .call((g) => g.select(".domain").remove())
     .append("text")
     .attr("x", width - marginRight)
     .attr("y", -6)
-    .attr("text-anchor", "end")
-    .attr("fill", "currentColor")
-    .text(xAxisLabel);
+    .attr("text-anchor", "start")
+    .attr("fill", "currentColor");
 
   // Append the y-axis
   svg
@@ -76,8 +75,34 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
     .attr("x", 6)
     .attr("y", marginTop)
     .attr("text-anchor", "start")
-    .attr("fill", "currentColor")
-    .text(yAxisLabel);
+    .attr("fill", "currentColor");
+
+  // Legend setup
+  const legend = svg
+    .append("g")
+    .attr("font-family", "sans-serif")
+    .attr("font-size", 10)
+    .attr("text-anchor", "start") // Change text-anchor to start
+    .selectAll("g")
+    .data(keys.slice().reverse())
+    .enter()
+    .append("g")
+    .attr("transform", (d, i) => `translate(0,${i * 20})`);
+
+  legend
+    .append("rect")
+    .attr("x", width - 135)
+    .attr("width", 25)
+    .attr("height", 25)
+    .attr("fill", color);
+
+  legend
+    .append("text")
+    .attr("x", width - 105) // Adjust x position to be to the right of the square
+    .attr("y", 12.5)
+    .attr("dy", "0.32em")
+    .style("font-size", "16px") // Change the font size as needed
+    .text((d) => d);
 
   // Return the chart with the color scale as a property (for the legend).
   return Object.assign(svg.node(), { scales: { color } });
