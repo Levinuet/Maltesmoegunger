@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Processed countries data:", countries);
 
       // Define your API endpoint for the 'changes' view
-      const apiEndpoint = "http://localhost:8080/changes"; // Adjust the URL accordingly
+      const apiEndpoint = "https://maltesmoegungerne.onrender.com/changes"; // Adjust the URL accordingly
 
       // Fetch data from the API
       d3.json(apiEndpoint).then((response) => {
