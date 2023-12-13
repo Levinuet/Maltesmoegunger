@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
     .style("padding", "5px")
     .style("border", "1px solid #ccc")
     .style("border-radius", "5px");
-  let width = 1400;
-  let height = 820;
+  let width = 1500;
+  let height = 920;
 
   // Select the map container and append an SVG element
   const svg = d3
@@ -105,8 +105,8 @@ document.addEventListener("DOMContentLoaded", function () {
           // Create a dictionary to map country codes to API data
           const projection = d3
             .geoMercator()
-            .scale(200)
-            .translate([width / 2.3, height / 1.4]);
+            .scale(210)
+            .translate([width / 2.3, height / 1.55]);
           const path = d3.geoPath().projection(projection);
 
           // Append a group element to the SVG
