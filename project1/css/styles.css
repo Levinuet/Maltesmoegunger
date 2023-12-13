@@ -284,3 +284,10 @@ button:hover {
   align-items: center; /* Centers vertically in the flex container */
   height: 100%; /* Make sure the parent has a height for vertical centering to work */
 }
+
+.explanation-icon {
+  width: 50px; /* or any other size */
+  height: 50px;
+  margin-right: 10px;
+  vertical-align: middle;
+}

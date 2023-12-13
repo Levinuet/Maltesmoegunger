@@ -34,8 +34,8 @@ function createD3Visualization(data, yAxis, xAxis, svg, graphType) {
   }
 
   const styling = {
-    width: 1920,
-    height: 550,
+    width: containerWidth,
+    height: containerHeight,
     marginTop: 20,
     marginRight: 20,
     marginBottom: 30,
