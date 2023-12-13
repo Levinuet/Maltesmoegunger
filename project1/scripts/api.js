@@ -63,10 +63,9 @@ app.get("/brazilfires", async (req, res) => {
   }
 });
 app.listen(port, () => {
-  console.log(`Server kører på http://localhost:${port}`);
-  app.get("/pasturepercentage", async (req, res) => {
+  app.get("/bubbleforest", async (req, res) => {
     try {
-      let queryData = await klient.query(qry);
+      let queryData = await klient.query("SELECT * FROM bubbleforest");
       res.json({
         ok: true,
         skovData: queryData.rows,
@@ -80,7 +79,7 @@ app.listen(port, () => {
   });
   app.get("/smallchanges", async (req, res) => {
     try {
-      let queryData = await klient.query(qry);
+      let queryData = await klient.query("SELECT * FROM smallchanges");
       res.json({
         ok: true,
         skovData: queryData.rows,
