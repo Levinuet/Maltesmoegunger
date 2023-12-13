@@ -50,14 +50,13 @@ body {
 
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   max-height: 100vh; /* Ensure the container does not exceed the viewport height */
   overflow: hidden; /* Hide overflow to prevent scrolling */
   /* Remove or adjust padding and margin as necessary */
 }
 
-.map-container,
-.container {
+.map-container {
   flex-direction: row;
 }
 
@@ -70,7 +69,13 @@ body {
 #question-container {
   display: grid;
   border-radius: 10px;
-  padding: 20px;
+  width: 1620px;
+  height: 200px;
+  justify-content: center;
+  align-content: center;
+  font-size: 1rem;
+  margin: 50px;
+  margin-bottom: 0px;
 }
 
 .map-header {
@@ -223,6 +228,8 @@ button {
   cursor: pointer;
   margin-top: 20px;
   transition: background-color 0.3s ease;
+  justify-content: center;
+  align-items: center;
 }
 
 button:hover {
@@ -261,4 +268,19 @@ button:hover {
   width: 50px;
   margin-left: 20px; /* Adds space between the icon and the text */
   vertical-align: middle;
+}
+
+#chart-container {
+  width: 1920px;
+  height: 600px;
+  justify-content: center;
+  align-items: center;
+}
+
+.parent-container {
+  /* The parent element of #chart-container */
+  display: flex;
+  justify-content: center; /* Centers horizontally in the flex container */
+  align-items: center; /* Centers vertically in the flex container */
+  height: 100%; /* Make sure the parent has a height for vertical centering to work */
 }
