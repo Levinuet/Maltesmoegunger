@@ -3,7 +3,7 @@ const questions = [
     question: "Hvilket land har den største skovrydning i 2010 frem til 2020?",
     apiEndpoint: "http://localhost:8080/smallchanges",
     yAxis: "netChanges",
-    xAxis: "Name",
+    xAxis: "name",
     graphType: "bar",
     answers: [
       {
@@ -58,7 +58,7 @@ const questions = [
     question: "Hvor meget skov er blevet afbrændt i Brasilien fra 2000-2017?",
     apiEndpoint: "http://localhost:8080/brazilfires",
     yAxis: "Brand",
-    xAxis: "year",
+    xAxis: "d.year",
     graphType: "bar",
     answers: [
       {
