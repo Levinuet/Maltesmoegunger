@@ -173,7 +173,6 @@ document.addEventListener("DOMContentLoaded", function () {
               // Hide tooltip on mouseout
               tooltip.style("display", "none");
             });
-          // ...
         } else {
           console.error("API request failed:", response.message);
         }
