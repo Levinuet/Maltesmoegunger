@@ -49,11 +49,37 @@ body {
 }
 
 .container {
-  display: flex;
+  display: flex; */
   flex-direction: row;
   max-height: 100vh; /* Ensure the container does not exceed the viewport height */
   overflow: hidden; /* Hide overflow to prevent scrolling */
   /* Remove or adjust padding and margin as necessary */
+}
+
+.result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.result-container h1 {
+  /* Add any styles you need for h1 */
+  margin-bottom: 10px; /* Adjust as needed for spacing between h1 and h2 */
+}
+
+.result-container h2 {
+  /* Add any styles you need for h2 */
+  margin-top: 10px; /* Adjust as needed for spacing between h1 and h2 */
+}
+
+.result-container img {
+  /* Adjust the width and height properties to make the image bigger */
+  width: 800px; /* Set the desired width */
+  height: 600px; /* Set the desired height */
+  border-radius: 600px;
+  object-fit: cover; /* Adjust the object-fit property if needed */
 }
 
 .map-container {
@@ -68,9 +94,9 @@ body {
 
 #question-container {
   display: grid;
-  place-items: center; /* This shorthand property centers both horizontally and vertically */
+  place-items: start center; /* Aligns items at the start horizontally and centers them vertically */
   border-radius: 10px;
-  width: 100%; /* Use 100% width for responsiveness */
+  width: 100%;
   height: 200px;
   font-size: 1rem;
   margin: 50px;
@@ -130,6 +156,7 @@ body {
   max-height: 100%;
   overflow: hidden;
 }
+
 .intro-container {
   display: flex;
   flex-direction: column;
@@ -247,11 +274,12 @@ button:hover {
 }
 
 .question-image {
-  max-width: 100%; /* Ensures the image is not wider than its container */
+  width: 1000px; /* Ensures the image is not wider than its container */
+  height: 1000px;
   height: auto; /* Maintains the aspect ratio of the image */
   display: block; /* Avoid inline behavior */
   margin: 0 auto; /* Center the image */
-  border-radius: 5px; /* Optional: Rounds the corners of the image */
+  border-radius: 50px; /* Optional: Rounds the corners of the image */
   padding: 10px 0; /* Optional: Adds some space above and below the image */
 }
 
@@ -263,6 +291,13 @@ button:hover {
 }
 
 #back-to-index-btn img {
+  height: 50px; /* Adjust the size as needed */
+  width: 50px;
+  margin-left: 20px; /* Adds space between the icon and the text */
+  vertical-align: middle;
+}
+
+#results-btn img {
   height: 50px; /* Adjust the size as needed */
   width: 50px;
   margin-left: 20px; /* Adds space between the icon and the text */
@@ -282,4 +317,11 @@ button:hover {
   justify-content: center; /* Centers horizontally in the flex container */
   align-items: center; /* Centers vertically in the flex container */
   height: 100%; /* Make sure the parent has a height for vertical centering to work */
+}
+
+.explanation-icon {
+  width: 50px; /* or any other size */
+  height: 50px;
+  margin-right: 10px;
+  vertical-align: middle;
 }
