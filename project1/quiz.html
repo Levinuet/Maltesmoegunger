@@ -17,12 +17,27 @@
   </head>
   <body>
     <div class="container">
-      <div class="intro-container">
+      <div id="intro-container">
         <img
-          src="./css/images/afskovning1.jpg"
+          src="/project1/css/images/aii.png"
           alt="Descriptive text about the image"
           class="intro-image"
-        />
+        />  
+      </div>
+      <div class="quiz-info-box">
+                   <p>
+            Tag et dyk ind i vores afskovningsquiz, hvor vi sætter fokus på de mange aspekter af afskovning rundt om i verden. 
+            Denne quiz er designet til at være letforståelig og fyldt med vigtige oplysninger, som giver dig et overblik over de forskellige årsager 
+            og konsekvenser af afskovning. Med en række tankevækkende og indsigtsfulde spørgsmål er quizzen både underholdende og uddannende, perfekt for dem,
+            der ønsker at lære mere om dette kritiske miljøproblem. Så er du klar til at udforske og forstå den globale udfordring afskovning udgør? Tryk på 
+            'Start Quiz' og begynd din rejse nu!
+          </p>  
+          <div class="controls">
+          <button id="start-btn" class="start-btn btn">Start Quiz<img src="css/icons/tree.png" alt="Start"></button>
+          </div>
+      </div>     
+
+      </div>
         <div id="question-container" class="hide">
           <div id="question">Spørgsmål</div>
           <div id="explanation"></div>
@@ -30,30 +45,24 @@
             <button class="btn">Svarmulighed 1</button>
             <button class="btn">Svarmulighed 2</button>
             <button class="btn">Svarmulighed 3</button>
-          </div>
+         </div>
 
-          <p>
-            Welcome to the Skovrydningsquizzen! Are you ready to test your
-            knowledge and learn something new? Click 'Start quizzen' when you're
-            ready to begin.
-          </p>
+
         </div>
-
         <div id="explanation-container" class="hide"></div>
         <div id="chart-container"></div>
       </div>
       <div class="controls">
-        <button id="start-btn" class="start-btn btn">Start quizzen</button>
-        <button id="next-btn" class="next-btn btn hide">Næste spørgsmål</button>
-        <button id="results-btn" class="hide">Se resultat</button>
+        <button id="next-btn" class="next-btn btn hide">Næste spørgsmål<img src="css/icons/next.png" alt="next"></button>
+        <button id="results-btn" class="hide">Se resultat<img src="css/icons/results.png" alt="result"></button>
       </div>
     </div>
-    <script src="./scripts/graph.js"></script>
-    <script src="./scripts/questions.js"></script>
-    <script src="./scripts/graphs/barchart.js"></script>
-    <script src="./scripts/graphs/linechart.js"></script>
-    <script src="./scripts/graphs/mapchart.js"></script>
-    <script src="./scripts/graphs/stackedchart.js"></script>
-    <script src="./scripts/script.js"></script>
+    <script src="scripts/graph.js"></script>
+    <script src="scripts/questions.js"></script>
+    <script src="scripts/graphs/barchart.js"></script>
+    <script src="scripts/graphs/linechart.js"></script>
+    <script src="scripts/graphs/mapchart.js"></script>
+    <script src="scripts/graphs/stackedchart.js"></script>
+    <script src="scripts/script.js"></script>
   </body>
 </html>
