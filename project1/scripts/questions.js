@@ -8,22 +8,22 @@ const questions = [
     imagePath: "css/images/deforest.jpg",
     answers: [
       {
-        text: "Indonesien",
+        text: "USA",
         correct: false,
         explanation:
-          "Du svarede desværre forkert... Illustrationen viser betydelig skovrydning i Brasilien i perioden 2010 til 2020. Dette udgør en alvorlig trussel mod Amazonas junglens komplekse økosystemer og har væsentlige konsekvenser for klimaet. Skovrydningen resulterer i tab af levesteder for det rige dyreliv i Amazonas jungle, og flere arter står nu over for fare for udryddelse. Det er værd at bemærke, at skovrydningen ofte realiseres gennem metoder som påsatte brænde, der i nogle tilfælde kan være drevet af landbrugsinteresser.",
+          "Forkert, Brasilien oplevede den mest omfattende skovrydning i dette tidsrum, primært i Amazonas. Denne udvikling har haft alvorlige konsekvenser for biodiversiteten og klimaet.",
       },
       {
-        text: "Indien",
+        text: "Rusland",
         correct: false,
         explanation:
-          "Du svarede desværre forkert... Illustrationen viser betydelig skovrydning i Brasilien i perioden 2010 til 2020. Dette udgør en alvorlig trussel mod Amazonas junglens komplekse økosystemer og har væsentlige konsekvenser for klimaet. Skovrydningen resulterer i tab af levesteder for det rige dyreliv i Amazonas jungle, og flere arter står nu over for fare for udryddelse. Det er værd at bemærke, at skovrydningen ofte realiseres gennem metoder som påsatte brænde, der i nogle tilfælde kan være drevet af landbrugsinteresser.",
+          "Forkert, Brasilien oplevede den mest omfattende skovrydning i dette tidsrum, primært i Amazonas. Denne udvikling har haft alvorlige konsekvenser for biodiversiteten og klimaet.",
       },
       {
         text: "Brasilien",
         correct: true,
         explanation:
-          "Det er helt rigtigt! Illustrationen viser betydelig skovrydning i Brasilien i perioden 2010 til 2020. Dette udgør en alvorlig trussel mod Amazonas junglens komplekse økosystemer og har væsentlige konsekvenser for klimaet. Skovrydningen resulterer i tab af levesteder for det rige dyreliv i Amazonas jungle, og flere arter står nu over for fare for udryddelse. Det er værd at bemærke, at skovrydningen ofte realiseres gennem metoder som påsatte brænde, der i nogle tilfælde kan være drevet af landbrugsinteresser.",
+          "Korrekt, Brasilien oplevede den mest omfattende skovrydning i dette tidsrum, primært i Amazonas. Denne udvikling har haft alvorlige konsekvenser for biodiversiteten og klimaet.",
       },
     ],
   },
@@ -40,19 +40,19 @@ const questions = [
         text: "Sojabønneproduktionen",
         correct: false,
         explanation:
-          "Desværre du svarede forkert på spørgsmålet... Stakdiagrammet illustrerer de faktorer, der har haft størst betydning på skovrydningen i Brasilien i perioden 2001-2013. kvægopdræt er den mest betydningsfulde faktorer for skovrydningen af den brasilianske regnskov i løbet af denne periode, idet det gennemsnitligt udgør 62,7% af alle påvirkende faktorer årligt. Hvis vi antager at kvægopdræt har samme betydning for skovrydning globalt vil det, have en positiv betydning at reducere kødforbruget.",
+          "Forkert, kvægopdræt var den dominerende faktor, der bidrog til skovrydning i Brasilien, hvilket understreger behovet for bæredygtige landbrugsmetoder.",
       },
       {
-        text: "Kvægopdræft",
+        text: "Kvægopdræt",
         correct: true,
         explanation:
-          "Du svarede rigtigt på spørgsmålet! Stakdiagrammet illustrerer de faktorer, der har haft størst betydning på skovrydningen i Brasilien i perioden 2001-2013. kvægopdræt er den mest betydningsfulde faktorer for skovrydningen af den brasilianske regnskov i løbet af denne periode, idet det gennemsnitligt udgør 62,7% af alle påvirkende faktorer årligt. Hvis vi antager at kvægopdræt har samme betydning for skovrydning globalt vil det, have en positiv betydning at reducere kødforbruget. ",
+          "Rigtigt, kvægopdræt var den dominerende faktor, der bidrog til skovrydning i Brasilien, hvilket understreger behovet for bæredygtige landbrugsmetoder.",
       },
       {
-        text: "Skovbrænde",
+        text: "Urbanisering",
         correct: false,
         explanation:
-          "Desværre du svarede forkert på spørgsmålet... Stakdiagrammet illustrerer de faktorer, der har haft størst betydning på skovrydningen i Brasilien i perioden 2001-2013. kvægopdræt er den mest betydningsfulde faktorer for skovrydningen af den brasilianske regnskov i løbet af denne periode, idet det gennemsnitligt udgør 62,7% af alle påvirkende faktorer årligt. Hvis vi antager at kvægopdræt har samme betydning for skovrydning globalt vil det, have en positiv betydning at reducere kødforbruget.",
+          "Forkert, kvægopdræt var den dominerende faktor, der bidrog til skovrydning i Brasilien, hvilket understreger behovet for bæredygtige landbrugsmetoder.",
       },
     ],
   },
@@ -68,25 +68,24 @@ const questions = [
         text: "cirka 2200 kvadratkilometer",
         correct: false,
         explanation:
-          "Du svarede desværre forkert... 13 millioner hektar bliver fældet hver dag! Det svarer til 36 Fodboldbaner i minuttet. Skovene, som udgør en afgørende del af vores globale økosystem, står over for en udfordring af alarmerende proportioner. Hvert minut bliver et betragteligt areal af skovrydning registreret på verdensplan, hvilket har dybtgående konsekvenser for biodiversitet, klima og miljøet som helhed. Der er flere hovedårsager til skovrydning, herunder behovet for landbrugsarealer, produktion af papir og træprodukter, samt urbanisering. Uheldigvis fører denne praksis til tab af levesteder for utallige plante- og dyrearter, og det accelererer klimaforandringer ved at reducere skovens kapacitet til at absorbere CO2. At forstå omfanget af skovrydningen er afgørende for at tackle dette problem. Initiativer såsom bæredygtigt skovbrug, bevarelse af naturområder og anvendelse af alternative materialer kan bidrage til at mindske det aktuelle tempo for skovnedbrydning. Derfor er det vigtigt at øge bevidstheden om dette spørgsmål, da det berører os alle og har konsekvenser for fremtidige generationer.",
+          "Korrekt.... NOT! Omkring 6600 kvadratkilometer blev afbrændt, hvilket har været en udfordring for både klima og biodiversitet i området.",
       },
       {
         text: "cirka 4400 kvadratkilometer",
         correct: false,
         explanation:
-          "Du svarede desværre forkert... 13 millioner hektar bliver fældet hver dag! Det svarer til 36 Fodboldbaner i minuttet. Skovene, som udgør en afgørende del af vores globale økosystem, står over for en udfordring af alarmerende proportioner. Hvert minut bliver et betragteligt areal af skovrydning registreret på verdensplan, hvilket har dybtgående konsekvenser for biodiversitet, klima og miljøet som helhed. Der er flere hovedårsager til skovrydning, herunder behovet for landbrugsarealer, produktion af papir og træprodukter, samt urbanisering. Uheldigvis fører denne praksis til tab af levesteder for utallige plante- og dyrearter, og det accelererer klimaforandringer ved at reducere skovens kapacitet til at absorbere CO2. At forstå omfanget af skovrydningen er afgørende for at tackle dette problem. Initiativer såsom bæredygtigt skovbrug, bevarelse af naturområder og anvendelse af alternative materialer kan bidrage til at mindske det aktuelle tempo for skovnedbrydning. Derfor er det vigtigt at øge bevidstheden om dette spørgsmål, da det berører os alle og har konsekvenser for fremtidige generationer.",
+          "Korrekt.... NOT! Omkring 6600 kvadratkilometer blev afbrændt, hvilket har været en udfordring for både klima og biodiversitet i området.",
       },
       {
         text: "cirka 6600 kvadratkilometer",
         correct: true,
         explanation:
-          "Det er helt rigtigt! 13 millioner hektar bliver fældet hver dag! Det svarer til 36 Fodboldbaner i minuttet. Skovene, som udgør en afgørende del af vores globale økosystem, står over for en udfordring af alarmerende proportioner. Hvert minut bliver et betragteligt areal af skovrydning registreret på verdensplan, hvilket har dybtgående konsekvenser for biodiversitet, klima og miljøet som helhed. Der er flere hovedårsager til skovrydning, herunder behovet for landbrugsarealer, produktion af papir og træprodukter, samt urbanisering. Uheldigvis fører denne praksis til tab af levesteder for utallige plante- og dyrearter, og det accelererer klimaforandringer ved at reducere skovens kapacitet til at absorbere CO2. At forstå omfanget af skovrydningen er afgørende for at tackle dette problem. Initiativer såsom bæredygtigt skovbrug, bevarelse af naturområder og anvendelse af alternative materialer kan bidrage til at mindske det aktuelle tempo for skovnedbrydning. Derfor er det vigtigt at øge bevidstheden om dette spørgsmål, da det berører os alle og har konsekvenser for fremtidige generationer.",
+          "Korrekt! Omkring 6600 kvadratkilometer blev afbrændt, hvilket har været en udfordring for både klima og biodiversitet i området.",
       },
     ],
   },
   {
-    question:
-      "I 2015 blev der brændt 73017.07 tusind hektar af Amazonas junglen. Hvor meget svarer det til? ",
+    question: "Hvor stort et areal af Amazonas junglen blev brændt i 2015?",
     apiEndpoint: "https://maltesmoegungerne.onrender.com/brazilfires",
     yAxis: "year",
     xAxis: "Brand",
@@ -97,19 +96,19 @@ const questions = [
         text: "To gange Tysklands areal",
         correct: true,
         explanation:
-          "Det er helt rigtigt! Den Brasilianske skov er præget af massive skovbrænde. I 2015 blev cirka to gange af Tysklands samlede areal brændt af. Disse brænde er katastrofale for økosystemer og stiller vigtige spørgsmål vedrørende vores fællesansvar for at beskytte regnskoven. Amazon junglen er kendt, som verdens lunger og spiller en central rolle i at bremse klimaforandringerne. Disse brænde kan være udløst af menneskelig aktivitet såsom skovrydning, landbrug og tørke. Der frigives enorme mængder af CO2 i atmosfæren, når skoven brænder. Dette er med til at fremme drivhuseffekten og gøre klimamålene endnu sværere at realisere.",
+          "Præcis, et område på størrelse med to gange Tysklands areal blev brændt, hvilket markerer en kritisk situation for denne vitale økosystem.",
       },
       {
-        text: "Ruslands areal",
+        text: "Halvdelen af Belgiens areal",
         correct: false,
         explanation:
-          "Du svarede desværre forkert... Den Brasilianske skov er præget af massive skovbrænde. I 2015 blev cirka to gange af Tysklands samlede areal brændt af. Disse brænde er katastrofale for økosystemer og stiller vigtige spørgsmål vedrørende vores fællesansvar for at beskytte regnskoven. Amazon junglen er kendt, som verdens lunger og spiller en central rolle i at bremse klimaforandringerne. Disse brænde kan være udløst af menneskelig aktivitet såsom skovrydning, landbrug og tørke. Der frigives enorme mængder af CO2 i atmosfæren, når skoven brænder. Dette er med til at fremme drivhuseffekten og gøre klimamålene endnu sværere at realisere.",
+          "Desværre, et område på størrelse med to gange Tysklands areal blev brændt, hvilket markerer en kritisk situation for denne vitale økosystem.",
       },
       {
-        text: "Mexicos areal",
+        text: "Lige så stort som Schweiz",
         correct: false,
         explanation:
-          "Du svarede desværre forkert... Den Brasilianske skov er præget af massive skovbrænde. I 2015 blev cirka to gange af Tysklands samlede areal brændt af. Disse brænde er katastrofale for økosystemer og stiller vigtige spørgsmål vedrørende vores fællesansvar for at beskytte regnskoven. Amazon junglen er kendt, som verdens lunger og spiller en central rolle i at bremse klimaforandringerne. Disse brænde kan være udløst af menneskelig aktivitet såsom skovrydning, landbrug og tørke. Der frigives enorme mængder af CO2 i atmosfæren, når skoven brænder. Dette er med til at fremme drivhuseffekten og gøre klimamålene endnu sværere at realisere.",
+          "Desværre, et område på størrelse med to gange Tysklands areal blev brændt, hvilket markerer en kritisk situation for denne vitale økosystem.",
       },
     ],
   },
@@ -123,22 +122,22 @@ const questions = [
     imagePath: "css/images/good.jpg",
     answers: [
       {
-        text: "Udsat",
+        text: "Stagnerende tendens",
         correct: false,
         explanation:
-          "Du svarede desværre forkert... Genoprettelsen af skovområder er der kommet et stigende fokus på i det seneste årti. I denne periode er der flere lande, som har lavet programmer, der har til formål at genoprette skovområder, der har været udsat for skovrydning og afbrænding. Nogle af de mest markante udforinger for skovgenoprettelse er økonomiske og politiske. Den gennemgribende konflikt er behovet for landbrugsjord og bevarelsen af skovområder. Hvis et skovgenopretningsprojekt skal være succesfuldt, kræver det ofte inddragelse fra lokalsamfundet.",
+          "Det er desværre forkert, der har været en stigende tendens i skovgenoprettelse globalt, med flere lande, der iværksætter programmer for at imødegå tidligere skader.",
       },
       {
-        text: "Droppet",
+        text: "Faldende tendens",
         correct: false,
         explanation:
-          "Du svarede desværre forkert... Genoprettelsen af skovområder er der kommet et stigende fokus på i det seneste årti. I denne periode er der flere lande, som har lavet programmer, der har til formål at genoprette skovområder, der har været udsat for skovrydning og afbrænding. Nogle af de mest markante udforinger for skovgenoprettelse er økonomiske og politiske. Den gennemgribende konflikt er behovet for landbrugsjord og bevarelsen af skovområder. Hvis et skovgenopretningsprojekt skal være succesfuldt, kræver det ofte inddragelse fra lokalsamfundet.",
+          "Det er desværre forkert, der har været en stigende tendens i skovgenoprettelse globalt, med flere lande, der iværksætter programmer for at imødegå tidligere skader.",
       },
       {
         text: "Stigende tendens",
         correct: true,
         explanation:
-          "Det er helt rigtigt! Genoprettelsen af skovområder er der kommet et stigende fokus på i det seneste årti. I denne periode er der flere lande, som har lavet programmer, der har til formål at genoprette skovområder, der har været udsat for skovrydning og afbrænding. Nogle af de mest markante udforinger for skovgenoprettelse er økonomiske og politiske. Den gennemgribende konflikt er behovet for landbrugsjord og bevarelsen af skovområder. Hvis et skovgenopretningsprojekt skal være succesfuldt, kræver det ofte inddragelse fra lokalsamfundet.",
+          "Det er helt korrekt, der har været en stigende tendens i skovgenoprettelse globalt, med flere lande, der iværksætter programmer for at imødegå tidligere skader.",
       },
     ],
   },
