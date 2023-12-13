@@ -1,7 +1,7 @@
 const questions = [
   {
     question: "verdenskort med changes",
-    apiEndpoint: "http://localhost:8080/changes",
+    apiEndpoint: "https://maltesmoegungerne.onrender.com/changes",
     yAxis: "net ændringer",
     xAxis: "Lande Navn",
     graphType: "map",
@@ -28,7 +28,7 @@ const questions = [
   },
   {
     question: "Hvad har du at sige",
-    apiEndpoint: "http://localhost:8080/brazil",
+    apiEndpoint: "https://maltesmoegungerne.onrender.com/brazil",
     yAxis: "pasture",
     xAxis: "year",
     graphType: "stacked",
@@ -53,7 +53,7 @@ const questions = [
   },
   {
     question: "Hvor meget skov er blevet afbrændt i Brasilien fra 2000-2017?",
-    apiEndpoint: "http://localhost:8080/brazilfires",
+    apiEndpoint: "https://maltesmoegungerne.onrender.com/brazilfires",
     yAxis: "Brand",
     xAxis: "year",
     graphType: "bar",
@@ -80,7 +80,7 @@ const questions = [
   },
   {
     question: "Hvor meget skov er blevet afbrændt i Brasilien fra 2000-2017?",
-    apiEndpoint: "http://localhost:8080/brazilfires",
+    apiEndpoint: "https://maltesmoegungerne.onrender.com/brazilfires",
     yAxis: "year",
     xAxis: "Brand",
     graphType: "line",
@@ -108,7 +108,7 @@ const questions = [
   {
     question:
       "Hvis verdensbefolkningen spiste plantebaseret hvor meget af landbrugsjorden ville blive frigjort?  ",
-    apiEndpoint: "null",
+    apiEndpoint: "https://maltesmoegungerne.onrender.com",
     yAxis: "name",
     xAxis: "Brand",
     graphType: "bar",

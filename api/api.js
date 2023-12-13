@@ -63,7 +63,6 @@ app.get("/brazilfires", async (req, res) => {
   }
 });
 app.listen(port, () => {
-  console.log(`Server kører på http://localhost:${port}`);
   app.get("/bubbleforest", async (req, res) => {
     try {
       let queryData = await klient.query("SELECT * FROM bubbleforest");
