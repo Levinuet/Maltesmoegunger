@@ -19,11 +19,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-.hide {
-  display: none;
-  visibility: hidden;
-}
-
 body,
 html {
   margin: 0;
@@ -297,4 +292,9 @@ button:hover {
   height: 50px;
   margin-right: 10px;
   vertical-align: middle;
+}
+
+.hide {
+  display: none;
+  visibility: hidden;
 }
