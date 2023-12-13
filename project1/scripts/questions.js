@@ -1,10 +1,10 @@
 const questions = [
   {
     question: "Hvilket land har den største skovrydning i 2010 frem til 2020?",
-    apiEndpoint: "https://maltesmoegungerne.onrender.com/smallchanges",
+    apiEndpoint: "https://maltesmoegungerne.onrender.com/changes",
     yAxis: "netChanges",
     xAxis: "name",
-    graphType: "bar",
+    graphType: "bubble",
     imagePath: "css/images/deforest.jpg",
     answers: [
       {
@@ -85,7 +85,8 @@ const questions = [
     ],
   },
   {
-    question: "Hvor stort et areal af Amazonas junglen blev brændt i 2015?",
+    question:
+      "Hvor stort et areal af Amazonas junglen blev brændt fra 2000-2015?",
     apiEndpoint: "https://maltesmoegungerne.onrender.com/brazilfires",
     yAxis: "year",
     xAxis: "Brand",

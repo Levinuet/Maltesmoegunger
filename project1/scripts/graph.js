@@ -11,9 +11,6 @@ function fetchDataAndCreateVisualization(url, yAxis, xAxis, svg, graphType) {
       // Data is available here
       // Call a function to create the D3 visualization with the data
       createD3Visualization(data.skovData, yAxis, xAxis, svg, graphType);
-      console.log(
-        "fetchDataAndCreateVisualization function is loaded and called."
-      );
     });
 }
 
@@ -52,6 +49,9 @@ function createD3Visualization(data, yAxis, xAxis, svg, graphType) {
       createStackedChart(data, yAxis, xAxis, svg, styling);
     case "map":
       createMapChart(data, yAxis, xAxis, svg, styling);
+      break;
+    case "bubble":
+      createBubbleChart(data, yAxis, xAxis, svg, styling);
       break;
 
     default:
