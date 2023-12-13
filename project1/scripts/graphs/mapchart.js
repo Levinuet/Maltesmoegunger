@@ -175,9 +175,6 @@ document.addEventListener("DOMContentLoaded", function () {
               tooltip.style("display", "none");
             });
 
-          // Add a color legend
-          addColorLegend(defaultColorScale);
-
           // ...
         } else {
           console.error("API request failed:", response.message);
