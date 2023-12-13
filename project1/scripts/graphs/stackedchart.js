@@ -56,7 +56,7 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
   // Append the x-axis
   svg
     .append("g")
-    .attr("transform", `translate(-54,${height - marginBottom})`)
+    .attr("transform", `translate(-63,${height - marginBottom})`)
     .call(xAxis)
     .call((g) => g.select(".domain").remove())
     .append("text")

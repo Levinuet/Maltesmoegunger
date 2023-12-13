@@ -254,8 +254,9 @@ button:hover {
 }
 
 #chart-container {
-  width: 1920px;
+  width: 1980px;
   height: 600px;
+  display: contents;
   justify-content: center;
   align-items: center;
 }
