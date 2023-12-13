@@ -2,7 +2,7 @@ function createLineChart(data, xAxis, yAxis, svg, styling) {
   const { width, height, marginLeft, marginBottom, marginRight, marginTop } =
     styling;
 
-  // Declare the x (horizontal position) scale.
+  // Declare the x (horizontal position) scale
   const xScale = d3
     .scaleLinear()
     .domain(d3.extent(data, (d) => d[xAxis]))
