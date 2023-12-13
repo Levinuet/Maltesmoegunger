@@ -19,11 +19,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-.hide {
-  display: none;
-  visibility: hidden;
-}
-
 body,
 html {
   margin: 0;
@@ -76,19 +71,6 @@ body {
   margin: 50px;
   margin-bottom: 0;
 }
-
-.map-header {
-  position: absolute; /* Ændret til absolute position for at tage udgangspunkt i .map-container */
-  top: 0px; /* Juster denne værdi efter behov for at positionere map-header opad */
-  left: 20px;
-  font-size: 1.2rem;
-  color: white;
-  background-color: #145a32;
-  padding: 8px 12px;
-  border-radius: 5px;
-  line-height: 1;
-}
-
 .map-container {
   flex: 0.7;
   /* overflow: hidden; */
@@ -143,24 +125,29 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   text-align: center;
   background-color: #f4f4f4;
   padding: 20px;
-  margin: 10px;
-  font-size: 1.1rem;
-  border-radius: 10px;
-  height: 40%;
+  margin: 20px;
+  font-size: 1rem;
+  border-radius: 20px;
+  height: 45%;
+  width: 85%;
+  background-color: rgba(35, 68, 22, 0.4); /* Juster gennemsigtigheden her */
 }
 
 .additional-info-box {
   text-align: center;
+  justify-content: center;
   padding: 20px;
   background-color: #f9f9f9;
-  margin: 5px;
-  font-size: 1.1rem;
-  border-radius: 10px;
-  height: 60%;
+  margin: 20px;
+  font-size: 1rem;
+  border-radius: 20px;
+  height: 40%;
+  width: 85%;
+  background-color: rgba(35, 68, 22, 0.4); /* Juster gennemsigtigheden her */
 }
 
 .quiz-info-box {
@@ -173,8 +160,9 @@ body {
   border-radius: 10px;
   height: 100vh;
   max-height: 100vh;
+  border-radius: 10px;
   overflow: hidden;
-  background-color: rgba(224, 224, 224, 0); /* Juster gennemsigtigheden her */
+  background-color: rgba(224, 224, 224, 10); /* Juster gennemsigtigheden her */
 }
 
 .btn,
@@ -185,25 +173,11 @@ body {
   border-radius: 25px;
   border: none;
   background: var(--color-primary);
-  color: white;
+  color: rgb(0, 0, 0);
   cursor: pointer;
   transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
   font-size: 1rem;
   font-weight: bold;
-}
-
-/* Correct Answer Style */
-.btn.correct {
-  background-color: #4caf50; /* Green for correct answers */
-  color: white; /* White text for better readability */
-  border: 2px solid #388e3c; /* Darker green border for emphasis */
-}
-
-/* Wrong Answer Style */
-.btn.wrong {
-  background-color: #f44336; /* Red for wrong answers */
-  color: white; /* White text for better readability */
-  border: 2px solid #d32f2f; /* Darker red border for emphasis */
 }
 
 .btn:hover,
@@ -214,10 +188,6 @@ body {
 }
 
 h1,
-p {
-  color: var(--color-primary);
-}
-
 button {
   padding: 12px 24px;
   font-size: 16px;
@@ -269,6 +239,20 @@ button:hover {
   vertical-align: middle;
 }
 
+#results-btn img {
+  height: 50px; /* Adjust the size as needed */
+  width: 50px;
+  margin-left: 20px; /* Adds space between the icon and the text */
+  vertical-align: middle;
+}
+
+#start-btn img {
+  height: 50px; /* Adjust the size as needed */
+  width: 50px;
+  margin-left: 20px; /* Adds space between the icon and the text */
+  vertical-align: middle;
+}
+
 #chart-container {
   width: 1920px;
   height: 600px;
@@ -282,4 +266,16 @@ button:hover {
   justify-content: center; /* Centers horizontally in the flex container */
   align-items: center; /* Centers vertically in the flex container */
   height: 100%; /* Make sure the parent has a height for vertical centering to work */
+}
+
+.explanation-icon {
+  width: 50px; /* or any other size */
+  height: 50px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.hide {
+  display: none;
+  visibility: hidden;
 }
