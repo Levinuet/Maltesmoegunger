@@ -59,7 +59,7 @@ function createD3Visualization(data, yAxis, xAxis, svg, graphType) {
       break;
   }
 }
-=======
+
 const container = document.getElementById("chart-container");
 
 // Get the width and height of the container
