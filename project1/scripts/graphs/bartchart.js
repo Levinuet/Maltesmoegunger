@@ -1,9 +1,9 @@
-function createBarChart(data, yAxis, xAxis, svg, styling) {
+function createBartChart(data, yAxis, xAxis, svg, styling) {
   const { width, height, marginTop, marginRight, marginBottom, marginLeft } =
     styling;
   const xScale = d3
     .scaleBand()
-    .domain(0, 69) // Adjust based on your data structure
+    .domain(data.map((d) => d.name)) // Assuming 'name' is the property for x-axis categories
     .range([marginLeft, width - marginRight])
     .padding(0.1);
 

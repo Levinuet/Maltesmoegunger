@@ -4,7 +4,7 @@ const questions = [
     apiEndpoint: "https://maltesmoegungerne.onrender.com/smallchanges",
     yAxis: "netChanges",
     xAxis: "name",
-    graphType: "bar2",
+    graphType: "bart",
     imagePath: "./css/images/deforest.jpg",
     answers: [
       {
