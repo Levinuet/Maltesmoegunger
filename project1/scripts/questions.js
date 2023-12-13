@@ -3,8 +3,9 @@ const questions = [
     question: "Hvilket land har den største skovrydning i 2010 frem til 2020?",
     apiEndpoint: "https://maltesmoegungerne.onrender.com/smallchanges",
     yAxis: "netChanges",
-    xAxis: "Name",
+    xAxis: "name",
     graphType: "bar2",
+    imagePath: "./css/images/deforest.jpg",
     answers: [
       {
         text: "Indonesien",
@@ -33,6 +34,7 @@ const questions = [
     yAxis: "pasture",
     xAxis: "year",
     graphType: "stacked",
+    imagePath: "./css/images/cows.jpg",
     answers: [
       {
         text: "Sojabønneproduktionen",
@@ -58,8 +60,9 @@ const questions = [
     question: "Hvor meget skov er blevet afbrændt i Brasilien fra 2000-2017?",
     apiEndpoint: "https://maltesmoegungerne.onrender.com/brazilfires",
     yAxis: "Brand",
-    xAxis: "year",
+    xAxis: "d.year",
     graphType: "bar",
+    imagePath: "./css/images/brazilfire.jpeg",
     answers: [
       {
         text: "cirka 2200 kvadratkilometer",
@@ -88,6 +91,7 @@ const questions = [
     yAxis: "year",
     xAxis: "Brand",
     graphType: "line",
+    imagePath: "./css/images/forestfire.jpg",
     answers: [
       {
         text: "To gange Tysklands areal",
@@ -116,6 +120,7 @@ const questions = [
     yAxis: "reforestation",
     xAxis: "expansion",
     graphType: "stacked",
+    imagePath: "./css/images/good.jpg",
     answers: [
       {
         text: "Udsat",
