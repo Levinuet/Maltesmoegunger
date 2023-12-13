@@ -101,6 +101,23 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function showQuestion(question) {
+    const existingImage =
+      questionContainerElement.querySelector(".question-image");
+    if (existingImage) {
+      existingImage.remove();
+    }
+
+    // Check if there's an image for the question and add it
+    if (question.imagePath) {
+      const imageElement = document.createElement("img");
+      imageElement.src = question.imagePath;
+      imageElement.alt = "Question image"; // Provide a relevant alt text
+      imageElement.classList.add("question-image"); // Add a class for styling
+      questionContainerElement.insertBefore(
+        imageElement,
+        questionContainerElement.firstChild
+      ); // Insert the image at the beginning of the question container
+    }
     // Sæt teksten for spørgsmålet
     questionElement.innerText = question.question;
     // Sæt teksten for forklaringen til tom streng
@@ -140,6 +157,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const selectedButton = e.target;
     const currentQuestion = shuffledQuestions[currentQuestionIndex];
 
+    const questionImage =
+      questionContainerElement.querySelector(".question-image");
+    if (questionImage) {
+      questionImage.style.display = "none"; // or questionImage.remove(); if you want to remove it from the DOM
+    }
+
     // Show explanation on a new page
     showExplanationPage(selectedButton.dataset.explanation);
 
@@ -150,9 +173,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const graphType = currentQuestion.graphType;
     await fetchDataAndCreateVisualization(apiUrl, yAxis, xAxis, svg, graphType);
 
-    // Increment the correctAnswersCount if the selected answer is correct
     if (selectedButton.dataset.correct === "true") {
+      selectedButton.classList.add("correct");
       correctAnswersCount++;
+    } else {
+      selectedButton.classList.add("wrong");
     }
 
     // Vis næste-knappen eller afslut quizzen
@@ -179,9 +204,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Tilføj billedet til forklaringssiden
     explanationElement.appendChild(imageElement);
   }
-
   function clearStatusClass(element) {
-    element.classList.remove("correct");
-    element.classList.remove("wrong");
+    const children = element.children;
+    for (let i = 0; i < children.length; i++) {
+      children[i].classList.remove("correct", "wrong");
+    }
   }
 });

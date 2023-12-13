@@ -120,25 +120,19 @@ body {
 
 .intro-image {
   text-align: center; /* Center the text and image */
-
-  width: 90%;
-  background-color: #fff; /* Optional: Set a background color */
-  border-radius: 20px; /* Optional: Round the corners */
+  width: 100%;
   background-color: rgba(224, 224, 224, 0); /* Juster gennemsigtigheden her */
-  flex: 0.6;
-  max-height: 80%;
+  height: 100vh;
+  max-height: 100%;
   overflow: hidden;
 }
 .intro-container {
   display: flex;
   flex-direction: column;
   width: 50%; /* Adjust the width to a smaller percentage or fixed size */
-  max-height: 50vh; /* Adjust the max height to a smaller viewport percentage */
+  max-height: 100%; /* Adjust the max height to a smaller viewport percentage */
   margin: 0 auto; /* Center the container */
   overflow: hidden; /* Hide any overflowing content */
-}
-.quiz-box {
-  flex: 1;
 }
 
 .quiz-box {
@@ -150,8 +144,9 @@ body {
   background-color: #f4f4f4;
   padding: 20px;
   margin: 10px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   border-radius: 10px;
+  height: 40%;
 }
 
 .additional-info-box {
@@ -159,22 +154,23 @@ body {
   padding: 20px;
   background-color: #f9f9f9;
   margin: 5px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   border-radius: 10px;
-  flex: 4;
+  height: 60%;
 }
 
 .quiz-info-box {
   text-align: center;
   width: 500px;
   background-color: #f9f9f9;
-  margin: 0px;
-  padding: 0px;
-  font-size: 1rem;
+  margin: 5px;
+  padding: 5px;
+  font-size: 1.5rem;
   border-radius: 10px;
-  flex: 4;
+  height: 100vh;
   max-height: 100vh;
   overflow: hidden;
+  background-color: rgba(224, 224, 224, 0); /* Juster gennemsigtigheden her */
 }
 
 .btn,
@@ -190,6 +186,20 @@ body {
   transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
   font-size: 1rem;
   font-weight: bold;
+}
+
+/* Correct Answer Style */
+.btn.correct {
+  background-color: #4caf50; /* Green for correct answers */
+  color: white; /* White text for better readability */
+  border: 2px solid #388e3c; /* Darker green border for emphasis */
+}
+
+/* Wrong Answer Style */
+.btn.wrong {
+  background-color: #f44336; /* Red for wrong answers */
+  color: white; /* White text for better readability */
+  border: 2px solid #d32f2f; /* Darker red border for emphasis */
 }
 
 .btn:hover,
@@ -221,4 +231,20 @@ button:hover {
 
 .container.quiz-started {
   flex-direction: column;
+}
+
+#start-btn img {
+  height: 50px; /* Adjust the size as needed */
+  width: 50px;
+  margin-right: 20px; /* Adds space between the icon and the text */
+  vertical-align: middle;
+}
+
+.question-image {
+  max-width: 100%; /* Ensures the image is not wider than its container */
+  height: auto; /* Maintains the aspect ratio of the image */
+  display: block; /* Avoid inline behavior */
+  margin: 0 auto; /* Center the image */
+  border-radius: 5px; /* Optional: Rounds the corners of the image */
+  padding: 10px 0; /* Optional: Adds some space above and below the image */
 }
