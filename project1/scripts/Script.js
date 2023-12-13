@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const questionElement = document.getElementById("question");
   const answerButtonsElement = document.getElementById("answer-buttons");
   const explanationElement = document.getElementById("explanation");
-  const nextQuestionButton = document.getElementById("next-question-btn");
+  const resultsButton = document.getElementById("results-btn");
 
   const width = 780;
   const height = 503;
@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let correctAnswersCount = 0;
 
   // listeners
+  resultsButton.addEventListener("click", showResults);
   startButton.addEventListener("click", startQuiz);
   nextButton.addEventListener("click", () => {
     nextQuestion();
@@ -63,19 +64,27 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function nextQuestion() {
-    // Nulstil visningen
+    // Reset the state for the new question
     resetState();
 
-    if (currentQuestionIndex < shuffledQuestions.length - 1) {
-      currentQuestionIndex++;
+    // Increment the question index
+    currentQuestionIndex++;
+
+    // Check if there are more questions
+    if (currentQuestionIndex < shuffledQuestions.length) {
+      // Still have questions left, show the next question
       showQuestion(shuffledQuestions[currentQuestionIndex]);
+      nextButton.classList.remove("hide"); // Ensure the next button is shown if we're not at the last question
+      resultsButton.classList.add("hide"); // Ensure the results button is hidden if we're not at the last question
     } else {
-      // Call showResults when there are no more questions
-      showResults();
+      // No more questions, hide the next button and show the results button
+      nextButton.classList.add("hide");
+      resultsButton.classList.remove("hide");
     }
   }
 
   function showResults() {
+    resetState();
     // Store the correct answers count in localStorage
     localStorage.setItem("correctAnswersCount", correctAnswersCount);
     // Redirect to the results page
@@ -169,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     answerButtonsElement.style.display = "none";
     // Show explanation on a new page
-    showExplanationPage(selectedButton.dataset.explanation);
+    showExplanationPage(selectedButton.dataset.explanation, isCorrect);
 
     // fetch data and show graph
     const apiUrl = currentQuestion.apiEndpoint;
