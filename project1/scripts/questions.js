@@ -5,6 +5,7 @@ const questions = [
     yAxis: "netChanges",
     xAxis: "name",
     graphType: "bar",
+    imagePath: "css/images/deforest.jpg",
     answers: [
       {
         text: "Indonesien",
@@ -33,6 +34,7 @@ const questions = [
     yAxis: "pasture",
     xAxis: "year",
     graphType: "stacked",
+    imagePath: "css/images/cows.jpg",
     answers: [
       {
         text: "Sojabønneproduktionen",
@@ -60,6 +62,7 @@ const questions = [
     yAxis: "Brand",
     xAxis: "d.year",
     graphType: "bar",
+    imagePath: "css/images/brazilfire.jpeg",
     answers: [
       {
         text: "cirka 2200 kvadratkilometer",
@@ -88,6 +91,7 @@ const questions = [
     yAxis: "year",
     xAxis: "Brand",
     graphType: "line",
+    imagePath: "images/paris.jpg",
     answers: [
       {
         text: "To gange Tysklands areal",
@@ -116,6 +120,7 @@ const questions = [
     yAxis: "reforestation",
     xAxis: "expansion",
     graphType: "some",
+    imagePath: "css/images/good.jpg",
     answers: [
       {
         text: "Udsat",

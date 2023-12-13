@@ -7,12 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const questionElement = document.getElementById("question");
   const answerButtonsElement = document.getElementById("answer-buttons");
   const explanationElement = document.getElementById("explanation");
-  const resultsButton = document.getElementById("results-btn");
-  if (resultsButton) {
-    resultsButton.addEventListener("click", function () {
-      window.location.href = "results.html"; // Redirect to results page
-    });
-  }
+  const nextQuestionButton = document.getElementById("next-question-btn");
 
   const width = 780;
   const height = 503;
@@ -35,37 +30,25 @@ document.addEventListener("DOMContentLoaded", function () {
     nextQuestion();
   });
 
-  // Function to hide the intro container
-  function hideIntroContainer() {
-    const introContainer = document.getElementById("intro-container"); // Updated to select by ID
-    if (introContainer) {
-      introContainer.style.display = "none";
-    } else {
-      console.error("Intro container not found");
+  function hideElementsByClass(className) {
+    const elements = document.getElementsByClassName(className);
+    for (const element of elements) {
+      element.style.display = "none";
     }
   }
 
   function startQuiz() {
-    hideIntroContainer();
-
     // set arr to be a list of random numbers
     const arr = [];
 
     while (arr.length < questions.length) {
-      const randomNumber = Math.floor(Math.random() * questions.length);
+      const randomNumber = Math.floor(Math.random() * questions.length - 1) + 1;
       if (arr.indexOf(randomNumber) === -1) {
         arr.push(randomNumber);
       }
-      console.log(shuffledQuestions);
     }
-
-    // Event listener for the start button
-    startButton.addEventListener("click", startQuiz);
-
-    // Event listener for the next button
-    nextButton.addEventListener("click", () => {
-      nextQuestion(); // Assuming nextQuestion is a function defined elsewhere
-    });
+    hideElementsByClass("intro-image");
+    hideElementsByClass("quiz-info-box");
 
     // go through arr and push question into shuffledQuestions
     arr.forEach((index) => {
@@ -76,11 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
     startButton.classList.add("hide");
     // Vis containeren til spørgsmål
     questionContainerElement.classList.remove("hide");
-    document.getElementById("intro-container").classList.add("hide");
     nextQuestion();
-
-    const container = document.querySelector(".container");
-    container.classList.add("quiz-started");
   }
 
   function nextQuestion() {
@@ -99,12 +78,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function showResults() {
     // Store the correct answers count in localStorage
     localStorage.setItem("correctAnswersCount", correctAnswersCount);
-
-    // Show the results button instead of redirecting
-    const resultsButton = document.getElementById("results-btn");
-    if (resultsButton) {
-      resultsButton.classList.remove("hide"); // Show the button
-    }
+    // Redirect to the results page
+    window.location.href = "results.html";
   }
 
   // Funktion til at nulstille tilstanden
@@ -126,6 +101,23 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function showQuestion(question) {
+    const existingImage =
+      questionContainerElement.querySelector(".question-image");
+    if (existingImage) {
+      existingImage.remove();
+    }
+
+    // Check if there's an image for the question and add it
+    if (question.imagePath) {
+      const imageElement = document.createElement("img");
+      imageElement.src = question.imagePath;
+      imageElement.alt = "Question image"; // Provide a relevant alt text
+      imageElement.classList.add("question-image"); // Add a class for styling
+      questionContainerElement.insertBefore(
+        imageElement,
+        questionContainerElement.firstChild
+      ); // Insert the image at the beginning of the question container
+    }
     // Sæt teksten for spørgsmålet
     questionElement.innerText = question.question;
     // Sæt teksten for forklaringen til tom streng
@@ -165,6 +157,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const selectedButton = e.target;
     const currentQuestion = shuffledQuestions[currentQuestionIndex];
 
+    const questionImage =
+      questionContainerElement.querySelector(".question-image");
+    if (questionImage) {
+      questionImage.style.display = "none"; // or questionImage.remove(); if you want to remove it from the DOM
+    }
+
     // Show explanation on a new page
     showExplanationPage(selectedButton.dataset.explanation);
 
@@ -175,9 +173,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const graphType = currentQuestion.graphType;
     await fetchDataAndCreateVisualization(apiUrl, yAxis, xAxis, svg, graphType);
 
-    // Increment the correctAnswersCount if the selected answer is correct
     if (selectedButton.dataset.correct === "true") {
+      selectedButton.classList.add("correct");
       correctAnswersCount++;
+    } else {
+      selectedButton.classList.add("wrong");
     }
 
     // Vis næste-knappen eller afslut quizzen
@@ -204,9 +204,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Tilføj billedet til forklaringssiden
     explanationElement.appendChild(imageElement);
   }
-
   function clearStatusClass(element) {
-    element.classList.remove("correct");
-    element.classList.remove("wrong");
+    const children = element.children;
+    for (let i = 0; i < children.length; i++) {
+      children[i].classList.remove("correct", "wrong");
+    }
   }
 });
