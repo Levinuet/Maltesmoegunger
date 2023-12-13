@@ -169,8 +169,9 @@ body {
   border-radius: 10px;
   height: 100vh;
   max-height: 100vh;
+  border-radius: 10px;
   overflow: hidden;
-  background-color: rgba(224, 224, 224, 0); /* Juster gennemsigtigheden her */
+  background-color: rgba(224, 224, 224, 10); /* Juster gennemsigtigheden her */
 }
 
 .btn,
@@ -181,7 +182,7 @@ body {
   border-radius: 25px;
   border: none;
   background: var(--color-primary);
-  color: white;
+  color: rgb(0, 0, 0);
   cursor: pointer;
   transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
   font-size: 1rem;
@@ -266,6 +267,13 @@ button:hover {
 }
 
 #results-btn img {
+  height: 50px; /* Adjust the size as needed */
+  width: 50px;
+  margin-left: 20px; /* Adds space between the icon and the text */
+  vertical-align: middle;
+}
+
+#start-btn img {
   height: 50px; /* Adjust the size as needed */
   width: 50px;
   margin-left: 20px; /* Adds space between the icon and the text */
