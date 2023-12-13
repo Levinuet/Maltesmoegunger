@@ -1,7 +1,7 @@
 const questions = [
   {
     question: "Hvilket land har den største skovrydning i 2010 frem til 2020?",
-    apiEndpoint: "http://localhost:8080/smallchanges",
+    apiEndpoint: "https://maltesmoegungerne.onrender.com/smallchanges",
     yAxis: "netChanges",
     xAxis: "Name",
     graphType: "bar2",
@@ -29,7 +29,7 @@ const questions = [
   {
     question:
       "Hvilke faktorer har haft størst indflydelse på skovrydningen af den brasilianske regnskov?",
-    apiEndpoint: "http://localhost:8080/brazil",
+    apiEndpoint: "https://maltesmoegungerne.onrender.com/brazil",
     yAxis: "pasture",
     xAxis: "year",
     graphType: "stacked",
@@ -56,7 +56,7 @@ const questions = [
   },
   {
     question: "Hvor meget skov er blevet afbrændt i Brasilien fra 2000-2017?",
-    apiEndpoint: "http://localhost:8080/brazilfires",
+    apiEndpoint: "https://maltesmoegungerne.onrender.com/brazilfires",
     yAxis: "Brand",
     xAxis: "year",
     graphType: "bar",
@@ -84,7 +84,7 @@ const questions = [
   {
     question:
       "I 2015 blev der brændt 73017.07 tusind hektar af Amazonas junglen. Hvor meget svarer det til? ",
-    apiEndpoint: "http://localhost:8080/brazilfires",
+    apiEndpoint: "https://maltesmoegungerne.onrender.com/brazilfires",
     yAxis: "year",
     xAxis: "Brand",
     graphType: "line",
@@ -112,7 +112,7 @@ const questions = [
   {
     question:
       "Hvordan er det gået med at genoprette skovområder i verden fra 2010-2020?",
-    apiEndpoint: "http://localhost:8080/bubbleforest",
+    apiEndpoint: "https://maltesmoegungerne.onrender.com/bubbleforest",
     yAxis: "reforestation",
     xAxis: "expansion",
     graphType: "stacked",
