@@ -3,7 +3,7 @@ const questions = [
     question: "Hvilket land har den største skovrydning i 2010 frem til 2020?",
     apiEndpoint: "https://maltesmoegungerne.onrender.com/smallchanges",
     yAxis: "netChanges",
-    xAxis: "Name",
+    xAxis: "name",
     graphType: "bar",
     imagePath: "css/images/deforest.jpg",
     answers: [
@@ -60,7 +60,7 @@ const questions = [
     question: "Hvor meget skov er blevet afbrændt i Brasilien fra 2000-2017?",
     apiEndpoint: "https://maltesmoegungerne.onrender.com/brazilfires",
     yAxis: "Brand",
-    xAxis: "year",
+    xAxis: "d.year",
     graphType: "bar",
     imagePath: "css/images/brazilfire.jpeg",
     answers: [
