@@ -22,7 +22,7 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
     .domain([0, 1])
     .range([height - marginBottom, marginTop]);
 
-  const color = d3.scaleOrdinal().domain(keys).range(d3.schemeTableau10);
+  const color = d3.scaleOrdinal().domain(keys).range(d3.schemeSet1);
 
   // Construct an area shape.
   const area = d3
@@ -56,7 +56,7 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
   // Append the x-axis
   svg
     .append("g")
-    .attr("transform", `translate(-54,${height - marginBottom})`)
+    .attr("transform", `translate(-56,${height - marginBottom})`)
     .call(xAxis)
     .call((g) => g.select(".domain").remove())
     .append("text")
@@ -98,7 +98,7 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
 
   legend
     .append("text")
-    .attr("x", width - 105) // Adjust x position to be to the right of the square
+    .attr("x", width - 110) // Adjust x position to be to the right of the square
     .attr("y", 12.5)
     .attr("dy", "0.32em")
     .style("font-size", "16px") // Change the font size as needed
