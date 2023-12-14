@@ -37,7 +37,7 @@ function createBarChart(data, yAxis, xAxis, svg, styling) {
     .attr("y", height - marginBottom) // Start the bars at the baseline
     .attr("width", xScale.bandwidth())
     .attr("height", 0) // Start the bars with height 0
-    .attr("fill", (d, i) => colorScale(i))
+    .attr("fill", (d) => colorScale(d[yAxis]))
     .transition() // Apply the transition
     .duration(1000) // Set the duration of the animation in milliseconds
     .ease(d3.easeElasticOut) // Use the "elastic" easing function
