@@ -119,4 +119,18 @@ app.listen(port, () => {
       });
     }
   });
+  app.get("/totalannual", async (req, res) => {
+    try {
+      let queryData = await klient.query("SELECT * FROM totalannual");
+      res.json({
+        ok: true,
+        skovData: queryData.rows,
+      });
+    } catch (error) {
+      res.json({
+        ok: false,
+        message: error.message,
+      });
+    }
+  });
 });
