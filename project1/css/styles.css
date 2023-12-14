@@ -134,21 +134,23 @@ body {
   font-size: 2rem;
 }
 
-.intro-image {
-  text-align: center; /* Center the text and image */
-  width: 100%;
-  background-color: rgba(224, 224, 224, 0); /* Juster gennemsigtigheden her */
-  height: 100vh;
-  max-height: 100%;
-  overflow: hidden;
-}
 .intro-container {
   display: flex;
   flex-direction: column;
-  width: 50%; /* Adjust the width to a smaller percentage or fixed size */
-  max-height: 100%; /* Adjust the max height to a smaller viewport percentage */
-  margin: 0 auto; /* Center the container */
-  overflow: hidden; /* Hide any overflowing content */
+  width: 50%; /* Adjust the width as needed */
+  max-height: 100%;
+  margin: 0 auto; /* This centers the container horizontally */
+  overflow: hidden;
+}
+
+.intro-image {
+  display: flex;
+  justify-content: center; /* Horizontally center the content (including image) */
+  align-items: center; /* Vertically center the content (including image) */
+  width: 100%; /* Adjust the width as needed */
+  height: 100vh; /* Adjust the height as needed */
+  overflow: hidden;
+  border-radius: 50px;
 }
 
 .quiz-box {
@@ -181,18 +183,22 @@ body {
 }
 
 .quiz-info-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  width: 500px;
-  background-color: #f9f9f9;
-  margin: 5px;
-  padding: 5px;
-  font-size: 1.5rem;
-  border-radius: 10px;
-  height: 100vh;
-  max-height: 100vh;
-  border-radius: 10px;
-  overflow: hidden;
-  background-color: rgba(224, 224, 224, 10); /* Juster gennemsigtigheden her */
+  background-color: rgba(35, 68, 22, 0.4); /* Adjusted for transparency */
+  padding: 20px;
+  margin: auto;
+  font-size: 1rem;
+  border-radius: 20px;
+  height: 85vh; /* Height set as a percentage of viewport height */
+  width: 50vw; /* Width set as a percentage of viewport width */
+  position: absolute; /* For absolute centering */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .btn,
