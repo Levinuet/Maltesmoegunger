@@ -65,28 +65,28 @@ const questions = [
     imagePath: "css/images/brazilfire.jpeg",
     answers: [
       {
-        text: "cirka 2200 kvadratkilometer",
+        text: "cirka 2,2 mio. hektar",
         correct: false,
         explanation:
-          "Korrekt.... NOT! Omkring 6600 kvadratkilometer blev afbrændt, hvilket har været en udfordring for både klima og biodiversitet i området.",
+          "Korrekt.... NOT! Omkring 6,6 millioner hektar blev afbrændt, hvilket har været en udfordring for både klima og biodiversitet i området.",
       },
       {
-        text: "cirka 4400 kvadratkilometer",
+        text: "cirka 4,4 mio. hektar",
         correct: false,
         explanation:
-          "Korrekt.... NOT! Omkring 6600 kvadratkilometer blev afbrændt, hvilket har været en udfordring for både klima og biodiversitet i området.",
+          "Korrekt.... NOT! Omkring 6,6 millioner hektar blev afbrændt, hvilket har været en udfordring for både klima og biodiversitet i området.",
       },
       {
-        text: "cirka 6600 kvadratkilometer",
+        text: "cirka 6,6 mio. hektar",
         correct: true,
         explanation:
-          "Korrekt! Omkring 6600 kvadratkilometer blev afbrændt, hvilket har været en udfordring for både klima og biodiversitet i området.",
+          "Korrekt! Omkring 6,6 millioner hektar blev afbrændt, hvilket har været en udfordring for både klima og biodiversitet i området.",
       },
     ],
   },
   {
     question:
-      "Hvor meget skovudvidelse har der været i Amazonas fra 1990-2020?",
+      "Hvilket land har haft den største skovudvidelse i Amazonas fra 2000 til 2020?",
     apiEndpoint: "https://maltesmoegungerne.onrender.com/growingyearamazon",
     yAxis: "year",
     xAxis: "skovudvidelse",
@@ -94,22 +94,22 @@ const questions = [
     imagePath: "css/images/forestfire.jpg",
     answers: [
       {
-        text: "To gange Tysklands areal",
+        text: "Columbia",
         correct: true,
         explanation:
-          "Præcis, et område på størrelse med to gange Tysklands areal blev brændt, hvilket markerer en kritisk situation for denne vitale økosystem.",
+          "Præcis, Colombia har set den største skovudvidelse i Amazonas fra 2000 til 2020, hvilket afspejler en vellykket implementering af miljøpolitikker og bevaringsstrategier. Landet har gennem årene iværksat forskellige initiativer til at beskytte regnskoven og fremme bæredygtig brug af dens ressourcer. Disse tiltag har til sammen ført til en nettoforøgelse af skovområder i landet, hvilket gør Colombia til det førende land i Amazonasregionen med hensyn til skovudvidelse.",
       },
       {
-        text: "Halvdelen af Belgiens areal",
+        text: "Bolivia",
         correct: false,
         explanation:
-          "Desværre, et område på størrelse med to gange Tysklands areal blev brændt, hvilket markerer en kritisk situation for denne vitale økosystem.",
+          "Desværre, Colombia har set den største skovudvidelse i Amazonas fra 2000 til 2020, hvilket afspejler en vellykket implementering af miljøpolitikker og bevaringsstrategier. Landet har gennem årene iværksat forskellige initiativer til at beskytte regnskoven og fremme bæredygtig brug af dens ressourcer.Disse tiltag har til sammen ført til en nettoforøgelse af skovområder i landet, hvilket gør Colombia til det førende land i Amazonasregionen med hensyn til skovudvidelse. ",
       },
       {
-        text: "Lige så stort som Schweiz",
+        text: "Brasilien",
         correct: false,
         explanation:
-          "Desværre, et område på størrelse med to gange Tysklands areal blev brændt, hvilket markerer en kritisk situation for denne vitale økosystem.",
+          "Desværre, Colombia har set den største skovudvidelse i Amazonas fra 2000 til 2020, hvilket afspejler en vellykket implementering af miljøpolitikker og bevaringsstrategier. Landet har gennem årene iværksat forskellige initiativer til at beskytte regnskoven og fremme bæredygtig brug af dens ressourcer. Disse tiltag har til sammen ført til en nettoforøgelse af skovområder i landet, hvilket gør Colombia til det førende land i Amazonasregionen med hensyn til skovudvidelse.",
       },
     ],
   },
