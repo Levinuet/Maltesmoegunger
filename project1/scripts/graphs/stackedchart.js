@@ -31,12 +31,13 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
     .y0((d) => yScale(d[0]))
     .y1((d) => yScale(d[1]));
 
-  // Create new SVG
+  // Create new SVG and initially set opacity to 0 for fade-in effect
   svg = d3
     .select("#chart-container")
     .append("svg")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .style("opacity", 0);
 
   // Append a path for each series.
   svg
@@ -48,6 +49,9 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
     .attr("d", area)
     .append("title")
     .text((d) => d.key);
+
+  // Animate the SVG container from transparent to opaque
+  svg.transition().duration(3000).style("opacity", 1);
 
   // Axes
   const xAxis = d3.axisBottom(xScale).tickSizeOuter(0);
