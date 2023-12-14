@@ -1,38 +1,43 @@
+// Få fat i HTML-elementet med id 'chart-container'
 const container = document.getElementById("chart-container");
 
-// Get the width and height of the container
+// Få containerens bredde og højde
 const containerWidth = container.clientWidth;
 const containerHeight = container.clientHeight;
 
+// Funktion til at hente data og oprette visualisering
 function fetchDataAndCreateVisualization(url, yAxis, xAxis, svg, graphType) {
+  // Hent data fra en URL
   fetch(url)
-    .then((response) => response.json())
+    .then((response) => response.json()) // Konverter svaret til JSON
     .then((data) => {
-      // Data is available here
-      // Call a function to create the D3 visualization with the data
+      // Data er nu tilgængelige her
+      // Kald en funktion til at oprette D3-visualisering med data
       createD3Visualization(data.skovData, yAxis, xAxis, svg, graphType);
       console.log(
-        "fetchDataAndCreateVisualization function is loaded and called."
+        "fetchDataAndCreateVisualization funktionen er indlæst og kaldt."
       );
     })
-    .catch((error) => console.error("Error fetching data:", error));
+    .catch((error) => console.error("Fejl ved indhentning af data:", error));
 }
 
+// Funktion til at oprette D3-visualisering
 function createD3Visualization(data, yAxis, xAxis, svg, graphType) {
-  // Check if data has the 'skovData' property and it is an array
+  // Tjek om data indeholder 'skovData'-egenskaben og det er et array
   if (!data || !Array.isArray(data)) {
     console.error(
-      "Invalid data format. Expected an object with 'skovData' property as an array."
+      "Ugyldigt dataformat. Forventede et objekt med 'skovData'-egenskaben som et array."
     );
     return;
   }
 
-  // Check if data array is empty
+  // Tjek om data-arrayet er tomt
   if (data.length === 0) {
-    console.error("Empty skovData array. Cannot create visualization.");
+    console.error("Tomt skovData-array. Kan ikke oprette visualisering.");
     return;
   }
 
+  // Stilindstillinger
   const styling = {
     width: 1600,
     height: 550,
@@ -42,6 +47,7 @@ function createD3Visualization(data, yAxis, xAxis, svg, graphType) {
     marginLeft: 60,
   };
 
+  // Vælg hvilken type graf der skal oprettes
   switch (graphType) {
     case "bar":
       createBarChart(data, yAxis, xAxis, svg, styling);
