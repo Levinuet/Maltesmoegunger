@@ -46,6 +46,9 @@ function createD3Visualization(data, yAxis, xAxis, svg, graphType) {
     case "bar":
       createBarChart(data, yAxis, xAxis, svg, styling);
       break;
+    case "bar2":
+      createBarChart(data, yAxis, xAxis, svg, styling);
+      break;
     case "bart":
       createBartChart(data, yAxis, xAxis, svg, styling);
       break;

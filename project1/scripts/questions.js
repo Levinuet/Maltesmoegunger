@@ -86,7 +86,7 @@ const questions = [
   },
   {
     question:
-      "Hvilket land har haft den største skovudvidelse i Amazonas fra 2000 til 2020?",
+      "Hvor meget skovudvidelse har der været i Amazonas fra 1990-2020?",
     apiEndpoint: "https://maltesmoegungerne.onrender.com/growingyearamazon",
     yAxis: "year",
     xAxis: "skovudvidelse",
@@ -94,32 +94,32 @@ const questions = [
     imagePath: "css/images/forestfire.jpg",
     answers: [
       {
-        text: "Columbia",
+        text: "To gange Tysklands areal",
         correct: true,
         explanation:
-          "Præcis, Colombia har set den største skovudvidelse i Amazonas fra 2000 til 2020, hvilket afspejler en vellykket implementering af miljøpolitikker og bevaringsstrategier. Landet har gennem årene iværksat forskellige initiativer til at beskytte regnskoven og fremme bæredygtig brug af dens ressourcer. Disse tiltag har til sammen ført til en nettoforøgelse af skovområder i landet, hvilket gør Colombia til det førende land i Amazonasregionen med hensyn til skovudvidelse.",
+          "Præcis, et område på størrelse med to gange Tysklands areal blev brændt, hvilket markerer en kritisk situation for denne vitale økosystem.",
       },
       {
-        text: "Bolivia",
+        text: "Halvdelen af Belgiens areal",
         correct: false,
         explanation:
-          "Desværre, Colombia har set den største skovudvidelse i Amazonas fra 2000 til 2020, hvilket afspejler en vellykket implementering af miljøpolitikker og bevaringsstrategier. Landet har gennem årene iværksat forskellige initiativer til at beskytte regnskoven og fremme bæredygtig brug af dens ressourcer.Disse tiltag har til sammen ført til en nettoforøgelse af skovområder i landet, hvilket gør Colombia til det førende land i Amazonasregionen med hensyn til skovudvidelse. ",
+          "Desværre, et område på størrelse med to gange Tysklands areal blev brændt, hvilket markerer en kritisk situation for denne vitale økosystem.",
       },
       {
-        text: "Brasilien",
+        text: "Lige så stort som Schweiz",
         correct: false,
         explanation:
-          "Desværre, Colombia har set den største skovudvidelse i Amazonas fra 2000 til 2020, hvilket afspejler en vellykket implementering af miljøpolitikker og bevaringsstrategier. Landet har gennem årene iværksat forskellige initiativer til at beskytte regnskoven og fremme bæredygtig brug af dens ressourcer. Disse tiltag har til sammen ført til en nettoforøgelse af skovområder i landet, hvilket gør Colombia til det førende land i Amazonasregionen med hensyn til skovudvidelse.",
+          "Desværre, et område på størrelse med to gange Tysklands areal blev brændt, hvilket markerer en kritisk situation for denne vitale økosystem.",
       },
     ],
   },
   {
     question:
-      "Hvordan er det gået med at genoprette skovområder i verden fra 2010-2020?",
-    apiEndpoint: "https://maltesmoegungerne.onrender.com/bubbleforest",
-    yAxis: "reforestation",
-    xAxis: "expansion",
-    graphType: "bar",
+      "Hvor mange hektar skov bliver hvert år tab pågrund af bakterier, fungus og virusser?",
+    apiEndpoint: "https://maltesmoegungerne.onrender.com/totalannual",
+    yAxis: "total_diseases",
+    xAxis: "year",
+    graphType: "bar2",
     imagePath: "css/images/good.jpg",
     answers: [
       {
