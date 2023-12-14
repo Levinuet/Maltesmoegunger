@@ -115,7 +115,7 @@ const questions = [
   },
   {
     question:
-      "Hvor mange hektar skov bliver hvert år tab pågrund af bakterier, fungus og virusser?",
+      "Hvor mange hektar skov bliver hvert år tabt i hele verden pågrund af bakterier, fungus og virusser?",
     apiEndpoint: "https://maltesmoegungerne.onrender.com/totalannual",
     yAxis: "total_diseases",
     xAxis: "year",
@@ -123,22 +123,22 @@ const questions = [
     imagePath: "css/images/svamp.jpg",
     answers: [
       {
-        text: "Stagnerende tendens",
+        text: "2,5 mio hektar",
         correct: false,
         explanation:
-          "Det er desværre forkert, der har været en stigende tendens i skovgenoprettelse globalt, med flere lande, der iværksætter programmer for at imødegå tidligere skader.",
+          "Det er desværre forkert, skovtab på 4,5 millioner hektar årligt skyldes infektioner forårsaget af bakterier, fungus, og virusser. Disse organismer kan forårsage sygdomme i træer og skovområder, hvilket resulterer i betydelige tab af skovarealer. Disse organismer påvirker skovens sundhed ved at angribe træernes blade, grene, stammer, eller rødder, hvilket fører til svækkelse og i nogle tilfælde død af træerne",
       },
       {
-        text: "Faldende tendens",
-        correct: false,
-        explanation:
-          "Det er desværre forkert, der har været en stigende tendens i skovgenoprettelse globalt, med flere lande, der iværksætter programmer for at imødegå tidligere skader.",
-      },
-      {
-        text: "Stigende tendens",
+        text: "4,5 mio hektar",
         correct: true,
         explanation:
-          "Det er helt korrekt, der har været en stigende tendens i skovgenoprettelse globalt, med flere lande, der iværksætter programmer for at imødegå tidligere skader.",
+          "Det er helt rigtigt, skovtab på 4,5 millioner hektar årligt skyldes infektioner forårsaget af bakterier, fungus, og virusser. Disse organismer kan forårsage sygdomme i træer og skovområder, hvilket resulterer i betydelige tab af skovarealer. Disse organismer påvirker skovens sundhed ved at angribe træernes blade, grene, stammer, eller rødder, hvilket fører til svækkelse og i nogle tilfælde død af træerne",
+      },
+      {
+        text: "6,5 mio hektar",
+        correct: false,
+        explanation:
+          "Det er desværre forkert, skovtab på 4,5 millioner hektar årligt skyldes infektioner forårsaget af bakterier, fungus, og virusser. Disse organismer kan forårsage sygdomme i træer og skovområder, hvilket resulterer i betydelige tab af skovarealer. Disse organismer påvirker skovens sundhed ved at angribe træernes blade, grene, stammer, eller rødder, hvilket fører til svækkelse og i nogle tilfælde død af træerne",
       },
     ],
   },
