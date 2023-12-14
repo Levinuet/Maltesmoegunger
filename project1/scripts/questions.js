@@ -87,9 +87,9 @@ const questions = [
   {
     question:
       "Hvor meget skovudvidelse har der været i Amazonas fra 1990-2020?",
-    apiEndpoint: "https://maltesmoegungerne.onrender.com/growingyearamazon",
-    yAxis: "skovudvidelse",
-    xAxis: "year",
+    apiEndpoint: "https://maltesmoegungerne.onrender.com/brazilfires",
+    yAxis: "year",
+    xAxis: "Brand",
     graphType: "line",
     imagePath: "css/images/forestfire.jpg",
     answers: [
