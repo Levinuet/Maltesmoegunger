@@ -2,15 +2,15 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
   const { width, height, marginTop, marginRight, marginBottom, marginLeft } =
     styling;
 
-  // Sets up the keys for the series that is going to be stacked
+  // Opsætter keys til serien der skal stables
   const keys = Object.keys(data[0]).filter(
     (key) => !["name", "iso3", "year"].includes(key)
   );
 
-  // Configure the D3 stack layout with the specified keys
+  // Konfigurer D3-stack-layout med de angivne nøgler
   const series = d3.stack().keys(keys).offset(d3.stackOffsetExpand)(data);
 
-  // Prepare the scales for positional and color encodings.
+  // Skalaer for positionelle og farvemæssige kodninger.
   const xScale = d3
     .scaleBand()
     .domain(data.map((d) => d.year))
@@ -24,21 +24,53 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
 
   const color = d3.scaleOrdinal().domain(keys).range(d3.schemeSet1);
 
-  // Construct an area shape.
+  // Konstruer et area.
   const area = d3
     .area()
     .x((d) => xScale(d.data.year))
     .y0((d) => yScale(d[0]))
     .y1((d) => yScale(d[1]));
 
-  // Create new SVG
+  // Tilføjer en tooltip
+  const tooltip = d3
+    .select("#chart-container")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
+  // Laver en path til event listeners til mouseover effekt
+  svg
+    .append("g")
+    .selectAll("path")
+    .data(series)
+    .join("path")
+    .attr("fill", (d) => color(d.key))
+    .attr("d", area)
+    .on("mouseover", (event, d) => {
+      tooltip.transition().duration(200).style("opacity", 0.9);
+      tooltip
+        .html(d.key) // Display the key of the area
+        .style("left", event.pageX + 10 + "px")
+        .style("top", event.pageY - 28 + "px");
+    })
+    .on("mousemove", (event) => {
+      tooltip
+        .style("left", event.pageX + 10 + "px")
+        .style("top", event.pageY - 28 + "px");
+    })
+    .on("mouseout", () => {
+      tooltip.transition().duration(500).style("opacity", 0);
+    });
+
+  // Opret et nyt SVG og sæt oprindeligt gennemsigtighed til 0 for fade-in-effekt
   svg = d3
     .select("#chart-container")
     .append("svg")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .style("opacity", 0);
 
-  // Append a path for each series.
+  // Tilføj en sti for hver serie.
   svg
     .append("g")
     .selectAll()
@@ -49,11 +81,38 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
     .append("title")
     .text((d) => d.key);
 
-  // Axes
+  // Animer SVG-containeren fra gennemsigtig til uigennemsigtig
+  svg.transition().duration(3000).style("opacity", 1);
+
+  // Akser
   const xAxis = d3.axisBottom(xScale).tickSizeOuter(0);
   const yAxis = d3.axisLeft(yScale).ticks(height / 80, "%");
 
-  // Append the x-axis
+  // Add a path for each series with event listeners
+  svg
+    .append("g")
+    .selectAll("path")
+    .data(series)
+    .join("path")
+    .attr("fill", (d) => color(d.key))
+    .attr("d", area)
+    .on("mouseover", (event, d) => {
+      tooltip.transition().duration(200).style("opacity", 0.9);
+      tooltip
+        .html(d.key) // Display the key of the area
+        .style("left", event.pageX + 10 + "px")
+        .style("top", event.pageY - 28 + "px");
+    })
+    .on("mousemove", (event) => {
+      tooltip
+        .style("left", event.pageX + 10 + "px")
+        .style("top", event.pageY - 28 + "px");
+    })
+    .on("mouseout", () => {
+      tooltip.transition().duration(500).style("opacity", 0);
+    });
+
+  // Tilføj X-aksen
   svg
     .append("g")
     .attr("transform", `translate(-53,${height - marginBottom})`)
@@ -65,7 +124,7 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
     .attr("text-anchor", "start")
     .attr("fill", "currentColor");
 
-  // Append the y-axis
+  // Tilføj Y-aksen
   svg
     .append("g")
     .attr("transform", `translate(${marginLeft},0)`)
@@ -77,18 +136,19 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
     .attr("text-anchor", "start")
     .attr("fill", "currentColor");
 
-  // Legend setup
+  // Opsætning af legende
   const legend = svg
     .append("g")
     .attr("font-family", "sans-serif")
     .attr("font-size", 10)
-    .attr("text-anchor", "start") // Change text-anchor to start
+    .attr("text-anchor", "start")
     .selectAll("g")
     .data(keys.slice().reverse())
     .enter()
     .append("g")
     .attr("transform", (d, i) => `translate(0,${i * 20})`);
 
+  // Legendens farvede rektangler
   legend
     .append("rect")
     .attr("x", width - 165)
@@ -97,14 +157,15 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
     .attr("height", 25)
     .attr("fill", color);
 
+  // Legendens tekst
   legend
     .append("text")
-    .attr("x", width - 139) // Adjust x position to be to the right of the square
+    .attr("x", width - 139)
     .attr("y", 72)
     .attr("dy", "0.32em")
-    .style("font-size", "16px") // Change the font size as needed
+    .style("font-size", "16px")
     .text((d) => d);
 
-  // Return the chart with the color scale as a property (for the legend).
+  // Returner diagrammet med farveskalaen som en property (til legenden).
   return Object.assign(svg.node(), { scales: { color } });
 }

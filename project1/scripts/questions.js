@@ -65,28 +65,28 @@ const questions = [
     imagePath: "css/images/brazilfire.jpeg",
     answers: [
       {
-        text: "cirka 2200 kvadratkilometer",
+        text: "cirka 2,2 mio. hektar",
         correct: false,
         explanation:
-          "Korrekt.... NOT! Omkring 6600 kvadratkilometer blev afbrændt, hvilket har været en udfordring for både klima og biodiversitet i området.",
+          "Korrekt.... NOT! Omkring 6,6 millioner hektar blev afbrændt, hvilket har været en udfordring for både klima og biodiversitet i området.",
       },
       {
-        text: "cirka 4400 kvadratkilometer",
+        text: "cirka 4,4 mio. hektar",
         correct: false,
         explanation:
-          "Korrekt.... NOT! Omkring 6600 kvadratkilometer blev afbrændt, hvilket har været en udfordring for både klima og biodiversitet i området.",
+          "Korrekt.... NOT! Omkring 6,6 millioner hektar blev afbrændt, hvilket har været en udfordring for både klima og biodiversitet i området.",
       },
       {
-        text: "cirka 6600 kvadratkilometer",
+        text: "cirka 6,6 mio. hektar",
         correct: true,
         explanation:
-          "Korrekt! Omkring 6600 kvadratkilometer blev afbrændt, hvilket har været en udfordring for både klima og biodiversitet i området.",
+          "Korrekt! Omkring 6,6 millioner hektar blev afbrændt, hvilket har været en udfordring for både klima og biodiversitet i området.",
       },
     ],
   },
   {
     question:
-      "Hvor meget skovudvidelse har der været i Amazonas fra 1990-2020?",
+      "Hvilket land i Amazonas har genoprettet mest skov mellem 2000-2020?",
     apiEndpoint: "https://maltesmoegungerne.onrender.com/growingyearamazon",
     yAxis: "year",
     xAxis: "skovudvidelse",
@@ -94,51 +94,51 @@ const questions = [
     imagePath: "css/images/forestfire.jpg",
     answers: [
       {
-        text: "To gange Tysklands areal",
+        text: "Columbia",
         correct: true,
         explanation:
-          "Præcis, et område på størrelse med to gange Tysklands areal blev brændt, hvilket markerer en kritisk situation for denne vitale økosystem.",
+          "Præcis, mellem 2000 og 2020 har Colombia været førende i Amazonas-regionen i bestræbelserne på skovgenoprettelse. Dette skyldes en kombination af stærk miljølovgivning, fællesskabsbaserede genoprettelsesprojekter, og internationalt samarbejde, hvilket har resulteret i en betydelig forbedring af skovområderne i landet",
       },
       {
-        text: "Halvdelen af Belgiens areal",
+        text: "Brasilien",
         correct: false,
         explanation:
-          "Desværre, et område på størrelse med to gange Tysklands areal blev brændt, hvilket markerer en kritisk situation for denne vitale økosystem.",
+          "Desværre, mellem 2000 og 2020 har Colombia været førende i Amazonas-regionen i bestræbelserne på skovgenoprettelse. Dette skyldes en kombination af stærk miljølovgivning, fællesskabsbaserede genoprettelsesprojekter, og internationalt samarbejde, hvilket har resulteret i en betydelig forbedring af skovområderne i landet",
       },
       {
-        text: "Lige så stort som Schweiz",
+        text: "Bolivia",
         correct: false,
         explanation:
-          "Desværre, et område på størrelse med to gange Tysklands areal blev brændt, hvilket markerer en kritisk situation for denne vitale økosystem.",
+          "Desværre, mellem 2000 og 2020 har Colombia været førende i Amazonas-regionen i bestræbelserne på skovgenoprettelse. Dette skyldes en kombination af stærk miljølovgivning, fællesskabsbaserede genoprettelsesprojekter, og internationalt samarbejde, hvilket har resulteret i en betydelig forbedring af skovområderne i landet",
       },
     ],
   },
   {
     question:
-      "Hvordan er det gået med at genoprette skovområder i verden fra 2010-2020?",
-    apiEndpoint: "https://maltesmoegungerne.onrender.com/bubbleforest",
-    yAxis: "reforestation",
-    xAxis: "expansion",
-    graphType: "bar",
-    imagePath: "css/images/good.jpg",
+      "Hvor mange hektar skov bliver hvert år tabt i hele verden pågrund af bakterier, fungus og virusser?",
+    apiEndpoint: "https://maltesmoegungerne.onrender.com/totalannual",
+    yAxis: "total_diseases",
+    xAxis: "year",
+    graphType: "barz",
+    imagePath: "css/images/svamp.jpg",
     answers: [
       {
-        text: "Stagnerende tendens",
+        text: "2,5 mio hektar",
         correct: false,
         explanation:
-          "Det er desværre forkert, der har været en stigende tendens i skovgenoprettelse globalt, med flere lande, der iværksætter programmer for at imødegå tidligere skader.",
+          "Det er desværre forkert, skovtab på 4,5 millioner hektar årligt skyldes infektioner forårsaget af bakterier, fungus, og virusser. Disse organismer kan forårsage sygdomme i træer og skovområder, hvilket resulterer i betydelige tab af skovarealer. Disse organismer påvirker skovens sundhed ved at angribe træernes blade, grene, stammer, eller rødder, hvilket fører til svækkelse og i nogle tilfælde død af træerne",
       },
       {
-        text: "Faldende tendens",
-        correct: false,
-        explanation:
-          "Det er desværre forkert, der har været en stigende tendens i skovgenoprettelse globalt, med flere lande, der iværksætter programmer for at imødegå tidligere skader.",
-      },
-      {
-        text: "Stigende tendens",
+        text: "4,5 mio hektar",
         correct: true,
         explanation:
-          "Det er helt korrekt, der har været en stigende tendens i skovgenoprettelse globalt, med flere lande, der iværksætter programmer for at imødegå tidligere skader.",
+          "Det er helt rigtigt, skovtab på 4,5 millioner hektar årligt skyldes infektioner forårsaget af bakterier, fungus, og virusser. Disse organismer kan forårsage sygdomme i træer og skovområder, hvilket resulterer i betydelige tab af skovarealer. Disse organismer påvirker skovens sundhed ved at angribe træernes blade, grene, stammer, eller rødder, hvilket fører til svækkelse og i nogle tilfælde død af træerne",
+      },
+      {
+        text: "6,5 mio hektar",
+        correct: false,
+        explanation:
+          "Det er desværre forkert, skovtab på 4,5 millioner hektar årligt skyldes infektioner forårsaget af bakterier, fungus, og virusser. Disse organismer kan forårsage sygdomme i træer og skovområder, hvilket resulterer i betydelige tab af skovarealer. Disse organismer påvirker skovens sundhed ved at angribe træernes blade, grene, stammer, eller rødder, hvilket fører til svækkelse og i nogle tilfælde død af træerne",
       },
     ],
   },

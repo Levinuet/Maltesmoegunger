@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Your existing code here
+  // Opret et tooltip til at vise informationer, når brugeren holder musen over lande
   const tooltip = d3
     .select("body")
     .append("div")
@@ -13,65 +13,64 @@ document.addEventListener("DOMContentLoaded", function () {
   let width = 1500;
   let height = 1000;
 
-  // Select the map container and append an SVG element
+  // Vælg map-container og tilføj et SVG-element
   const svg = d3
-    .select(".map-container") // Use ".map-container" to select by class
+    .select(".map-container")
     .append("svg")
     .attr("width", width)
     .attr("height", height);
 
-  // Fetch world map data
+  // Hent verdenskortdata
   d3.json(
     "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
   ).then((worldData) => {
-    // Check if world map data is valid
+    // Tjek om verdenskortdata er gyldige
     if (worldData && worldData.objects && worldData.objects.countries) {
-      // Convert raw data to features
+      // Konverter rå data til features
       const countries = topojson.feature(
         worldData,
         worldData.objects.countries
       );
 
-      // Define your API endpoint for the 'changes' view
+      // Definer dit API-endepunkt for 'changes' viewet
+      const apiEndpoint = "https://maltesmoegungerne.onrender.com/changes";
 
-      const apiEndpoint = "https://maltesmoegungerne.onrender.com/changes"; // Adjust the URL accordingly
-
-      // Fetch data from the API
+      // Hent data fra API
       d3.json(apiEndpoint).then((response) => {
-        // Check if the response is successful
+        // Tjek om svaret er succesfuldt
         if (response.ok) {
           const apiData = response.skovData;
 
-          // Initialize an empty dataMap object
+          // Initialiser et tomt dataMap-objekt
           const dataMap = {};
 
-          // Populate dataMap using country names as keys
+          // Udfyld dataMap ved at bruge landenavne som keys
           apiData.forEach((entry) => {
-            // Convert "net ændringer" to numeric format
+            // Konverter "netChanges" til numerisk format
             entry["netChanges"] = parseFloat(entry["netChanges"]);
 
-            // Use the updated property name as the key (assuming it's now "name")
+            // Brug den opdaterede property som key
             dataMap[entry.name] = dataMap[entry.name] || {
               name: entry.name,
               netChanges: 0,
-              year: entry.year, // Keep year translation
+              year: entry.year,
             };
 
-            // Sum up netChanges values for the combined years
+            // Summer netChanges-værdier for de kombinerede år
             if (entry.year === "2010-2015" || entry.year === "2015-2020") {
               dataMap[entry.name].netChanges += entry["netChanges"];
             }
           });
 
-          // Extract an array of netChanges values
+          // Udtræk et array af netChanges-værdier
           const netChangesValues = Object.values(dataMap).map(
             (entry) => entry.netChanges
           );
 
-          // Calculate the midpoint value to separate green and red shades
+          // Beregn midtpunktet for at skille mellem grønne og røde nuancer
           const midpoint = d3.mean(netChangesValues);
 
-          // Define a color scale with 12 steps from green to yellow to red
+          // Definer en farveskala med 12 trin fra grøn til gul til rød
           const defaultColorScale = d3
             .scaleLinear()
             .domain([
@@ -84,33 +83,32 @@ document.addEventListener("DOMContentLoaded", function () {
           const uniqueYears = [...new Set(apiData.map((entry) => entry.year))];
 
           uniqueYears.forEach((year) => {
-            const netAendringerValues = apiData
+            const netChangesValuesYear = apiData
               .filter((entry) => entry.year === year)
               .map((entry) => entry["netChanges"]);
 
             defaultColorScale[year] = d3
               .scaleLinear()
               .domain([
-                d3.min(netAendringerValues),
-                d3.max(netAendringerValues),
+                d3.min(netChangesValuesYear),
+                d3.max(netChangesValuesYear),
               ])
               .range(["green", "red"]);
           });
 
-          // Create a dictionary to map country codes to API data
           const projection = d3
             .geoMercator()
             .scale(210)
             .translate([width / 2.3, height / 1.4]);
           const path = d3.geoPath().projection(projection);
 
-          // Append a group element to the SVG
+          // Tilføj en gruppe til SVG-elementet
           const g = svg.append("g");
 
-          // Remove existing paths
+          // Fjern eksisterende stier
           g.selectAll("path").remove();
 
-          // Append new paths based on the country features
+          // Tilføj nye stier baseret på landenes features
           g.selectAll("path")
             .data(countries.features)
             .enter()
@@ -121,55 +119,53 @@ document.addEventListener("DOMContentLoaded", function () {
               const countryName = d.properties.name;
               const countryData = dataMap[countryName];
 
-              // Use the color scale to determine the fill color
+              // Brug farveskalaen til at bestemme fyldfarven
               if (
                 countryData &&
                 countryData["netChanges"] !== undefined &&
                 !isNaN(countryData["netChanges"])
               ) {
                 return defaultColorScale(countryData["netChanges"]);
-              } // Replace the existing else condition
-              else {
-                return "#78909C"; // Subtle greyish-blue color for countries with no data
+              } else {
+                return "#78909C";
               }
             })
 
+            // Vis tooltip ved mouseover
             .on("mouseover", function (event, d) {
-              // Show tooltip on hover
               const countryName = d.properties.name;
               const countryData = dataMap[countryName];
 
               let afskovningText =
                 countryData && !isNaN(countryData["netChanges"])
                   ? `Afskovning i 1000 hektar: ${countryData["netChanges"]}`
-                  : "Afskovning data er ikke reporteret";
+                  : "Ingen data om afskovning";
 
-              // Modify the year text to display "2010-2020" when not reported
               let yearText =
                 countryData && countryData.year
                   ? countryData.year
                   : "2010-2020";
 
-              // Highlight the border on hover with a black color
+              // Fremhæv grænsen ved mouseover med en sort farve
               d3.select(this).style("stroke", "black").style("stroke-width", 2);
 
               tooltip
                 .style("display", "block")
                 .html(
-                  `<strong>${countryName}</strong><br>År: ${"2010-2020"}<br>${afskovningText}`
+                  `<strong>${countryName}</strong><br>År: ${yearText}<br>${afskovningText}`
                 )
                 .style("left", event.pageX + "px")
                 .style("top", event.pageY + "px");
             })
+            // Fjern fremhævning ved mouseout
             .on("mouseout", function () {
-              // Remove border highlight on mouseout
               d3.select(this).style("stroke", "none");
 
-              // Hide tooltip on mouseout
+              // Skjul tooltip ved mouseout
               tooltip.style("display", "none");
             });
         } else {
-          console.error("API request failed:", response.message);
+          console.error("API-forespørgsel mislykkedes:", response.message);
         }
       });
     }

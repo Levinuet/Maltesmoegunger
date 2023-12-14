@@ -1,81 +1,107 @@
 function createLineChart(data, xAxis, yAxis, svg, styling) {
-  // Increase overall SVG width to accommodate the legend
-  const legendWidth = 200; // Increase this as needed
+  const legendWidth = 200;
   const { width, height, marginLeft, marginBottom, marginRight, marginTop } =
     styling;
-  const totalWidth = width + legendWidth; // Total width including legend
+  const totalWidth = width + legendWidth; // Samlet bredde inklusive legende
 
+  // Sorter data baseret på X-aksen
   data.sort((a, b) => a[xAxis] - b[xAxis]);
 
-  // Group data by the 'name' property
+  // Gruppér data efter egenskaben 'name'
   const sumstat = d3.group(data, (d) => d.name);
-  // Color scale
+
+  // Farveskala
   const color = d3.scaleOrdinal(d3.schemeCategory10);
 
-  // Declare the x (horizontal position) scale
+  // Definer skalaen for X-aksen (horisontal position)
   const xScale = d3
     .scaleLinear()
     .domain(d3.extent(data, (d) => d[xAxis]))
     .range([marginLeft, width - marginRight]);
 
-  // Declare the y (vertical position) scale.
+  // Definer skalaen for Y-aksen (vertikal position)
   const yScale = d3
     .scaleLinear()
     .domain([0, d3.max(data, (d) => d[yAxis])])
     .range([height - marginBottom, marginTop]);
 
-  // Create or select SVG with the new totalWidth
+  // Create a tooltip for displaying the country name
+  const tooltip = d3
+    .select("#chart-container")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
+  // Opret eller vælg SVG med den nye samlede bredde
   svg = d3
     .select("#chart-container")
     .append("svg")
-    .attr("width", totalWidth) // Use totalWidth here
+    .attr("width", totalWidth) // Brug totalWidth her
     .attr("height", height);
 
-  // Loop through each name / key to draw and animate the lines
+  // Tegn og animer linjerne for hver gruppe
   sumstat.forEach((values, name) => {
-    // Declare the line generator for each group
     const line = d3
       .line()
       .x((d) => xScale(d[xAxis]))
       .y((d) => yScale(d[yAxis]));
 
+    // Tegn linjerne
     const path = svg
       .append("path")
       .datum(values)
       .attr("fill", "none")
-      .attr("stroke", color(name)) // Use the color scale for the stroke
-      .attr("stroke-width", 3) // Increased stroke width for thicker lines
+      .attr("stroke", color(name)) // Brug farveskalaen for stregerne
+      .attr("stroke-width", 3)
       .attr("d", line);
 
-    // Calculate the total length of the path for the animation
+    // Beregn den samlede længde af stien for animationen
     const totalLength = path.node().getTotalLength();
 
-    // Set up the animation from 1990 to 2020
+    // Animer linjerne
     path
       .attr("stroke-dasharray", totalLength + " " + totalLength)
       .attr("stroke-dashoffset", totalLength)
       .transition()
-      .duration(4000) // Set the duration of the animation
+      .duration(3000)
       .ease(d3.easeLinear)
       .attr("stroke-dashoffset", 0);
 
-    // Add the x-axis with custom tick format to remove commas
+    // laver mouseover effekt på linjerne
+    path
+      .on("mouseover", (event, d) => {
+        tooltip.transition().duration(200).style("opacity", 0.9);
+        tooltip
+          .html(name)
+          .style("left", event.pageX + 10 + "px") // Offset by 10px for x
+          .style("top", event.pageY - 28 + "px"); // Offset by 28px for y
+        path.attr("stroke-width", 6); // Highlight the line
+      })
+      .on("mousemove", (event, d) => {
+        tooltip
+          .style("left", event.pageX + 10 + "px") // Follow the cursor in x-direction
+          .style("top", event.pageY - 28 + "px"); // Follow the cursor in y-direction
+      })
+      .on("mouseout", () => {
+        tooltip.transition().duration(500).style("opacity", 0);
+        path.attr("stroke-width", 3); // Reset the line width
+      });
+
+    // Tilføj X-aksen med brugerdefineret format til at fjerne kommaer
     svg
       .append("g")
-      .attr("class", "x-axis") // Add the class "x-axis"
       .attr("transform", `translate(0,${height - marginBottom})`)
       .call(
         d3
           .axisBottom(xScale)
           .ticks(width / 100)
           .tickSizeOuter(0)
-          .tickFormat(d3.format("d")) // Use "d" format specifier for integers without commas
+          .tickFormat(d3.format("d"))
       );
 
-    // Add the y-axis, remove the domain line, add grid lines and a label.
+    // Tilføj Y-aksen, fjern domænelinjen, tilføj gitterlinjer og etiket
     svg
       .append("g")
-      .attr("class", "y-axis") // Add the class "y-axis"
       .attr("transform", `translate(${marginLeft},0)`)
       .call(d3.axisLeft(yScale).ticks(height / 40))
       .call((g) => g.select(".domain").remove())
@@ -96,7 +122,7 @@ function createLineChart(data, xAxis, yAxis, svg, styling) {
           .text("Skovudvidelse i 1000 hektar")
       );
 
-    // Adding the legend
+    // Add the legend
     const legend = svg
       .selectAll(".legend")
       .data(sumstat.keys())
@@ -104,25 +130,25 @@ function createLineChart(data, xAxis, yAxis, svg, styling) {
       .append("g")
       .attr("class", "legend")
       .attr("transform", function (d, i) {
-        return "translate(" + (width + 50) + "," + (i * 20 + marginTop) + ")";
+        return "translate(" + (width + 50) + "," + (i * 25 + marginTop) + ")"; // Adjust vertical spacing
       });
 
-    // Draw the legend's colored rectangles
+    // Draw the colored squares for the legend
     legend
       .append("rect")
       .attr("x", 0)
-      .attr("width", 10)
-      .attr("height", 10)
+      .attr("width", 20) // Increase square size
+      .attr("height", 20) // Increase square size
       .style("fill", (name) => color(name));
 
-    // Draw the legend's text
+    // Draw the text for the legend
     legend
       .append("text")
-      .attr("x", 20) // Position the text right of the colored rectangles
-      .attr("y", 5)
+      .attr("x", 25) // Adjust position to align with the larger squares
+      .attr("y", 10) // Center text vertically with the square
       .attr("dy", ".35em")
+      .style("font-size", "16px") // Increase font size
       .style("text-anchor", "start")
       .text((name) => name);
-    return svg.node();
   });
 }
