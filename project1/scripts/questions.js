@@ -86,7 +86,7 @@ const questions = [
   },
   {
     question:
-      "Hvor meget skovudvidelse har der været i Amazonas fra 1990-2020?",
+      "Hvilket land i Amazonas har genoprettet mest skov mellem 2000-2020?",
     apiEndpoint: "https://maltesmoegungerne.onrender.com/growingyearamazon",
     yAxis: "year",
     xAxis: "skovudvidelse",
@@ -94,22 +94,22 @@ const questions = [
     imagePath: "css/images/forestfire.jpg",
     answers: [
       {
-        text: "To gange Tysklands areal",
+        text: "Columbia",
         correct: true,
         explanation:
-          "Præcis, et område på størrelse med to gange Tysklands areal blev brændt, hvilket markerer en kritisk situation for denne vitale økosystem.",
+          "Præcis, mellem 2000 og 2020 har Colombia været førende i Amazonas-regionen i bestræbelserne på skovgenoprettelse. Dette skyldes en kombination af stærk miljølovgivning, fællesskabsbaserede genoprettelsesprojekter, og internationalt samarbejde, hvilket har resulteret i en betydelig forbedring af skovområderne i landet",
       },
       {
-        text: "Halvdelen af Belgiens areal",
+        text: "Brasilien",
         correct: false,
         explanation:
-          "Desværre, et område på størrelse med to gange Tysklands areal blev brændt, hvilket markerer en kritisk situation for denne vitale økosystem.",
+          "Desværre, mellem 2000 og 2020 har Colombia været førende i Amazonas-regionen i bestræbelserne på skovgenoprettelse. Dette skyldes en kombination af stærk miljølovgivning, fællesskabsbaserede genoprettelsesprojekter, og internationalt samarbejde, hvilket har resulteret i en betydelig forbedring af skovområderne i landet",
       },
       {
-        text: "Lige så stort som Schweiz",
+        text: "Bolivia",
         correct: false,
         explanation:
-          "Desværre, et område på størrelse med to gange Tysklands areal blev brændt, hvilket markerer en kritisk situation for denne vitale økosystem.",
+          "Desværre, mellem 2000 og 2020 har Colombia været førende i Amazonas-regionen i bestræbelserne på skovgenoprettelse. Dette skyldes en kombination af stærk miljølovgivning, fællesskabsbaserede genoprettelsesprojekter, og internationalt samarbejde, hvilket har resulteret i en betydelig forbedring af skovområderne i landet",
       },
     ],
   },

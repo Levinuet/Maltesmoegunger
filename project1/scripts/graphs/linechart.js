@@ -1,80 +1,80 @@
 function createLineChart(data, xAxis, yAxis, svg, styling) {
-  // Increase overall SVG width to accommodate the legend
-  const legendWidth = 200; // Increase this as needed
+  const legendWidth = 200;
   const { width, height, marginLeft, marginBottom, marginRight, marginTop } =
     styling;
-  const totalWidth = width + legendWidth; // Total width including legend
+  const totalWidth = width + legendWidth; // Samlet bredde inklusive legende
 
+  // Sorter data baseret på X-aksen
   data.sort((a, b) => a[xAxis] - b[xAxis]);
 
-  // Group data by the 'name' property
+  // Gruppér data efter egenskaben 'name'
   const sumstat = d3.group(data, (d) => d.name);
-  // Color scale
+
+  // Farveskala
   const color = d3.scaleOrdinal(d3.schemeCategory10);
 
-  // Declare the x (horizontal position) scale
+  // Definer skalaen for X-aksen (horisontal position)
   const xScale = d3
     .scaleLinear()
     .domain(d3.extent(data, (d) => d[xAxis]))
     .range([marginLeft, width - marginRight]);
 
-  // Declare the y (vertical position) scale.
+  // Definer skalaen for Y-aksen (vertikal position)
   const yScale = d3
     .scaleLinear()
     .domain([0, d3.max(data, (d) => d[yAxis])])
     .range([height - marginBottom, marginTop]);
 
-  // Create or select SVG with the new totalWidth
+  // Opret eller vælg SVG med den nye samlede bredde
   svg = d3
     .select("#chart-container")
     .append("svg")
-    .attr("width", totalWidth) // Use totalWidth here
+    .attr("width", totalWidth) // Brug totalWidth her
     .attr("height", height);
 
-  // Loop through each name / key to draw and animate the lines
+  // Tegn og animer linjerne for hver gruppe
   sumstat.forEach((values, name) => {
-    // Declare the line generator for each group
     const line = d3
       .line()
       .x((d) => xScale(d[xAxis]))
       .y((d) => yScale(d[yAxis]));
 
+    // Tegn linjerne
     const path = svg
       .append("path")
       .datum(values)
       .attr("fill", "none")
-      .attr("stroke", color(name)) // Use the color scale for the stroke
-      .attr("stroke-width", 3) // Increased stroke width for thicker lines
+      .attr("stroke", color(name)) // Brug farveskalaen for stregerne
+      .attr("stroke-width", 3)
       .attr("d", line);
 
-    // Calculate the total length of the path for the animation
+    // Beregn den samlede længde af stien for animationen
     const totalLength = path.node().getTotalLength();
 
+    // Animer linjerne
     path
       .attr("stroke-dasharray", totalLength + " " + totalLength)
       .attr("stroke-dashoffset", totalLength)
       .transition()
-      .duration(3000) // Set the duration of the animation
+      .duration(3000)
       .ease(d3.easeLinear)
       .attr("stroke-dashoffset", 0);
 
-    // Add the x-axis with custom tick format to remove commas
+    // Tilføj X-aksen med brugerdefineret format til at fjerne kommaer
     svg
       .append("g")
-      .attr("class", "x-axis") // Add the class "x-axis"
       .attr("transform", `translate(0,${height - marginBottom})`)
       .call(
         d3
           .axisBottom(xScale)
           .ticks(width / 100)
           .tickSizeOuter(0)
-          .tickFormat(d3.format("d")) // Use "d" format specifier for integers without commas
+          .tickFormat(d3.format("d"))
       );
 
-    // Add the y-axis, remove the domain line, add grid lines and a label.
+    // Tilføj Y-aksen, fjern domænelinjen, tilføj gitterlinjer og etiket
     svg
       .append("g")
-      .attr("class", "y-axis") // Add the class "y-axis"
       .attr("transform", `translate(${marginLeft},0)`)
       .call(d3.axisLeft(yScale).ticks(height / 40))
       .call((g) => g.select(".domain").remove())
@@ -95,7 +95,7 @@ function createLineChart(data, xAxis, yAxis, svg, styling) {
           .text("Skovudvidelse i 1000 hektar")
       );
 
-    // Adding the legend
+    // Tilføj legenden
     const legend = svg
       .selectAll(".legend")
       .data(sumstat.keys())
@@ -106,7 +106,7 @@ function createLineChart(data, xAxis, yAxis, svg, styling) {
         return "translate(" + (width + 50) + "," + (i * 20 + marginTop) + ")";
       });
 
-    // Draw the legend's colored rectangles
+    // Tegn legendens farvede rektangler
     legend
       .append("rect")
       .attr("x", 0)
@@ -114,14 +114,13 @@ function createLineChart(data, xAxis, yAxis, svg, styling) {
       .attr("height", 10)
       .style("fill", (name) => color(name));
 
-    // Draw the legend's text
+    // Tegn legendens tekst
     legend
       .append("text")
-      .attr("x", 20) // Position the text right of the colored rectangles
+      .attr("x", 20) // Positioner teksten til højre for de farvede rektangler
       .attr("y", 5)
       .attr("dy", ".35em")
       .style("text-anchor", "start")
       .text((name) => name);
-    return svg.node();
   });
 }
