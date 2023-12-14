@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .style("border", "1px solid #ccc")
     .style("border-radius", "5px");
   let width = 1500;
-  let height = 920;
+  let height = 1000;
 
   // Select the map container and append an SVG element
   const svg = d3
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const projection = d3
             .geoMercator()
             .scale(210)
-            .translate([width / 2.3, height / 1.55]);
+            .translate([width / 2.3, height / 1.4]);
           const path = d3.geoPath().projection(projection);
 
           // Append a group element to the SVG
