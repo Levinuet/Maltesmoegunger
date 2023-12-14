@@ -91,4 +91,32 @@ app.listen(port, () => {
       });
     }
   });
+  app.get("/growingamazon", async (req, res) => {
+    try {
+      let queryData = await klient.query("SELECT * FROM growingamazon");
+      res.json({
+        ok: true,
+        skovData: queryData.rows,
+      });
+    } catch (error) {
+      res.json({
+        ok: false,
+        message: error.message,
+      });
+    }
+  });
+  app.get("/growingyearamazon", async (req, res) => {
+    try {
+      let queryData = await klient.query("SELECT * FROM growingyearamazon");
+      res.json({
+        ok: true,
+        skovData: queryData.rows,
+      });
+    } catch (error) {
+      res.json({
+        ok: false,
+        message: error.message,
+      });
+    }
+  });
 });
