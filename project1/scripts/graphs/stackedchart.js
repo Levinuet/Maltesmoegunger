@@ -31,6 +31,37 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
     .y0((d) => yScale(d[0]))
     .y1((d) => yScale(d[1]));
 
+  // Tilføjer en tooltip
+  const tooltip = d3
+    .select("#chart-container")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
+  // Laver en path til event listeners til mouseover effekt
+  svg
+    .append("g")
+    .selectAll("path")
+    .data(series)
+    .join("path")
+    .attr("fill", (d) => color(d.key))
+    .attr("d", area)
+    .on("mouseover", (event, d) => {
+      tooltip.transition().duration(200).style("opacity", 0.9);
+      tooltip
+        .html(d.key) // Display the key of the area
+        .style("left", event.pageX + 10 + "px")
+        .style("top", event.pageY - 28 + "px");
+    })
+    .on("mousemove", (event) => {
+      tooltip
+        .style("left", event.pageX + 10 + "px")
+        .style("top", event.pageY - 28 + "px");
+    })
+    .on("mouseout", () => {
+      tooltip.transition().duration(500).style("opacity", 0);
+    });
+
   // Opret et nyt SVG og sæt oprindeligt gennemsigtighed til 0 for fade-in-effekt
   svg = d3
     .select("#chart-container")
@@ -56,6 +87,30 @@ function createStackedChart(data, yAxisLabel, xAxisLabel, svg, styling) {
   // Akser
   const xAxis = d3.axisBottom(xScale).tickSizeOuter(0);
   const yAxis = d3.axisLeft(yScale).ticks(height / 80, "%");
+
+  // Add a path for each series with event listeners
+  svg
+    .append("g")
+    .selectAll("path")
+    .data(series)
+    .join("path")
+    .attr("fill", (d) => color(d.key))
+    .attr("d", area)
+    .on("mouseover", (event, d) => {
+      tooltip.transition().duration(200).style("opacity", 0.9);
+      tooltip
+        .html(d.key) // Display the key of the area
+        .style("left", event.pageX + 10 + "px")
+        .style("top", event.pageY - 28 + "px");
+    })
+    .on("mousemove", (event) => {
+      tooltip
+        .style("left", event.pageX + 10 + "px")
+        .style("top", event.pageY - 28 + "px");
+    })
+    .on("mouseout", () => {
+      tooltip.transition().duration(500).style("opacity", 0);
+    });
 
   // Tilføj X-aksen
   svg

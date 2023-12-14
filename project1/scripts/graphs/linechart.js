@@ -25,6 +25,13 @@ function createLineChart(data, xAxis, yAxis, svg, styling) {
     .domain([0, d3.max(data, (d) => d[yAxis])])
     .range([height - marginBottom, marginTop]);
 
+  // Create a tooltip for displaying the country name
+  const tooltip = d3
+    .select("#chart-container")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
   // Opret eller vælg SVG med den nye samlede bredde
   svg = d3
     .select("#chart-container")
@@ -59,6 +66,26 @@ function createLineChart(data, xAxis, yAxis, svg, styling) {
       .duration(3000)
       .ease(d3.easeLinear)
       .attr("stroke-dashoffset", 0);
+
+    // laver mouseover effekt på linjerne
+    path
+      .on("mouseover", (event, d) => {
+        tooltip.transition().duration(200).style("opacity", 0.9);
+        tooltip
+          .html(name)
+          .style("left", event.pageX + 10 + "px") // Offset by 10px for x
+          .style("top", event.pageY - 28 + "px"); // Offset by 28px for y
+        path.attr("stroke-width", 6); // Highlight the line
+      })
+      .on("mousemove", (event, d) => {
+        tooltip
+          .style("left", event.pageX + 10 + "px") // Follow the cursor in x-direction
+          .style("top", event.pageY - 28 + "px"); // Follow the cursor in y-direction
+      })
+      .on("mouseout", () => {
+        tooltip.transition().duration(500).style("opacity", 0);
+        path.attr("stroke-width", 3); // Reset the line width
+      });
 
     // Tilføj X-aksen med brugerdefineret format til at fjerne kommaer
     svg
@@ -95,7 +122,7 @@ function createLineChart(data, xAxis, yAxis, svg, styling) {
           .text("Skovudvidelse i 1000 hektar")
       );
 
-    // Tilføj legenden
+    // Add the legend
     const legend = svg
       .selectAll(".legend")
       .data(sumstat.keys())
@@ -103,23 +130,24 @@ function createLineChart(data, xAxis, yAxis, svg, styling) {
       .append("g")
       .attr("class", "legend")
       .attr("transform", function (d, i) {
-        return "translate(" + (width + 50) + "," + (i * 20 + marginTop) + ")";
+        return "translate(" + (width + 50) + "," + (i * 25 + marginTop) + ")"; // Adjust vertical spacing
       });
 
-    // Tegn legendens farvede rektangler
+    // Draw the colored squares for the legend
     legend
       .append("rect")
       .attr("x", 0)
-      .attr("width", 10)
-      .attr("height", 10)
+      .attr("width", 20) // Increase square size
+      .attr("height", 20) // Increase square size
       .style("fill", (name) => color(name));
 
-    // Tegn legendens tekst
+    // Draw the text for the legend
     legend
       .append("text")
-      .attr("x", 20) // Positioner teksten til højre for de farvede rektangler
-      .attr("y", 5)
+      .attr("x", 25) // Adjust position to align with the larger squares
+      .attr("y", 10) // Center text vertically with the square
       .attr("dy", ".35em")
+      .style("font-size", "16px") // Increase font size
       .style("text-anchor", "start")
       .text((name) => name);
   });
