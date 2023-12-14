@@ -1,4 +1,4 @@
-@media only screen and (max-width: 1920px) {
+@media only screen and (max-width: 1980px) {
   /* Styles for 1920px width screens */
 }
 
@@ -83,6 +83,9 @@ body {
 
 #explanation,
 #question-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   margin: 20px 0;
 }
@@ -125,9 +128,10 @@ body {
 .controls {
   display: flex;
   flex-direction: column;
-  align-self: center;
+  align-items: center;
   justify-content: center;
   margin-top: 30px;
+  width: 100%;
 }
 
 .intro-image {
@@ -137,6 +141,7 @@ body {
   height: 100vh;
   max-height: 100%;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .intro-container {
@@ -268,10 +273,13 @@ button:hover {
 }
 
 #chart-container {
-  width: 1920px;
+
+  width: 1980px;
   height: 600px;
+  display: flex;
   justify-content: center;
   align-items: center;
+  height: 50vh; /* Adjust this to your needs */
 }
 
 .parent-container {
