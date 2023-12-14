@@ -51,6 +51,32 @@ body {
   /* Remove or adjust padding and margin as necessary */
 }
 
+.result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.result-container h1 {
+  /* Add any styles you need for h1 */
+  margin-bottom: 10px; /* Adjust as needed for spacing between h1 and h2 */
+}
+
+.result-container h2 {
+  /* Add any styles you need for h2 */
+  margin-top: 10px; /* Adjust as needed for spacing between h1 and h2 */
+}
+
+.result-container img {
+  /* Adjust the width and height properties to make the image bigger */
+  width: 900px; /* Set the desired width */
+  height: 800px; /* Set the desired height */
+  border-radius: 400px;
+  object-fit: cover; /* Adjust the object-fit property if needed */
+}
+
 .map-container {
   flex-direction: row;
 }
