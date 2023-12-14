@@ -34,12 +34,12 @@ function createD3Visualization(data, yAxis, xAxis, svg, graphType) {
   }
 
   const styling = {
-    width: 1980,
+    width: 1600,
     height: 550,
-    marginTop: 20,
-    marginRight: 20,
-    marginBottom: 30,
-    marginLeft: 20,
+    marginTop: 60,
+    marginRight: 60,
+    marginBottom: 60,
+    marginLeft: 60,
   };
 
   switch (graphType) {

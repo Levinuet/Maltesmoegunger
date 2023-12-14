@@ -85,7 +85,8 @@ const questions = [
     ],
   },
   {
-    question: "Hvor stort et areal af Amazonas junglen blev brændt i 2015?",
+    question:
+      "Hvor meget skovudvidelse har der været i Amazonas fra 1990-2020?",
     apiEndpoint: "https://maltesmoegungerne.onrender.com/brazilfires",
     yAxis: "year",
     xAxis: "Brand",

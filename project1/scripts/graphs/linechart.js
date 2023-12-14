@@ -50,7 +50,7 @@ function createLineChart(data, xAxis, yAxis, svg, styling) {
     .ease(d3.easeLinear)
     .attr("stroke-dashoffset", 0);
 
-  // Add the x-axis.
+  // Add the x-axis with custom tick format to remove commas
   svg
     .append("g")
     .attr("class", "x-axis") // Add the class "x-axis"
@@ -58,8 +58,9 @@ function createLineChart(data, xAxis, yAxis, svg, styling) {
     .call(
       d3
         .axisBottom(xScale)
-        .ticks(width / 80)
+        .ticks(width / 100)
         .tickSizeOuter(0)
+        .tickFormat(d3.format("d")) // Use "d" format specifier for integers without commas
     );
 
   // Add the y-axis, remove the domain line, add grid lines and a label.
