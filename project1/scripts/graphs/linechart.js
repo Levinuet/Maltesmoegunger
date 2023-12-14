@@ -50,12 +50,11 @@ function createLineChart(data, xAxis, yAxis, svg, styling) {
     // Calculate the total length of the path for the animation
     const totalLength = path.node().getTotalLength();
 
-    // Set up the animation from 1990 to 2020
     path
       .attr("stroke-dasharray", totalLength + " " + totalLength)
       .attr("stroke-dashoffset", totalLength)
       .transition()
-      .duration(4000) // Set the duration of the animation
+      .duration(3000) // Set the duration of the animation
       .ease(d3.easeLinear)
       .attr("stroke-dashoffset", 0);
 
