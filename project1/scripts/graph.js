@@ -39,7 +39,7 @@ function createD3Visualization(data, yAxis, xAxis, svg, graphType) {
     marginTop: 20,
     marginRight: 20,
     marginBottom: 30,
-    marginLeft: 80,
+    marginLeft: 20,
   };
 
   switch (graphType) {
