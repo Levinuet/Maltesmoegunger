@@ -1,4 +1,4 @@
-@media only screen and (max-width: 1920px) {
+@media only screen and (max-width: 1980px) {
   /* Styles for 1920px width screens */
 }
 
@@ -272,6 +272,9 @@ button:hover {
 }
 
 #chart-container {
+
+  width: 1980px;
+  height: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
