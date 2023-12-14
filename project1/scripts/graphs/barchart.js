@@ -13,21 +13,9 @@ function createBarChart(data, yAxis, xAxis, svg, styling) {
     .range([height - marginBottom, marginTop]);
 
   const colorScale = d3
-    .scaleOrdinal()
-    .domain(data.map((d, i) => i))
-    .range([
-      "#1b5e20",
-      "#2e7d32",
-      "#388e3c",
-      "#43a047",
-      "#1565c0",
-      "#1976d2",
-      "#1e88e5",
-      "#2196f3",
-      "#8d6e63",
-      "#bf360c",
-      "#ff9800",
-    ]); // Greens, Blues, Browns, Gold
+    .scaleLinear()
+    .domain([0, d3.max(data, (d) => d[yAxis])]) // Assuming yAxis is your variable for bar height
+    .range(["#2e7d32", "#bf360c"]); // Example: color range from orange to green
 
   // Remove existing SVG elements
   d3.select("#chart-container").selectAll("svg").remove();

@@ -24,8 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
   d3.json(
     "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
   ).then((worldData) => {
-    console.log("World map data:", worldData);
-
     // Check if world map data is valid
     if (worldData && worldData.objects && worldData.objects.countries) {
       // Convert raw data to features
@@ -33,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
         worldData,
         worldData.objects.countries
       );
-      console.log("Processed countries data:", countries);
 
       // Define your API endpoint for the 'changes' view
 
@@ -41,8 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Fetch data from the API
       d3.json(apiEndpoint).then((response) => {
-        console.log("API response:", response);
-
         // Check if the response is successful
         if (response.ok) {
           const apiData = response.skovData;
