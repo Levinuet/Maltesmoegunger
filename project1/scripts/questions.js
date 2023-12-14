@@ -120,7 +120,7 @@ const questions = [
     yAxis: "total_diseases",
     xAxis: "year",
     graphType: "barz",
-    imagePath: "css/images/good.jpg",
+    imagePath: "css/images/svamp.jpg",
     answers: [
       {
         text: "Stagnerende tendens",
