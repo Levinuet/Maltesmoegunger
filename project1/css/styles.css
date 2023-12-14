@@ -57,6 +57,9 @@ body {
 
 #explanation,
 #question-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   margin: 20px 0;
 }
@@ -111,6 +114,7 @@ body {
   height: 100vh;
   max-height: 100%;
   overflow: hidden;
+  border-radius: 10px;
 }
 .intro-container {
   display: flex;
@@ -221,7 +225,7 @@ button:hover {
   height: auto; /* Maintains the aspect ratio of the image */
   display: block; /* Avoid inline behavior */
   margin: 0 auto; /* Center the image */
-  border-radius: 5px; /* Optional: Rounds the corners of the image */
+  border-radius: 50px; /* Optional: Rounds the corners of the image */
   padding: 10px 0; /* Optional: Adds some space above and below the image */
 }
 
@@ -254,10 +258,10 @@ button:hover {
 }
 
 #chart-container {
-  width: 1920px;
-  height: 600px;
+  display: flex;
   justify-content: center;
   align-items: center;
+  height: 50vh; /* Adjust this to your needs */
 }
 
 .parent-container {
