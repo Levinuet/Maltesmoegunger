@@ -119,7 +119,7 @@ const questions = [
     apiEndpoint: "https://maltesmoegungerne.onrender.com/totalannual",
     yAxis: "total_diseases",
     xAxis: "year",
-    graphType: "bar2",
+    graphType: "barz",
     imagePath: "css/images/good.jpg",
     answers: [
       {
