@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const questionElement = document.getElementById("question");
   const answerButtonsElement = document.getElementById("answer-buttons");
   const explanationElement = document.getElementById("explanation");
-  const nextQuestionButton = document.getElementById("next-question-btn");
+  const resultsButton = document.getElementById("results-btn");
 
   const width = 780;
   const height = 503;
@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let correctAnswersCount = 0;
 
   // listeners
+  resultsButton.addEventListener("click", showResults);
   startButton.addEventListener("click", startQuiz);
   nextButton.addEventListener("click", () => {
     nextQuestion();
@@ -63,19 +64,21 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function nextQuestion() {
-    // Nulstil visningen
     resetState();
+    currentQuestionIndex++;
 
-    if (currentQuestionIndex < shuffledQuestions.length - 1) {
-      currentQuestionIndex++;
+    if (currentQuestionIndex < shuffledQuestions.length) {
+      // Show the next question
       showQuestion(shuffledQuestions[currentQuestionIndex]);
     } else {
-      // Call showResults when there are no more questions
-      showResults();
+      // Hide both "Next" and "Results" buttons as no more questions are left
+      nextButton.classList.add("hide");
+      resultsButton.classList.add("hide");
     }
   }
 
   function showResults() {
+    resetState();
     // Store the correct answers count in localStorage
     localStorage.setItem("correctAnswersCount", correctAnswersCount);
     // Redirect to the results page
@@ -106,6 +109,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (existingImage) {
       existingImage.remove();
     }
+
+    answerButtonsElement.style.display = "";
 
     // Check if there's an image for the question and add it
     if (question.imagePath) {
@@ -157,14 +162,28 @@ document.addEventListener("DOMContentLoaded", function () {
     const selectedButton = e.target;
     const currentQuestion = shuffledQuestions[currentQuestionIndex];
 
+    const isCorrect = selectedButton.dataset.correct === "true";
+    showExplanationPage(selectedButton.dataset.explanation, isCorrect);
+
     const questionImage =
       questionContainerElement.querySelector(".question-image");
     if (questionImage) {
       questionImage.style.display = "none"; // or questionImage.remove(); if you want to remove it from the DOM
     }
-
+    answerButtonsElement.style.display = "none";
     // Show explanation on a new page
-    showExplanationPage(selectedButton.dataset.explanation);
+    showExplanationPage(selectedButton.dataset.explanation, isCorrect);
+
+    // Determine if the current question is the last one
+    if (currentQuestionIndex === shuffledQuestions.length - 1) {
+      // Last question and an answer has been selected
+      // Show the "Results" button and hide the "Next" button
+      resultsButton.classList.remove("hide");
+      nextButton.classList.add("hide");
+    } else {
+      // Not the last question, show the "Next" button
+      nextButton.classList.remove("hide");
+    }
 
     // fetch data and show graph
     const apiUrl = currentQuestion.apiEndpoint;
@@ -179,30 +198,27 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       selectedButton.classList.add("wrong");
     }
-
-    // Vis næste-knappen eller afslut quizzen
-    if (shuffledQuestions.length > currentQuestionIndex) {
-      nextButton.classList.remove("hide");
-    } else {
-      startButton.innerText = "Start quizzen igen";
-      startButton.classList.remove("hide");
-    }
   }
 
   // Funktion til at vise siden med forklaring
-  function showExplanationPage(explanation, imagePath) {
-    // Ryd spørgsmålet og svarknapperne
-    questionElement.innerText = "";
-    answerButtonsElement.innerHTML = "";
+  function showExplanationPage(explanation, isCorrect) {
+    // Clear the content of explanationElement
+    explanationElement.innerHTML = "";
 
-    // Sæt teksten for forklaringen
-    explanationElement.innerText = explanation;
+    // Create and add the icon element
+    const iconElement = document.createElement("img");
+    iconElement.src = isCorrect
+      ? "css/icons/correct.png"
+      : "css/icons/wrong.png";
+    iconElement.alt = isCorrect ? "Correct Answer" : "Wrong Answer";
+    iconElement.classList.add("explanation-icon");
 
-    // Opret et billed-element
-    const imageElement = document.createElement("img");
+    // Append the icon to the explanation element
+    explanationElement.appendChild(iconElement);
 
-    // Tilføj billedet til forklaringssiden
-    explanationElement.appendChild(imageElement);
+    // Create a text node for the explanation text and append it
+    const textNode = document.createTextNode(explanation);
+    explanationElement.appendChild(textNode);
   }
   function clearStatusClass(element) {
     const children = element.children;
