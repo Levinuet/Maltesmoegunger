@@ -65,11 +65,21 @@ function createBarChart(data, yAxis, xAxis, svg, styling) {
     .append("g")
     .attr("transform", `translate(0, ${height - marginBottom})`)
     .call(d3.axisBottom(xScale));
-  // Add Y axis :)
-  svg
+  // Add Y axis
+  const yAxisG = svg
     .append("g")
     .attr("transform", `translate(${marginLeft}, 0)`)
-    .call(d3.axisLeft(yScale))
-    .selectAll("text")
-    .style("text-anchor", "end"); // Adjust text anchor as needed
+    .call(d3.axisLeft(yScale));
+
+  yAxisG.selectAll("text").style("text-anchor", "end");
+
+  // Add Y axis label
+  yAxisG
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 15 - marginLeft) // Adjust the position based on your margins
+    .attr("x", 0 - height / 2)
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .text("Brand i 1000 hektar");
 }

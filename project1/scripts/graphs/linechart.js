@@ -1,6 +1,9 @@
 function createLineChart(data, xAxis, yAxis, svg, styling) {
+  // Increase overall SVG width to accommodate the legend
+  const legendWidth = 200; // Increase this as needed
   const { width, height, marginLeft, marginBottom, marginRight, marginTop } =
     styling;
+  const totalWidth = width + legendWidth; // Total width including legend
 
   data.sort((a, b) => a[xAxis] - b[xAxis]);
 
@@ -21,11 +24,11 @@ function createLineChart(data, xAxis, yAxis, svg, styling) {
     .domain([0, d3.max(data, (d) => d[yAxis])])
     .range([height - marginBottom, marginTop]);
 
-  // Create or select SVG
+  // Create or select SVG with the new totalWidth
   svg = d3
     .select("#chart-container")
     .append("svg")
-    .attr("width", width)
+    .attr("width", totalWidth) // Use totalWidth here
     .attr("height", height);
 
   // Loop through each name / key to draw and animate the lines
@@ -41,7 +44,7 @@ function createLineChart(data, xAxis, yAxis, svg, styling) {
       .datum(values)
       .attr("fill", "none")
       .attr("stroke", color(name)) // Use the color scale for the stroke
-      .attr("stroke-width", 1.5)
+      .attr("stroke-width", 3) // Increased stroke width for thicker lines
       .attr("d", line);
 
     // Calculate the total length of the path for the animation
@@ -55,19 +58,6 @@ function createLineChart(data, xAxis, yAxis, svg, styling) {
       .duration(4000) // Set the duration of the animation
       .ease(d3.easeLinear)
       .attr("stroke-dashoffset", 0);
-
-    svg
-      .append("text")
-      .attr(
-        "transform",
-        `translate(${xScale(values[values.length - 1][xAxis])},${yScale(
-          values[values.length - 1][yAxis]
-        )})`
-      )
-      .attr("dy", ".35em")
-      .attr("dx", ".35em")
-      .style("fill", color(name))
-      .text(name);
 
     // Add the x-axis with custom tick format to remove commas
     svg
@@ -103,9 +93,36 @@ function createLineChart(data, xAxis, yAxis, svg, styling) {
           .attr("y", 10)
           .attr("fill", "currentColor")
           .attr("text-anchor", "start")
-          .text(`↑ ${yAxis} values`)
+          .text("Skovudvidelse i 1000 hektar")
       );
 
+    // Adding the legend
+    const legend = svg
+      .selectAll(".legend")
+      .data(sumstat.keys())
+      .enter()
+      .append("g")
+      .attr("class", "legend")
+      .attr("transform", function (d, i) {
+        return "translate(" + (width + 50) + "," + (i * 20 + marginTop) + ")";
+      });
+
+    // Draw the legend's colored rectangles
+    legend
+      .append("rect")
+      .attr("x", 0)
+      .attr("width", 10)
+      .attr("height", 10)
+      .style("fill", (name) => color(name));
+
+    // Draw the legend's text
+    legend
+      .append("text")
+      .attr("x", 20) // Position the text right of the colored rectangles
+      .attr("y", 5)
+      .attr("dy", ".35em")
+      .style("text-anchor", "start")
+      .text((name) => name);
     return svg.node();
   });
 }
