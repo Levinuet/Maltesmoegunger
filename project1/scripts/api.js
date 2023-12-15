@@ -142,4 +142,18 @@ app.listen(port, () => {
       });
     }
   });
+  app.get("/mathchanges", async (req, res) => {
+    try {
+      let queryData = await klient.query("SELECT * FROM mathchanges");
+      res.json({
+        ok: true,
+        skovData: queryData.rows,
+      });
+    } catch (error) {
+      res.json({
+        ok: false,
+        message: error.message,
+      });
+    }
+  });
 });
